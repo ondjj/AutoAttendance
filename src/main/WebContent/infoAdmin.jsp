@@ -63,8 +63,10 @@
 								<div class="collapse" id="collapseLayouts"
 									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="AttendanceManagement.jsp">출결현황</a> <a
-											class="nav-link" href="AttendanceManagement_Objection.jsp">출결정정신청</a>
+										<a class="nav-link" href="AttendanceManagement.jsp">출결현황</a>
+										<a class="nav-link" href="AttendanceManagement_Objection.jsp">출결정정신청</a>
+										관리자 로그인 시 내역
+										<a class="nav-link" href="AttendanceManagement_ObjectionHistory.jsp">출결정정신청내역(관리자)</a>
 									</nav>
 								</div>
 								
@@ -97,8 +99,8 @@
                                     <a class="nav-link" href="GradeManagement.jsp">성적열람</a>
                                     <a class="nav-link" href="GradeManagement_Objection.jsp">성적정정신청</a>
 									관리자 로그인 시 내역
-                                    <a class="nav-link" href="*">성적입력(관리자)</a>
-                                    <a class="nav-link" href="*">성적수정(관리자)</a>
+                                    <a class="nav-link" href="GradeManagement_Insert.jsp">성적입력(관리자)</a>
+                                    <a class="nav-link" href="404.jsp">성적수정(관리자)</a>
                                     <a class="nav-link" href="GradeManagement_ObjectionHistory.jsp">성적정정신청내역(관리자)</a>
                                 </nav>
                             </div>
@@ -119,11 +121,11 @@
 						</div>
 						
 						
-					
 						<div class="sb-sidenav-footer">
 							<div class="small">Logged in as:</div>
 							국제 대학교
 						</div>
+					
 					
 					</nav>
 				</div>

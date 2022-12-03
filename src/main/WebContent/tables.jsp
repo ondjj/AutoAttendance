@@ -9,7 +9,7 @@
         <meta name="author" content="" />
         <title>자료실</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="resources/css/admin.css" rel="stylesheet" />
+        <link href="./resources/css/admin.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -22,6 +22,7 @@
                         <h1 class="mt-4">자료실</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="admin.jsp">마이페이지</a></li>
+                            <li class="breadcrumb-item active">기타</li>
                             <li class="breadcrumb-item active">자료실</li>
                         </ol>
                         <div class="card mb-4">
@@ -29,17 +30,16 @@
                                 <i class="fas fa-table me-1"></i>
                                 게시물 목록<br><br>
                                 <span>
-	                            	<select name="searchField">
+	                            	<select>
 										<option value="title">제목</option>
 										<option value="content">내용</option>
 									</select>
-									<input type="text" name="searchWord">
-									<input type="submit" value="검색하기">
-									<button class="btn btn-primary" type="button" onclick="">검색하기</button>
+									<input type="text">
+									<button class="btn btn-primary btn-sm" type="button" onclick="">검색하기</button>
 								</span>
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table class="table table-hover" id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>번호</th>
@@ -95,7 +95,7 @@
                                 </table>
                                 <br>
                                 <div class="d-grid gap-2 col-1">
-								  <button class="btn btn-primary" type="button" onclick="">글쓰기</button>
+								  <button type="button" class="btn btn-primary" onclick="">글쓰기</button>
 								</div>
                             </div>
                         </div>

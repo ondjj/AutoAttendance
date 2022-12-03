@@ -19,10 +19,11 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">학생증명서발급신청</h1>
+					<h1 class="mt-4">학생 증명서 발급 신청</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="admin.jsp">Dashboard</a></li>
-						<li class="breadcrumb-item active">학생증명서발급신청</li>
+						<li class="breadcrumb-item"><a href="admin.jsp">마이페이지</a></li>
+						<li class="breadcrumb-item active">학적 관련 신청</li>
+						<li class="breadcrumb-item active">학생 증명서 발급 신청</li>
 					</ol>
 
 
