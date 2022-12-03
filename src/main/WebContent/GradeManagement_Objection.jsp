@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>성적 정정 신청</title>
+<title>국제대학교 학생 관리 페이지</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
 	rel="stylesheet" />
@@ -25,8 +25,9 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">성적 정정 신청</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item active"><a href="admin.jsp">성적관리</a></li>
-						<li class="breadcrumb-item active">성적정정신청</li>
+						<li class="breadcrumb-item active"><a href="admin.jsp">마이페이지</a></li>
+						<li class="breadcrumb-item active">성적 관리</li>
+						<li class="breadcrumb-item active">성적 정정 신청</li>
 					</ol>
 
 					<div class="container-fluid px-4">
