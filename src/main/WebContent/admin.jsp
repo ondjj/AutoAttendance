@@ -27,7 +27,7 @@
 					<li class="breadcrumb-item active">마이페이지</li>
 				</ol>
 				<div class="row">
-					<div class="col-xl-8">
+					<div class="col-xl-12">
 						<div class="card mb-4">
 							<div class="card-header">
 								<i class="fas fa-table me-1"></i> 인적 사항
