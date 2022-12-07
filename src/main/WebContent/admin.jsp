@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
 					<li class="breadcrumb-item active">마이페이지</li>
 				</ol>
 				<div class="row">
-					<div class="col-xl-12">
+					<div class="col-xl-8">
 						<div class="card mb-4">
 							<div class="card-header">
 								<i class="fas fa-table me-1"></i> 인적 사항
@@ -37,32 +38,31 @@
 									<tr>
 										<th rowspan="4" width="17%" style="border: 1px solid black;">사진</th>
 										<th>아이디</th>
-										<th><input type="text" value="" disabled="disabled"></th>
+										<th><input type="text" value=""  disabled></th>
 										<th>이름</th>
-										<th><input type="text" value="" disabled="disabled"></th>
+										<th><input type="text" value="" disabled></th>
 										<th>학번</th>
-										<th><input type="text" value="" disabled="disabled"></th>
+										<th><input type="text" value="" disabled></th>
 									</tr>
 									<tr>
 										<th>이메일</th>
-										<th><input type="text" value=""
-											disabled="disabled" readonly></th>
+										<th><input type="text" value=""  readonly disabled></th>
 										<th>나이</th>
-										<th><input type="text" value="" disabled="disabled"></th>
+										<th><input type="text" value="" disabled></th>
 										<th>학년</th>
-										<th><input type="text" value="" disabled="disabled"></th>
+										<th><input type="text" value="" disabled></th>
 									</tr>
 									<tr>
 										<th>전화번호</th>
-										<th><input type="text" value="" disabled="disabled"></th>
+										<th><input type="text" value="" disabled></th>
 										<th>성별</th>
-										<th><input type="text" value="" disabled="disabled"></th>
+										<th><input type="text" value="" disabled></th>
 										<th>전공</th>
-										<th><input type="text" value="" disabled="disabled"></th>
+										<th><input type="text" value="" disabled></th>
 									</tr>
 									<tr>
 										<th>주소</th>
-										<th colspan="5"><input type="text" value="" size="90" disabled="disabled"></th>
+										<th colspan="5"><input type="text" value="" size="90"  value="" disabled></th>
 									</tr>
 								</table>
 							</div>
