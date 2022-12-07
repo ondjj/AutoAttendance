@@ -43,19 +43,19 @@
                                     	  </tr>
 										  <tr>
 										    <th class="table-active">학번</th>
-										    	<td><input type="text" name="*" disabled/></td>
+										    	<td><input type="text" name="idMEMBER" disabled/></td>
 										    <th class="table-active">성명</th>
-										    	<td><input type="text" name="*" disabled/></td>
+										    	<td><input type="text" name="name" disabled/></td>
 										    <th class="table-active">성별</th>
-										    	<td><input type="text" name="*" disabled/></td>
+										    	<td><input type="text" name="sex" disabled/></td>
 										  </tr>
 										  <tr>
 										    <th class="table-active">주민번호</th>
-										    	<td><input type="text" name="*" disabled/></td>
+										    	<td><input type="text" name="privateNumber" disabled/></td>
 										    <th class="table-active">학년</th>
-										    	<td><input type="text" name="*" disabled/></td>
+										    	<td><input type="text" name="grade" disabled/></td>
 										    <th class="table-active">핸드폰</th>
-										    	<td><input type="text" name="*" disabled/></td>
+										    	<td><input type="text" name="phoneNumber" disabled/></td>
 										  </tr>
 										  <tr>
 										    <th class="table-active">학부</th>

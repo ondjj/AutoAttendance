@@ -17,7 +17,7 @@
 				<li class="nav-item"><a class="nav-link" href="Main_Calendar.jsp">학사 안내</a></li>
 				<li class="nav-item"><a class="nav-link" href="Main_Anouncement.jsp">공지사항</a></li>
 				<!-- 세션 정보가 존재하는지 판단유무로 지정 -->
-				<li class="nav-item"><a class="nav-link active" href="admin.jsp">마이페이지(로그인시)</a></li> 
+				<li class="nav-item"><a class="nav-link active" href="/UserDetail.do">마이페이지(로그인시)</a></li> 
 				<li class="nav-item"><a class="nav-link active" href="Main_Login.jsp">로그인</a></li>
 			</ul>
 		</div>
