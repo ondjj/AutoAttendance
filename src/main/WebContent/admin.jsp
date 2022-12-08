@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<<<<<<< Updated upstream
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,9 +129,52 @@
 							<div class="card-header">
 								<i class="fas fa-chart-area me-1"></i> 지난 학기 성적
 							</div>
-							<div class="card-body">
-								~ ~ ~ ~ ~
-							</div>
+							<!--  성적 테이블  -->
+                                    <div class="card-body">
+                                    	<table class="table table-sm" id="datatablesSimple">
+											<thead>
+												<tr>
+													<th>년도-학기</th>
+													<th>수강 과목 수</th>
+													<th>학기 평균 점수</th>
+													<th>학기 평균 등급</th>
+												</tr>
+											</thead>
+												<c:choose>
+													<c:when test="${ empty dashList }"> <%--  아직 성적이 입력되지 않음 --%>
+														<tbody>
+															<tr>
+																<td colspan="6" align="center">
+																	등록된 성적이 존재하지 않습니다.
+																</td>
+															</tr>
+														</tbody>
+													</c:when>
+													<c:otherwise> <%-- 입력된 성적이 존재할 시 --%>
+														<tbody>
+															<c:forEach items="${ dashList }" var="row" varStatus="loop">
+																	<tr align="center">
+																		<td>${row.target_term}</td>
+																		<td>${row.total_lecture}</td>
+																		<td>${row.score_avg}</td>
+																		<td>${row.result_grade}</td>
+																	</tr>
+															</c:forEach>
+														</tbody>	
+														<tfoot>
+															<tr align="center">
+																<td>총 이수 과목 수</td>
+																<td><%=request.getAttribute("total_lecture") %></td>
+																<td>전체 평균 등급</td>
+																<td><%=request.getAttribute("total_grade") %><td>
+															</tr>
+														</tfoot>
+													</c:otherwise>
+												</c:choose>
+											</tbody>
+											
+										</table>
+                                    </div>
 						</div>
 					</div>
 					<div class="col-xl-6">
