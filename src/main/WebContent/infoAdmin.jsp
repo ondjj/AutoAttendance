@@ -4,19 +4,17 @@
 	<!-- Navbar Brand-->
 	<a class="navbar-brand ps-3" href="admin.jsp">학생 관리 페이지</a>
 	<!-- Sidebar Toggle-->
-	<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+	<!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 		id="sidebarToggle" href="#!">
 		<i class="fas fa-bars"></i>
-	</button>
+	</button> -->
 	<!-- Navbar Search-->
 	<form
 		class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-		<div class="input-group">
-			<input class="form-control" type="text" placeholder="Search for..."
-				aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-			<button class="btn btn-primary" id="btnNavbarSearch" type="button">
-				<i class="fas fa-search"></i>
-			</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				<li class="nav-item"><a class="nav-link" href="MainPage.jsp">Main Page</a></li>
+			</ul>
 		</div>
 	</form>
 	<!-- Navbar-->
@@ -30,7 +28,8 @@
 				<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 				<li><hr class="dropdown-divider" /></li>
 				<li><a class="dropdown-item" href="#!">Logout</a></li>
-			</ul></li>
+			</ul>
+		</li>
 	</ul>
 </nav>
 <div id="layoutSidenav">
@@ -40,10 +39,10 @@
 			<div class="sb-sidenav-menu">
 				<div class="nav">
 					<div class="sb-sidenav-menu-heading">전체정보</div>
-					<a class="nav-link" href="admin.jsp">
+					<a class="nav-link" href="dashboard.do?id=20150069">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-tachometer-alt"></i>
-						</div> Dashboard
+						</div> DashBoard
 					</a>
 
 						<div class="sb-sidenav-menu">
@@ -97,7 +96,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="GradeManagement.jsp">성적열람</a>
+                                    <a class="nav-link" href="grade.do?id=20150069">성적열람</a>
                                     <a class="nav-link" href="GradeManagement_Objection.jsp">성적정정신청</a>
 									관리자 로그인 시 내역
                                     <a class="nav-link" href="GradeManagement_Insert.jsp">성적입력(관리자)</a>
@@ -115,6 +114,10 @@
                             <a class="nav-link" href="/UserDetail.do">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 개인정보수정
+                            </a>
+                            <a class="nav-link" href="#p">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                내 강의실
                             </a>
 								
 

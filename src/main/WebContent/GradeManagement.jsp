@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,9 +31,61 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-table"></i>
-                                        2022년 2학기 성적
+                                        이번 학기 성적
                                     </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="50"></canvas></div>
+                                    
+                                    <!--  성적 테이블  -->
+                                    <div class="card-body">
+                                    	<table class="table table-sm" id="datatablesSimple">
+											<thead>
+												<tr>
+													<th>년도-학기</th>
+													<th>과목명</th>
+													<th>중간평가점수</th>
+													<th>기말평가점수</th>
+													<th>과제평가점수</th>
+													<th>성적</th>
+												</tr>
+											</thead>
+												<c:choose>
+													<c:when test="${ empty gradeList }"> <%--  아직 성적이 입력되지 않음 --%>
+														<tbody>
+															<tr>
+																<td colspan="6" align="center">
+																	등록된 성적이 존재하지 않습니다.
+																</td>
+															</tr>
+														</tbody>
+													</c:when>
+													<c:otherwise> <%-- 입력된 성적이 존재할 시 --%>
+														<tbody>
+															<c:forEach items="${ gradeList }" var="row" varStatus="loop">
+																	<tr align="center">
+																		<td>${row.year_term}</td>
+																		<td>${row.subject}</td>
+																		<td>${row.score1}</td>
+																		<td>${row.score2 }</td>
+																		<td>${row.score3 }</td>
+																		<td>${row.grade }</td>
+																	</tr>
+															</c:forEach>
+														</tbody>	
+														<tfoot>
+															<tr align="center">
+																<td></td>
+																<td></td>
+																<td></td>
+																<td></td>
+																<td>전체 등수</td>
+																<td>33/48<td>
+															</tr>
+														</tfoot>
+													</c:otherwise>
+												</c:choose>
+											</tbody>
+											
+										</table>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -45,9 +97,61 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-table"></i>
-                                        2022년 1학기 성적 (기존 성적 존재 시)
+                                        직전 학기 성적
                                     </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
+									
+									<!--  성적 테이블  -->
+                                    <div class="card-body">
+                                    	<table class="table table-sm" id="datatablesSimple">
+											<thead>
+												<tr>
+													<th>년도-학기</th>
+													<th>과목명</th>
+													<th>중간평가점수</th>
+													<th>기말평가점수</th>
+													<th>과제평가점수</th>
+													<th>성적</th>
+												</tr>
+											</thead>
+											<c:choose>
+												<c:when test="${ empty past_gradeList }"> <%--  아직 성적이 입력되지 않음 --%>
+													<tbody>
+														<tr>
+															<td colspan="6" align="center">
+																등록된 성적이 존재하지 않습니다.
+															</td>
+														</tr>
+													</tbody>
+												</c:when>
+													<c:otherwise> <%-- 입력된 성적이 존재할 시 --%>
+														<tbody>
+															<c:forEach items="${ past_gradeList }" var="row" varStatus="loop">
+															
+																<tr align="center">
+																	<td>${row.year_term}</td>
+																	<td>${row.subject}</td>
+																	<td>${row.score1}</td>
+																	<td>${row.score2 }</td>
+																	<td>${row.score3 }</td>
+																	<td>${row.grade }</td>
+																</tr>
+															
+															</c:forEach>
+															</tbody>
+														<tfoot>
+															<tr align="center">
+																<td></td>
+																<td></td>
+																<td></td>
+																<td></td>
+																<td>전체 등수</td>
+																<td>42/48<td>
+															</tr>
+														</tfoot>
+													</c:otherwise>
+												</c:choose>
+										</table>
+                                    </div>
                                 </div>
                             </div>
                         </div>    
