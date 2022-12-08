@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.lang.ref.ReferenceQueue;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,10 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CollegeRegisterDAO;
-import dto.CollegeDTO;
+import org.apache.catalina.filters.RemoteIpFilter.XForwardedRequest;
 
-@WebServlet("/RegisterController")
+import dao.Col_manageRegisterDAO;
+import dao.MemberRegisterDAO;
+import dto.col_manageDTO;
+import dto.memberDTO;
+
+@WebServlet("/Register.do")
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,31 +38,48 @@ public class RegisterController extends HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-		CollegeRegisterDAO cdao = new CollegeRegisterDAO();
-
-		if (command.equals("/UserRegister.do")) {
-
-			int idMEMBER = Integer.parseInt(request.getParameter("idMEMBER"));
-			String K_name = request.getParameter("K_name");
-			String E_name = request.getParameter("E_name");
-			int age = Integer.parseInt(request.getParameter("age"));
-			boolean sex = Boolean.valueOf(request.getParameter("sex"));
-			String privateNumber = request.getParameter("privateNumber");
-			int grade = Integer.parseInt(request.getParameter("grade"));
-			String phoneNumber = request.getParameter("phoneNumber");
-			String college = request.getParameter("college");
-			String major = request.getParameter("major");
-			int semester = Integer.parseInt(request.getParameter("semester"));
-			String division = request.getParameter("division");
-			String C_state = request.getParameter("C_state");
-			String dual_major = request.getParameter("dual_major");
-
-			CollegeDTO cdto = new CollegeDTO(idMEMBER, K_name, E_name, age, sex, privateNumber, grade, phoneNumber,
-					college, major, semester, division, C_state, dual_major);
-			cdao.CollegeRegister(cdto);
+		MemberRegisterDAO mdao = new MemberRegisterDAO();
+		Col_manageRegisterDAO cdao = new Col_manageRegisterDAO();
+		
+		if (command.equals("/Register.do")) {
 			
-			response.sendRedirect("Main_Login.jsp");
+			// 멤버관련
+			String id = request.getParameter("id");
+			String password = request.getParameter("password");
+			String private_num = request.getParameter("private_num");
+			String kr_name = request.getParameter("kr_name");
+			String en_name = request.getParameter("en_name");
+			String id_picture = request.getParameter("id_picture");
+			String phone_num = request.getParameter("phone_num");
+			String email = request.getParameter("email");
+			String address = request.getParameter("address");
+			String admin_key = request.getParameter("admin_key");
+			int age = Integer.parseInt(request.getParameter("age"));
+			int college_year = Integer.parseInt(request.getParameter("college_year"));
+			String gender = request.getParameter("gender");
+			
+			memberDTO mdto = new memberDTO(id, password, private_num, kr_name, en_name, id_picture, phone_num, email, address, admin_key, age, college_year, gender);
+			mdao.MemberRegister(mdto);
+			
+			//학적관련
+			String col_status = request.getParameter("col_status");
+			String col_faculty = request.getParameter("col_faculty");
+			String col_major = request.getParameter("col_major");
+			String col_type = request.getParameter("col_type");
+			String col_second_faculty = request.getParameter("col_second_faculty");
+			String col_complete = request.getParameter("col_complete");
+			
+			col_manageDTO cdto = new col_manageDTO(col_status, col_faculty, col_major, col_type, col_second_faculty, col_complete,id);
+			cdao.Col_manageRegister(cdto);
+			
+			
+			
 
+		}else if(command.equals("/Memberlist.do")) {
+			
+			
+			
+			
 		}
 
 	}

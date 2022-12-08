@@ -1,3 +1,0 @@
-use aiwebproject;
-show tables;
-select * from CollegeRegister;
