@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>AutoAttendanceProject</display-name>
-<<<<<<< Updated upstream
-  
-  <servlet>
-  	<servlet-name>RegisterController</servlet-name>
-  	<servlet-class>controller.RegisterController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-	<servlet-name>RegisterController</servlet-name>
-	<url-pattern>*.do</url-pattern>
-=======
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
   
   <resource-ref>
   	<description>connection</description>
@@ -28,25 +9,6 @@
   	<res-auth>Container</res-auth>
   </resource-ref>
   	
-  <!--  성적 열람 진입 시 매핑 -->
-  <servlet>
-		<servlet-name>GradeManagement</servlet-name>
-		<servlet-class>controller.GradeController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GradeManagement</servlet-name>
-		<url-pattern>/grade.do</url-pattern>
-  </servlet-mapping>
 	
-  <!-- dash board 진입 시 매핑 -->
-  <servlet>
-		<servlet-name>DashBoard</servlet-name>
-		<servlet-class>controller.DashBoardController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DashBoard</servlet-name>
-		<url-pattern>/dashboard.do</url-pattern>
->>>>>>> Stashed changes
-  </servlet-mapping>
   
 </web-app>
