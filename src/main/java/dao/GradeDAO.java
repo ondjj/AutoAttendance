@@ -94,6 +94,7 @@ public class GradeDAO extends DBConnPool{
 				dto.setScore3(rs.getInt(8));
 				dto.setGrade(grade_result(rs.getInt(6), rs.getInt(7), rs.getInt(8)));
 				board.add(dto);
+				con.close();
 			}
 		}catch(Exception e) {
 			System.out.println("Exception in DAO");
@@ -176,7 +177,7 @@ public class GradeDAO extends DBConnPool{
 				map.put("result_grade", result);
 				
 				board.add(map);
-				
+				con.close();
 				
 			}catch(Exception e) {
 				System.out.println("Exception in DAO");
@@ -221,10 +222,35 @@ public class GradeDAO extends DBConnPool{
 		System.out.println(avg);
 		System.out.println(result);
 		
+		
 		return footer_result;
 	}
 	
-	
+	// manager_성적 입력
+	public int insert_grade(GradeDTO dto) {
+		
+		String sql = "insert into grade_manage(member_id, year_term, name, major, subject, score1, score2, score3) values(?,?,?,?,?,?,?,?)";
+		int result = 0;
+		try {
+			
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getMember_id());
+			psmt.setString(2, dto.getYear_term());
+			psmt.setString(3, dto.getName());
+			psmt.setString(4, dto.getMajor());
+			psmt.setString(5, dto.getSubject());
+			psmt.setInt(6, dto.getScore1());
+			psmt.setInt(7, dto.getScore2());
+			psmt.setInt(8, dto.getScore3());
+			result = psmt.executeUpdate();
+			
+			con.close();
+		}catch(Exception e) {
+			System.out.println("Grade_Insert Error in GradeDAO");
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 	

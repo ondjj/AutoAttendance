@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.GradeDAO;
 import dto.GradeDTO;
 
-@WebServlet("/DashBoardController")
+@WebServlet("/dashboard.do")
 public class DashBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,7 +46,6 @@ public class DashBoardController extends HttpServlet {
 		List<Object> grade_footer = new ArrayList();
 		grade_footer = dao.dash_grade_footer(dashList);
 		
-		dao.close();
 		request.setAttribute("dashList", dashList);
 		request.setAttribute("total_lecture", grade_footer.get(0));
 		request.setAttribute("total_grade", grade_footer.get(1));
