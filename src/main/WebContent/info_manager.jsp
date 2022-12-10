@@ -37,11 +37,23 @@
 			id="sidenavAccordion">
 			<div class="sb-sidenav-menu">
 				<div class="nav">
-					<div class="sb-sidenav-menu-heading">일정 관리</div>
+					<div class="sb-sidenav-menu-heading">관리</div>
 					<a class="nav-link" href="manager_page.jsp">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-tachometer-alt"></i>
 						</div> 학사 일정 관리
+					</a>
+					
+					<a class="nav-link" href="manager_stuRegister.jsp">
+						<div class="sb-nav-link-icon">
+							<i class="fas fa-tachometer-alt"></i>
+						</div> 학생 등록
+					</a>
+					
+					<a class="nav-link" href="MemberListCon.do">
+						<div class="sb-nav-link-icon">
+							<i class="fas fa-tachometer-alt"></i>
+						</div> 학생 목록
 					</a>
 
 					<div class="sb-sidenav-menu">
@@ -106,7 +118,8 @@
 								<div class="sb-nav-link-icon">
 									<i class="fas fa-columns"></i>
 								</div> 자료실
-							</a> <a class="nav-link" href="#">
+							</a> 
+							<a class="nav-link" href="#">
 								<div class="sb-nav-link-icon">
 									<i class="fas fa-columns"></i>
 								</div> 관리자정보수정

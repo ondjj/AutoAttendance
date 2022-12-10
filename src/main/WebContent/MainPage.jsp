@@ -25,7 +25,7 @@
 	color: black;
 }
 </style>
-
+        
 </head>
 <body>
 	<!-- Responsive navbar-->

@@ -16,6 +16,7 @@ public class DBConnPool {
 	
 	
 	public DBConnPool() {
+		
 		try {
 			// 커넥션  풀(DataSource)얻기
 			Context initCtx = new InitialContext();
@@ -33,21 +34,17 @@ public class DBConnPool {
 		}
 	}
 	
-	// 연결 해제(자원반납)
-	public void close() {
-		try {
-			if (rs != null) rs.close();
-			if (stmt != null) stmt.close();
-			if (psmt != null) psmt.close();
-			if (con != null) con.close();
-			System.out.println("DB 커넥션 풀 자원 반납");
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
-	
-	
-
+//	// 연결 해제(자원반납)
+//	public void close() {
+//		try {
+//			if (rs != null) rs.close();
+//			if (stmt != null) stmt.close();
+//			if (psmt != null) psmt.close();
+//			if (con != null) con.close();
+//			System.out.println("DB 커넥션 풀 자원 반납");
+//		}catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
 }

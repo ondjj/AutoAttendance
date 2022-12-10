@@ -16,30 +16,6 @@ public class memberDTO {
 	private int college_year; // 입학년도
 	private String gender; // 성별
 
-	public memberDTO(String id, String password, String private_num, String kr_name, String en_name, String id_picture,
-			String phone_num, String email, String address, String admin_key, int age, int college_year,
-			String gender) {
-
-		this.id = id;
-		this.password = password;
-		this.private_num = private_num;
-		this.kr_name = kr_name;
-		this.en_name = en_name;
-		this.id_picture = id_picture;
-		this.phone_num = phone_num;
-		this.email = email;
-		this.address = address;
-		this.admin_key = admin_key;
-		this.age = age;
-		this.college_year = college_year;
-		this.gender = gender;
-	}
-	
-	
-	
-	
-	
-	
 	
 	public String getId() {
 		return id;

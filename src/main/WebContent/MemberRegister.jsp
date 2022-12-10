@@ -18,9 +18,6 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">인적사항 등록</h1>
                         
-                        
-                        
-                       
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="card mb-4">

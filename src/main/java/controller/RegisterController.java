@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import java.lang.ref.ReferenceQueue;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.catalina.filters.RemoteIpFilter.XForwardedRequest;
 
 import dao.Col_manageRegisterDAO;
-import dao.MemberRegisterDAO;
+import dao.MemberDAO;
 import dto.col_manageDTO;
 import dto.memberDTO;
 
@@ -38,7 +39,7 @@ public class RegisterController extends HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-		MemberRegisterDAO mdao = new MemberRegisterDAO();
+		MemberDAO mdao = new MemberDAO();
 		Col_manageRegisterDAO cdao = new Col_manageRegisterDAO();
 		
 		if (command.equals("/Register.do")) {
@@ -58,8 +59,6 @@ public class RegisterController extends HttpServlet {
 			int college_year = Integer.parseInt(request.getParameter("college_year"));
 			String gender = request.getParameter("gender");
 			
-			memberDTO mdto = new memberDTO(id, password, private_num, kr_name, en_name, id_picture, phone_num, email, address, admin_key, age, college_year, gender);
-			mdao.MemberRegister(mdto);
 			
 			//학적관련
 			String col_status = request.getParameter("col_status");
@@ -71,14 +70,8 @@ public class RegisterController extends HttpServlet {
 			
 			col_manageDTO cdto = new col_manageDTO(col_status, col_faculty, col_major, col_type, col_second_faculty, col_complete,id);
 			cdao.Col_manageRegister(cdto);
-			
-			
-			
 
 		}else if(command.equals("/Memberlist.do")) {
-			
-			
-			
 			
 		}
 

@@ -58,7 +58,6 @@ public class GradeController extends HttpServlet {
 		past_gradeList = dao.call_pastgradeList(tempid, this_semester);
 		
 		
-		dao.close();
 		request.setAttribute("gradeList", gradeList);
 		request.setAttribute("past_gradeList", past_gradeList);
 		request.getRequestDispatcher("/GradeManagement.jsp").forward(request, response);
