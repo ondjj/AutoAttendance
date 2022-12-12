@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.DBConnPool;
@@ -74,6 +75,47 @@ public class MemberDAO extends DBConnPool{
 		return arr;
 	}
 	
+	public memberDTO getMember(String id, String pass) {
+		
+		memberDTO mdto = new memberDTO();
+		
+		try {
+			String sql = "select * from member where id=? and password=?";
+			psmt = con.prepareStatement(sql);
+			
+			psmt.setString(1, id);
+			psmt.setString(2, pass);
+			
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				mdto.setId(rs.getString(1));
+				mdto.setPassword(rs.getString(2));
+				mdto.setPrivate_num(rs.getString(3));
+				mdto.setKr_name(rs.getString(4));
+				mdto.setEn_name(rs.getString(5));
+				mdto.setId_picture(rs.getString(6));
+				mdto.setPhone_num(rs.getString(7));
+				mdto.setEmail(rs.getString(8));
+				mdto.setAddress(rs.getString(9));
+				mdto.setAdmin_key(rs.getString(10));
+				mdto.setAge(rs.getInt(11));
+				mdto.setCollege_year(rs.getInt(12));
+				mdto.setGender(rs.getString(13));
+
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return mdto;
+	}
 	
 	
 	

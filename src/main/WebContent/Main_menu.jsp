@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="ad" value="${session.ad}" scope="session"/>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container px-5">
@@ -18,14 +20,26 @@
 				<li class="nav-item"><a class="nav-link" href="Main_Anouncement.jsp">공지사항</a></li>
 				<!-- 세션 정보가 존재하는지 판단유무로 지정 -->
 
-				<li class="nav-item"><a class="nav-link active" href="admin.jsp">마이페이지(학생 로그인시)</a></li> 
+<!-- 				<li class="nav-item"><a class="nav-link active" href="admin.jsp">마이페이지(학생 로그인시)</a></li> 
+ -->				
+				<c:choose>
+					<c:when test="${admin_key == '0' }">
+						<li class="nav-item"><a class="nav-link active" href="manager_page.jsp">Admin Page</a></li> 
+					</c:when>
+					<c:when test="${admin_key == '1' }">
+						<li class="nav-item"><a class="nav-link active" href="/UserDetail.do">마이페이지</a></li> 
+					</c:when>
+				</c:choose>				
 				
-				
-				<li class="nav-item"><a class="nav-link active" href="manager_page.jsp">Admin Page(관리자 로그인시)</a></li> 
+				<c:choose>
+					<c:when test="${id == null }">
+						<li class="nav-item"><a class="nav-link active" href="Main_Login.jsp">로그인</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="nav-item"><a class="nav-link active" href="LogoutCon.do">로그아웃</a></li>
+					</c:otherwise>
+				</c:choose>
 
-				<li class="nav-item"><a class="nav-link active" href="/UserDetail.do">마이페이지(로그인시)</a></li> 
-
-				<li class="nav-item"><a class="nav-link active" href="Main_Login.jsp">로그인</a></li>
 			</ul>
 		</div>
 	</div>
