@@ -1,10 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<<<<<<< Updated upstream
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-=======
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
->>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +10,9 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>국제대학교 학생 관리 페이지</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
-	rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="./resources/css/admin.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 	<%@ include file="infoAdmin.jsp"%>
@@ -32,15 +24,31 @@
 					<li class="breadcrumb-item active">마이페이지</li>
 				</ol>
 				<div class="row">
-					<div class="col-xl-8">
+					<div class="col-xl-12">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-table me-1"></i> 인적 사항
+								<i class="fas fa-table me-2"></i> 인적 사항
 							</div>
 							<div class="card-body">
 								<table id="datatablesSimple" style="text-align: center; margin: auto;">
 									<tr>
 										<th rowspan="4" width="17%" style="border: 1px solid black;">사진</th>
+										
+										<th rowspan="4" width="17%" style="border: 1px solid black;">
+						<!-- 					<script>
+												$.ajax({
+													type:"POST",
+													url:"http://127.0.0.1:5000"
+												})
+												.done(function (msg)){
+													alert("Data : " + msg.result)
+												});
+											</script> -->
+											<input type="text" value='${param.data}' disabled> <br><br>
+											<form action="http://127.0.0.1:5000" method="post">
+												<button class="btn btn-outline-dark">얼굴인증</button>
+											</form>
+										</th>
 										<th>아이디</th>
 										<th><input type="text" value=""  disabled></th>
 										<th>이름</th>

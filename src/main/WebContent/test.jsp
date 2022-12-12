@@ -8,7 +8,18 @@
 </head>
 <body>
 
-	<div align="center">
+	<script>
+		method:"GET",
+		url:"http://127.0.0.1:5000/",
+		data: 
+	</script>
+
+	<form action="http://127.0.0.1:5000" method="post" name="data">
+		<input type="text" value="data">
+		<button>전송</button>
+	</form>
+
+<!-- 	<div align="center">
 		<h2>회원 가입</h2>
 		<form action="MemberJoinController.do" method="post">
 			<table style="width: 500" border="1">
@@ -65,7 +76,7 @@
 					<td width="350" align="center"><input type="text" name="age" size="40"></td>
 				</tr>
 				
-				<!-- check box -->
+				check box
 				<tr height="50">
 					<td width="150" align="center">관리자여부</td>
 					<td width="150" align="center">
@@ -74,7 +85,7 @@
 					</td>
 				</tr>
 				
-				<!--선택 목록 -->
+				선택 목록
 				<tr height="50">
 					<td width="150" align="center">증명사진</td>
 					<td width="350" align="center">
@@ -82,7 +93,7 @@
 					</td>
 				</tr>
 				
-				<!-- raido 버튼 -->
+				raido 버튼
 				<tr height="50">
 					<td width="150" align="center">성별</td>
 					<td width="350" align="center">
@@ -109,6 +120,6 @@
 				</tr>
 			</table>
 		</form>
-	</div>
+	</div> -->
 </body>
 </html>

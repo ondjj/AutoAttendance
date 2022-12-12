@@ -24,10 +24,11 @@
  -->				
 				<c:choose>
 					<c:when test="${admin_key == '0' }">
-						<li class="nav-item"><a class="nav-link active" href="manager_page.jsp">Admin Page</a></li> 
+						<li class="nav-item"><a class="nav-link active" href="manager_page.jsp">Admin Page</a></li>
+						<li class="nav-item"><a class="nav-link active" href="admin.jsp">마이페이지</a></li> 
 					</c:when>
 					<c:when test="${admin_key == '1' }">
-						<li class="nav-item"><a class="nav-link active" href="/UserDetail.do">마이페이지</a></li> 
+						<li class="nav-item"><a class="nav-link active" href="admin.jsp">마이페이지</a></li> 
 					</c:when>
 				</c:choose>				
 				
