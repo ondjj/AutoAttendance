@@ -16,79 +16,33 @@
 <link href="./resources/css/admin.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
-<script>
-	function checkForm(){
-		if(!document.newWrite.member_id.value){
-			alert("학번을 입력해주세요.");
-			document.newWrite.member_id.focus(); // 해당 부분 발생하였을 시 포커스를 줄 수 있도록 설정
-			return false;
-		}
-		if(!document.newWrite.name.value){
-			alert("이름을 입력해주세요.");
-			document.newWrite.name.focus();
-			return false;
-		}
-		if(!document.newWrite.faculty.value){
-			alert("본인의 학과를 입력해주세요.");
-			document.newWrite.faculty.focus();
-			return false;
-		}
-		if(!document.newWrite.subject.value){
-			alert("정정을 요청할 과목명을 입력해주세요.");
-			document.newWrite.subject.focus();
-			return false;
-		}
-		if(!document.newWrite.date.value){
-			alert("정정을 요청할 날짜를 입력해주세요.");
-			document.newWrite.subject.focus();
-			return false;
-		}
-		if(!document.newWrite.content.value){
-			alert("정정을 요청할 내용을 입력해주세요.");
-			document.newWrite.content.focus();
-			return false;
-		}
-	}
-</script>
 </head>
 <body class="sb-nav-fixed">
-	 <%@ include file="infoAdmin.jsp" %>
+	 <%@ include file="info_manager.jsp" %>
 
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">출결 정정 신청</h1>
-					<hr>
-					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item active"><a href="admin.jsp">마이페이지</a></li>
-						<li class="breadcrumb-item active">출결 관리</li>
-						<li class="breadcrumb-item active">출결 정정 신청</li>
-					</ol>
-					<br>
+					 <h1 class="mt-4">성적 정정 신청</h1>
+                        <hr>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="manager_page.jsp">관리자 페이지</a></li>
+                            <li class="breadcrumb-item active">학적</li>
+                            <li class="breadcrumb-item active">성적정정신청내용</li>
+                        </ol>
+                        <br>
 					<div class="container-fluid px-5 border border-2">
 						<br>
-						<form name="newWrite" action="objection.do"	class="form-horizontal" method="post"
-							onsubmit="return checkForm()">
+						<form name="newWrite" action="ObjectionListCon.do?view_del=${dto.obj_num }&&view_type=${dto.obj_type}"	class="form-horizontal" method="post"
+							>
 
 							<input name="id" type="hidden" class="form-control"
 								value="" />
 
 							<div class="form-group row">
-								<label class="col-sm-2 control-label"><strong>정정 신청 종류</strong></label>
-								<div class="col-sm-3">
-									<select name="obj_type" id="obj_type" class="form-select">
-    										<option>선택</option>
-    										<option value="1">출결 정정</option>
-    										<option value="2">학적 정정</option>
-    										<option value="3">성적 정정</option>
-									</select>
-								</div>
-							</div>
-							
-							<div class="form-group row">
 								<label class="col-sm-2 control-label"><strong>학번</strong></label>
 								<div class="col-sm-3">
-									<input name="member_id" type="text" class="form-control" placeholder="학번 ex)20150000" />
+									<input name="member_id" type="text" class="form-control" value="${dto.obj_memberid }" readonly/>
 								</div>
 							</div>
 							
@@ -96,7 +50,7 @@
 								<label class="col-sm-2 control-label"><strong>이름</strong></label>
 								<div class="col-sm-3">
 									<input name="name" type="text" class="form-control"
-										placeholder="이름" />
+										value="${dto.obj_name }" readonly/>
 								</div>
 							</div>
 							
@@ -104,7 +58,7 @@
 								<label class="col-sm-2 control-label"><strong>학과</strong></label>
 								<div class="col-sm-3">
 									<input name="faculty" type="text" class="form-control"
-										placeholder="학과" />
+										value="${dto.obj_faculty }" readonly/>
 								</div>
 							</div>
 							
@@ -112,15 +66,7 @@
 								<label class="col-sm-2 control-label"><strong>과목</strong></label>
 								<div class="col-sm-3">
 									<input name="subject" type="text" class="form-control"
-										placeholder="과목" />
-								</div>
-							</div>
-
-							<div class="form-group row">
-								<label class="col-sm-2 control-label"><strong>정정 희망 일자</strong></label>
-								<div class="col-sm-3">
-									<input name="date" type="text" class="form-control"
-										placeholder="정정 희망 일자" />
+										value="${dto.obj_subject }" readonly/>
 								</div>
 							</div>
 
@@ -128,14 +74,13 @@
 								<label class="col-sm-2 control-label"><strong>정정 내용</strong></label>
 								<div class="col-sm-5">
 									<textarea name="content" class="form-control" placeholder="내용"
-										rows="10" cols="100"></textarea>
+										rows="10" cols="100" readonly>${dto.obj_content }</textarea>
 								</div>
 							</div>
 							<br>
 							<div class="form-group row" align="left">
 								<div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" class="btn btn-primary" value="제출" /> <input
-										type="reset" class="btn btn-danger" value="취소" />
+									<input type="submit" class="btn btn-danger" value="삭제" />
 								</div>
 							</div>
 						</form>

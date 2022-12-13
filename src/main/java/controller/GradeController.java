@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.GradeDAO;
 import dto.GradeDTO;
 
-@WebServlet("/GradeController")
+@WebServlet("/grade.do")
 public class GradeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,8 +33,30 @@ public class GradeController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+request.setCharacterEncoding("UTF-8");
+		
+		String type = (String)request.getSession().getAttribute("id");
+		if(type.equals("1")) {
+			System.out.println("insertcon진입");
+			
+			GradeDTO insert_dto = new GradeDTO();
+			insert_dto.setMember_id(request.getParameter("member_id"));
+			insert_dto.setYear_term(request.getParameter("year_term"));
+			insert_dto.setName(request.getParameter("name"));
+			insert_dto.setMajor(request.getParameter("major"));
+			insert_dto.setSubject(request.getParameter("subject"));
+			insert_dto.setScore1(Integer.parseInt(request.getParameter("score1")));
+			insert_dto.setScore2(Integer.parseInt(request.getParameter("score2")));
+			insert_dto.setScore3(Integer.parseInt(request.getParameter("score3")));
+			
+			GradeDAO dao = new GradeDAO();
+			int result = dao.insert_grade(insert_dto);
+			
+			response.sendRedirect("manager_gradeInsert.jsp");
+		}else {
+		
 		GradeDAO dao = new GradeDAO();
-		String tempid = request.getParameter("id");
+		String tempid = (String)request.getSession().getAttribute("id");
 		LocalDate now = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		String format_now = now.format(formatter);
@@ -58,10 +80,12 @@ public class GradeController extends HttpServlet {
 		past_gradeList = dao.call_pastgradeList(tempid, this_semester);
 		
 		
+	
 		request.setAttribute("gradeList", gradeList);
 		request.setAttribute("past_gradeList", past_gradeList);
 		request.getRequestDispatcher("/GradeManagement.jsp").forward(request, response);
-		// List.jsp : View파일
+		
+		}
 		
 		
 	}

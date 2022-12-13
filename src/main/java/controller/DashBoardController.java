@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.cj.Session;
+
 import dao.GradeDAO;
 import dto.GradeDTO;
 
-@WebServlet("/DashBoardController")
+@WebServlet("/dashboard.do")
 public class DashBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,24 +34,34 @@ public class DashBoardController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 이전 학기 성적 가져오는 DAO
-		System.out.println("Controller");
+		System.out.println("Dash_Controller");
+		String id = (String)request.getSession().getAttribute("id");
+		System.out.println("load_dash_session_id : " + id);
 		GradeDAO dao = new GradeDAO();
-		String tempid = request.getParameter("id");
 		
+		
+		
+		
+		// 성적 개요 출력
 		List<String> year_term_list = new ArrayList();
-		year_term_list = dao.year_term_list(tempid);
+		year_term_list = dao.year_term_list(id);
 		
 		List<Map<String, Object>> dashList = new ArrayList<>();
-		dashList = dao.call_dashGrade(year_term_list, tempid);
+		dashList = dao.call_dashGrade(year_term_list, id);
+
+		if(dashList.size()==0) {
+			request.setAttribute("dashList", dashList);
+			request.getRequestDispatcher("/admin.jsp").forward(request, response);
+		}else {
+			List<Object> grade_footer = new ArrayList();
+			grade_footer = dao.dash_grade_footer(dashList);
+			request.setAttribute("dashList", dashList);
+			request.setAttribute("total_lecture", grade_footer.get(0));
+			request.setAttribute("total_grade", grade_footer.get(1));
+			request.getRequestDispatcher("/admin.jsp").forward(request, response);
+		}
 		
-		List<Object> grade_footer = new ArrayList();
-		grade_footer = dao.dash_grade_footer(dashList);
 		
-		request.setAttribute("dashList", dashList);
-		request.setAttribute("total_lecture", grade_footer.get(0));
-		request.setAttribute("total_grade", grade_footer.get(1));
-		request.getRequestDispatcher("/admin.jsp").forward(request, response);
 	}
 	
 }

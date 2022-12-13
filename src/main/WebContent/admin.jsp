@@ -35,7 +35,7 @@
 										<th rowspan="4" width="17%" style="border: 1px solid black;">사진</th>
 										
 										<th rowspan="4" width="17%" style="border: 1px solid black;">
-						<!-- 					<script>
+									<!--	<script>
 												$.ajax({
 													type:"POST",
 													url:"http://127.0.0.1:5000"
@@ -191,7 +191,6 @@
 								<i class="fas fa-chart-bar me-1"></i> 출석 기록
 							</div>
 							<div class="card-body">
-								! ! ! ! !
 								<!-- <label>[퇴실] 2022. 12. 01. 17:52</label><br>
 								<label>[출석] 2022. 12. 01. 08:55</label><br>
 								<label>[조퇴] 2022. 11. 30. 13:00</label><br>
@@ -203,11 +202,7 @@
 				</div>
 			</div>
 		</main>
-
 		<%@ include file="footerAdmin.jsp"%>
-
-
-	</div>
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
