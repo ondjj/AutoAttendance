@@ -75,16 +75,16 @@ public class MemberDAO extends DBConnPool{
 		return arr;
 	}
 	
-	public memberDTO getMember(String id, String pass) {
+	public memberDTO getMember(String id) {
 		
 		memberDTO mdto = new memberDTO();
 		
 		try {
-			String sql = "select * from member where id=? and password=?";
+			String sql = "select * from member where id=?";
 			psmt = con.prepareStatement(sql);
 			
 			psmt.setString(1, id);
-			psmt.setString(2, pass);
+			
 			
 			rs = psmt.executeQuery();
 			if(rs.next()) {

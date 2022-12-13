@@ -61,7 +61,7 @@
                                     <tbody>
                                     <c:forEach var="arr" items="${arr}">
                                         <tr>
-                                        	<td onClick="location.href='#'">${arr.id}</td>
+                                        	<td onClick="location.href='manager_memberInfo.jsp?id=${arr.id}'">${arr.id}</td>
                                         	<td>${arr.password}</td>
                                         	<td>${arr.private_num}</td>
                                         	<td>${arr.kr_name}</td>

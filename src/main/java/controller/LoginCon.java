@@ -36,7 +36,7 @@ public class LoginCon extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("password");
 
-		memberDTO result = mdao.getMember(id, pw);
+		memberDTO result = mdao.getMember(id);
 		
 		String Lid = result.getId();
 		String Lpw = result.getPassword();
