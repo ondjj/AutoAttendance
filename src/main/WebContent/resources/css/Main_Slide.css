@@ -12,11 +12,12 @@ li{
 
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow{
-  width: 1100px;
-  height: 400px;
   position: relative;
-  margin: 50px auto;
-  overflow: hidden;   
+  left: -16px;
+  max-width: 100%;
+  height: 400px;
+  margin: 50px 0px;
+  overflow: hidden;
   /*리스트 형식으로 이미지를 일렬로 
   정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
   hidden으로 숨겨줘야됨*/
@@ -25,18 +26,11 @@ li{
 
 .slides{
   position: absolute;
-  left: 0;
-  top: 0;
-  width: (1176*4)+px; /* 슬라이드할 사진과 마진 총 넓이 */
-  transition: left 0.5s ease-out; 
-  /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+  max-width: 100%;
+  height: 400px;
+   /* 슬라이드할 사진과 마진 총 넓이 */
+  width: auto;
 }
-
-/* 첫 번째 슬라이드 가운데에 정렬하기위해
-첫번째 슬라이드만 margin-left조정 */
-/*.slides li:first-child{
-  margin-left: 100px;
-}*/
 
 /* 슬라이드들 옆으로 정렬 */
 .slides li:not(:last-child){
@@ -53,7 +47,7 @@ li{
   color: black;
   text-align: center;
   border-radius: 50%;
-  padding: 10px 20px;
+  padding: 10px 10px;
   top: 50%;
   font-size: 1.3em;
   cursor: pointer;
@@ -82,4 +76,14 @@ li{
 이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
 .next:hover{
   transform: translateX(10px);
+}
+
+.img {
+	display: none;
+	max-width: 100%;
+	height: auto;
+}
+
+.img.on {
+	display: block;
 }

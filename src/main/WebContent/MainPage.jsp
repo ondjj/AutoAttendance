@@ -13,6 +13,7 @@
 <link rel="icon" type="image/x-icon"
 	href="./resources/assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
+<link href="./resources/css/admin.css" rel="stylesheet" />
 <link href="./resources/css/style.css" rel="stylesheet" />
 <link href="./resources/css/Main_Slide.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -27,16 +28,14 @@
 <body>
 	<!-- Responsive navbar-->
 	<%@ include file="Main_menu.jsp"%>
-	<!-- Page Content-->
-	<div class="container px-4 px-lg-5">
 				
-		<!-- Main Slide -->
+	<!-- Page Content-->
 		<div id="slideShow">
     		<ul class="slides" id="testid">
-      			<li><a href="http://www.naver.com/"><img src="./resources/img/campus1.jpg" alt=""></a></li>
-			    <li><img src="./resources/img/famu1.jpg" alt=""></li>
-			    <li><img src="./resources/img/johns_hopkins1.jpg" alt=""></li>
-			    <li><img src="./resources/img/school_design1.jpg" alt=""></li>
+			    <li><img src="./resources/img/1900x400.jpg" class="img img-responsive" alt="Responsive image"></li>
+			    <li><img src="./resources/img/1900x400_1.jpg" class="img img-responsive" alt="Responsive image"></li>
+			    <li><img src="./resources/img/1900x400_2.jpg" class="img img-responsive" alt="Responsive image"></li>
+			    <li><img src="./resources/img/1900x400_3.jpg" class="img img-responsive" alt="Responsive image"></li>
 	    	</ul>  
 	    <p class="controller">
       
@@ -46,19 +45,11 @@
         <span class="next">&rang;</span>
     	</p>
 		</div>
-	
 		
-		<!-- Call to Action-->
+	<div class="container px-4 px-lg-5">
+		
+
 		<div id="anchorboard" class="card text-white bg-secondary my-5 py-4 text-center">
-			<table>
-				<tr>
-					<td><a href="MainPage.jsp" class="text-white fs-4">교육 목표</a></td>
-					<td><a href="MainPage.jsp" class="text-white fs-4">단과대학 소개</a></td>
-					<td><a href="MainPage.jsp" class="text-white fs-4">대학입학</a></td>
-					<td><a href="MainPage.jsp" class="text-white fs-4">대학 일자리 플러스 센터</a></td>
-					<td><a href="MainPage.jsp" class="text-white fs-4">오시는 길</a></td>
-				</tr>
-			</table>
 		</div>
 		<!-- Content Row-->
 		<div class="row gx-4 gx-lg-5">

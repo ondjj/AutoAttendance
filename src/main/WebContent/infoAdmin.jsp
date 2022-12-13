@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 	<!-- Navbar Brand-->
 	<a class="navbar-brand ps-3" href="admin.jsp">학생 관리 페이지</a>
@@ -64,6 +64,8 @@
 									<nav class="sb-sidenav-menu-nested nav">
 										<a class="nav-link" href="AttendanceManagement.jsp">출결현황</a>
 										<a class="nav-link" href="AttendanceManagement_Objection.jsp">출결정정신청</a>
+										관리자 로그인 시 내역
+										<a class="nav-link" href="AttendanceManagement_ObjectionHistory.jsp">출결정정신청내역(관리자)</a>
 									</nav>
 								</div>
 								
@@ -80,7 +82,8 @@
 								<div class="collapse" id="collapseLayouts2"
 									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="objection.do?obj_type=5">학적변동신청</a>
+										<a class="nav-link" href="CollegeRegister.jsp">학생인적사항 등록</a>
+										<a class="nav-link" href="updateCollege.jsp">학적변동신청</a>
 										<a class="nav-link" href="certificate.jsp">학생증명서발급신청</a> 
 										<a class="nav-link" href="401.jsp">전공변경신청</a>
 									</nav>
@@ -93,14 +96,18 @@
                             </a>
                             <div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="grade.do">성적열람</a>
+                                    <a class="nav-link" href="grade.do?id=20150069">성적열람</a>
                                     <a class="nav-link" href="GradeManagement_Objection.jsp">성적정정신청</a>
+									관리자 로그인 시 내역
+                                    <a class="nav-link" href="GradeManagement_Insert.jsp">성적입력(관리자)</a>
+                                    <a class="nav-link" href="404.jsp">성적수정(관리자)</a>
+                                    <a class="nav-link" href="GradeManagement_ObjectionHistory.jsp">성적정정신청내역(관리자)</a>
                                 </nav>
                             </div>
 								
 								
                             <div class="sb-sidenav-menu-heading">기타</div>
-                            <a class="nav-link" href="tables.jsp">
+                            <a class="nav-link" href="/data_lib_list.do">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 자료실
                             </a>
@@ -120,7 +127,7 @@
 						
 						<div class="sb-sidenav-footer">
 							<div class="small">Logged in as:</div>
-							국제대학교
+							국제 대학교
 						</div>
 					
 					
