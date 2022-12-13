@@ -103,20 +103,53 @@ public class MemberDAO extends DBConnPool{
 				mdto.setGender(rs.getString(13));
 
 			}
-			
+				con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return mdto;
 	}
 	
+	public void delMember(String id) {
+		
+		try {
+			String sql = "delete from member where id=?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.executeUpdate();
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
+	public void updateMemer(memberDTO mdto) {
+		
+		try {
+			String sql = "update member set id=?, password=?, private_num, kr_name, en_name=?, id_picture=?,"
+					+ "phone_num=?, email=?, address=? admin_key=?, age=?, college_year=?, gender=?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, mdto.getId());
+			psmt.setString(2, mdto.getPassword());
+			psmt.setString(3, mdto.getPrivate_num());
+			psmt.setString(4, mdto.getKr_name());
+			psmt.setString(5, mdto.getEn_name());
+			psmt.setString(6, mdto.getId_picture());
+			psmt.setString(7, mdto.getPhone_num());
+			psmt.setString(8, mdto.getEmail());
+			psmt.setString(9, mdto.getAddress());
+			psmt.setString(10, mdto.getAdmin_key());
+			psmt.setInt(11, mdto.getAge());
+			psmt.setInt(12, mdto.getCollege_year());
+			psmt.setString(13, mdto.getGender());
+			
+			psmt.executeUpdate();
+			
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 }

@@ -61,7 +61,7 @@
                                     <tbody>
                                     <c:forEach var="arr" items="${arr}">
                                         <tr>
-                                        	<td>${arr.id}</td>
+                                        	<td onClick="location.href='#'">${arr.id}</td>
                                         	<td>${arr.password}</td>
                                         	<td>${arr.private_num}</td>
                                         	<td>${arr.kr_name}</td>
@@ -77,6 +77,8 @@
                            			</c:forEach>
                                     </tbody>
                                 </table>
+                               <button type="button" class="btn btn-outline-primary" onclick="">수정</button>
+                               <button type="button" class="btn btn-outline-danger" onclick="location.href='#'">삭제</button>
                             </div>
                             </div>
                         </div>
