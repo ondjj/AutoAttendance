@@ -46,6 +46,7 @@ public class LoginCon extends HttpServlet {
 			HttpSession session = request.getSession();
 
 			session.setAttribute("id", id);
+			System.out.println(id);
 			session.setAttribute("pass", pw);
 			session.setAttribute("admin_key", result.getAdmin_key());
 			
