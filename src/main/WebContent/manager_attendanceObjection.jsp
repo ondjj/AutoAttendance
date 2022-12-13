@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,16 +20,18 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">출결정정신청내역</h1>
+                        <h1 class="mt-4">출결정정 신청내역</h1>
+                        <hr>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="manager_page.jsp">관리자 페이지</a></li>
-                            <li class="breadcrumb-item active">학적</li>
                             <li class="breadcrumb-item active">출결</li>
+                            <li class="breadcrumb-item active">출결정정신청</li>
                         </ol>
+                        <br>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                출경정정신청 목록<br><br>
+                               출결정정신청내역 목록<br><br>
                                 <span>
 	                            	<select>
 										<option value="title">제목</option>
@@ -39,61 +42,46 @@
 								</span>
                             </div>
                             <div class="card-body">
-                                <table class="table table-hover" id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>번호</th>
-                                            <th>제목</th>
-                                            <!-- <th>내용</th> -->
-                                            <th>작성자</th>
-                                            <th>작성일</th>
-                                            <th>첨부파일</th>
-                                            <th>조회수</th>
-                                        </tr>
-                                    </thead>
-                                    <!-- <tfoot>
-                                        <tr>
-                                            <th>번호</th>
-                                            <th>제목</th>
-                                            <th>내용</th>
-                                            <th>작성자</th>
-                                            <th>작성일</th>
-                                            <th>첨부파일</th>
-                                            <th>조회수</th>
-                                        </tr>
-                                    </tfoot> -->
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><a href="#">제목 테스트</a></td>
-                                            <!-- <td>내용내용긴글내용내용긴글내용내용긴글내용내용</td> -->
-                                            <td>관리자</td>
-                                            <td>2022-11-30</td>
-                                            <td><a href="#">파일 테스트</a></td>
-                                            <td>40</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><a href="#">제목</a></td>
-                                       <!--      <td>내용내용</td> -->
-                                            <td>관리자</td>
-                                            <td>2022-12-01</td>
-                                            <td><a href="#">test.txt</a></td>
-                                            <td>1234</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><a href="#">1234ABCDㄱㄴㄷㄹabcd1234</a></td>
-                                      <!--       <td>내용내용</td> -->
-                                            <td>관리자</td>
-                                            <td>2023-01-01</td>
-                                            <td><a href="#">양식.hwp</a></td>
-                                            <td>0</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    	<table class="table table-sm" id="datatablesSimple">
+											<thead>
+												<tr>
+													<th>번호</th>
+													<th>이름</th>
+													<th>학번</th>
+													<th>전공</th>
+													<th>과목</th>
+													<th>내용</th>
+												</tr>
+											</thead>
+												<c:choose>
+													<c:when test="${ empty objList }"> <%--  아직 성적이 입력되지 않음 --%>
+														<tbody>
+															<tr>
+																<td colspan="6" align="center">
+																	출결 정정 신청 내역이 존재하지 않습니다.
+																</td>
+															</tr>
+														</tbody>
+													</c:when>
+													<c:otherwise> <%-- 입력된 성적이 존재할 시 --%>
+														<tbody>
+															<c:forEach items="${ objList }" var="row" varStatus="loop">
+																	<tr align="center">
+																		<td>${row.obj_num}</td>
+																		<td>${row.obj_name}</td>
+																		<td>${row.obj_memberid}</td>
+																		<td>${row.obj_faculty }</td>
+																		<td>${row.obj_subject }</td>
+																		<td><a href="ObjectionListCon.do?obj_num=${row.obj_num }&&obj_type=${row.obj_type}">출결 정정 신청</a></td>
+																	</tr>
+															</c:forEach>
+														</tbody>	
+													</c:otherwise>
+												</c:choose>
+											</tbody>
+											
+										</table>
+                                    </div>
                         </div>
                     </div>
                 </main>

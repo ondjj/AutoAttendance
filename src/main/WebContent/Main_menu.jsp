@@ -28,7 +28,7 @@
 						<li class="nav-item"><a class="nav-link active" href="admin.jsp">마이페이지</a></li> 
 					</c:when>
 					<c:when test="${admin_key == '1' }">
-						<li class="nav-item"><a class="nav-link active" href="admin.jsp">마이페이지</a></li> 
+						<li class="nav-item"><a class="nav-link active" href="dashboard.do">마이페이지</a></li> 
 					</c:when>
 				</c:choose>				
 				

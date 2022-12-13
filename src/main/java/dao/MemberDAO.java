@@ -3,6 +3,7 @@ package dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 import common.DBConnPool;
 import dto.memberDTO;
 
@@ -149,7 +150,48 @@ public class MemberDAO extends DBConnPool{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	// 학적 변동 신청 화면에 현재 세션에 등록된 학생의 정보를 가져와서 보여주기 위한 메소드
+	public memberDTO getMemberCol(String id) {
 		
+		memberDTO dto = new memberDTO();
+
+		try {
+			
+			String sql = "select id, kr_name, en_name, private_num, gender, phone_num from member where id=?";
+			
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setId(rs.getString("id"));
+				dto.setKr_name(rs.getString("kr_name"));
+				dto.setEn_name(rs.getString("en_name"));
+				dto.setPrivate_num(rs.getString("private_num"));
+				dto.setGender(rs.getString("gender"));
+				dto.setPhone_num(rs.getString("phone_num"));
+			}
+			
+			/*
+			 * sql =
+			 * "select col_faculty, col_major, col_complete, col_type, col_status, col_second_faculty from col_manage where id=?"
+			 * ;
+			 * 
+			 * psmt = con.prepareStatement(sql); psmt.setString(1, id); rs =
+			 * psmt.executeQuery();
+			 * 
+			 * if(rs.next()) { dto.set }
+			 */
+			
+			con.close();
+		}catch(Exception e) {
+			System.out.println("member 등록 중 오류 발생");
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 	
 }

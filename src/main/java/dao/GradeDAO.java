@@ -11,7 +11,7 @@ public class GradeDAO extends DBConnPool{
 		
 		String sql = "select * from grade_manage where member_id=? and year_term=?";
 		
-		List<GradeDTO> board = new ArrayList<>();
+		List<GradeDTO> board = new ArrayList();
 		
 		try {
 			
@@ -33,8 +33,6 @@ public class GradeDAO extends DBConnPool{
 				dto.setGrade(grade_result(rs.getInt(6), rs.getInt(7), rs.getInt(8)));
 				board.add(dto);
 			}
-			
-			con.close();
 		}catch(Exception e) {
 			System.out.println("Exception in DAO");
 			e.printStackTrace();
@@ -96,9 +94,8 @@ public class GradeDAO extends DBConnPool{
 				dto.setScore3(rs.getInt(8));
 				dto.setGrade(grade_result(rs.getInt(6), rs.getInt(7), rs.getInt(8)));
 				board.add(dto);
+				con.close();
 			}
-			
-			con.close();
 		}catch(Exception e) {
 			System.out.println("Exception in DAO");
 			e.printStackTrace();
@@ -110,7 +107,7 @@ public class GradeDAO extends DBConnPool{
 	public List<String> year_term_list(String tempid){
 		
 		System.out.println("DAO실행");
-		List<String> year_term_list = new ArrayList<>();
+		List<String> year_term_list = new ArrayList();
 		String sql = "select distinct year_term from grade_manage where member_id=?";
 		
 		try {
@@ -122,8 +119,6 @@ public class GradeDAO extends DBConnPool{
 				year_term_list.add(rs.getString(1));
 				System.out.println(rs.getString(1));
 			}
-			
-			con.close();
 		}catch(Exception e) {
 			System.out.println("Exception in DAO");
 			e.printStackTrace();
@@ -137,7 +132,7 @@ public class GradeDAO extends DBConnPool{
 		
 		String sql = "select * from grade_manage where member_id=? and year_term=?";
 		
-		List<Map<String, Object>> board = new ArrayList<>();
+		List<Map<String, Object>> board = new ArrayList();
 		
 		for (int i = 0; i < year_term_list.size(); i++) {
 			
@@ -183,7 +178,6 @@ public class GradeDAO extends DBConnPool{
 				
 				board.add(map);
 				
-				con.close();
 			}catch(Exception e) {
 				System.out.println("Exception in DAO");
 				e.printStackTrace();
@@ -194,7 +188,7 @@ public class GradeDAO extends DBConnPool{
 	
 	public List<Object> dash_grade_footer(List<Map<String, Object>> dashList){
 		
-		List<Object> footer_result = new ArrayList<>();
+		List<Object> footer_result = new ArrayList();
 		Map<String, Object> map = new HashMap<>();
 		
 		int sum_total_lecture = 0;
@@ -227,10 +221,34 @@ public class GradeDAO extends DBConnPool{
 		System.out.println(avg);
 		System.out.println(result);
 		
+		
 		return footer_result;
 	}
 	
-	
+	// manager_성적 입력
+	public int insert_grade(GradeDTO dto) {
+		
+		String sql = "insert into grade_manage(member_id, year_term, name, major, subject, score1, score2, score3) values(?,?,?,?,?,?,?,?)";
+		int result = 0;
+		try {
+			
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getMember_id());
+			psmt.setString(2, dto.getYear_term());
+			psmt.setString(3, dto.getName());
+			psmt.setString(4, dto.getMajor());
+			psmt.setString(5, dto.getSubject());
+			psmt.setInt(6, dto.getScore1());
+			psmt.setInt(7, dto.getScore2());
+			psmt.setInt(8, dto.getScore3());
+			result = psmt.executeUpdate();
+			
+		}catch(Exception e) {
+			System.out.println("Grade_Insert Error in GradeDAO");
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 	

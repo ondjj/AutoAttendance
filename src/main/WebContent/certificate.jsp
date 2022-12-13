@@ -38,84 +38,77 @@
 									<i class="fas fa-chart-area me-1"></i> <b>증명서 목록</b>
 								</div>
 								<div class="card-body">
-
-									<table class="table table-hover"">
+									<form name="newWrite" action="objection.do?obj_type=4" class="form-horizontal" method="post">
+									<table class="table table-hover">
 										<thead>
 											<tr>
 												<th scope="col">No.</th>
 												<th scope="col">증명서명</th>
 												<th scope="col">신청매수</th>
 												<th scope="col">신청사유</th>
-												<th scope="col">신청/발급</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
+											<tr name="obj_certifi_type">
 												<th scope="row">1</th>
 												<td>교육비납입증명서</td>
-												<td><input type="text" size="3"> 매</td>
-												<td><input type="text" size="30"></td>
-												<td><button>신청</button></td>
+												<td><input type="text" size="3" name="obj_certifi_count1"> 매</td>
+												<td><input type="text" size="30" name="obj_certifi_content1"></td>
 											</tr>
 											<tr>
 												<th scope="row">2</th>
 												<td>성적증명서</td>
-												<td><input type="text" size="3"> 매</td>
-												<td><input type="text" size="30"></td>
-												<td><button>신청</button></td>
-
+												<td><input type="text" size="3" name="obj_certifi_count2"> 매</td>
+												<td><input type="text" size="30" name="obj_certifi_content2"></td>
 											</tr>
 											<tr>
 												<th scope="row">3</th>
 												<td>수강신청확인서</td>
-												<td><input type="text" size="3"> 매</td>
-												<td><input type="text" size="30"></td>
-												<td><button>신청</button></td>
+												<td><input type="text" size="3" name="obj_certifi_count3"> 매</td>
+												<td><input type="text" size="30" name="obj_certifi_content3"></td>
 											</tr>
 											<tr>
 												<th scope="row">4</th>
 												<td>수기증명서</td>
-												<td><input type="text" size="3"> 매</td>
-												<td><input type="text" size="30"></td>
-												<td><button>신청</button></td>
+												<td><input type="text" size="3" name="obj_certifi_count4"> 매</td>
+												<td><input type="text" size="30" name="obj_certifi_content4"></td>
 											</tr>
 											<tr>
 												<th scope="row">5</th>
 												<td>수료증명서</td>
-												<td><input type="text" size="3"> 매</td>
-												<td><input type="text" size="30"></td>
-												<td><button>신청</button></td>
+												<td><input type="text" size="3" name="obj_certifi_count5"> 매</td>
+												<td><input type="text" size="30" name="obj_certifi_content5"></td>
 											</tr>
 											<tr>
 												<th scope="row">6</th>
 												<td>장학금수혜확인서</td>
-												<td><input type="text" size="3"> 매</td>
-												<td><input type="text" size="30"></td>
-												<td><button>신청</button></td>
+												<td><input type="text" size="3" name="obj_certifi_count6"> 매</td>
+												<td><input type="text" size="30" name="obj_certifi_content6"></td>
 											</tr>
 											<tr>
 												<th scope="row">7</th>
 												<td>졸업예정증명서</td>
-												<td><input type="text" size="3"> 매</td>
-												<td><input type="text" size="30"></td>
-												<td><button>신청</button></td>
+												<td><input type="text" size="3" name="obj_certifi_count7"> 매</td>
+												<td><input type="text" size="30" name="obj_certifi_content7"></td>
 											</tr>
 											<tr>
 												<th scope="row">8</th>
 												<td>휴학증명서</td>
-												<td><input type="text" size="3"> 매</td>
-												<td><input type="text" size="30"></td>
-												<td><button>신청</button></td>
+												<td><input type="text" size="3" name="obj_certifi_count8"> 매</td>
+												<td><input type="text" size="30" name="obj_certifi_content8"></td>
 											</tr>
 											<tr>
 												<th scope="row">9</th>
 												<td>학력인정증명서</td>
-												<td><input type="text" size="3"> 매</td>
-												<td><input type="text" size="30"></td>
-												<td><button>신청</button></td>
+												<td><input type="text" size="3" name="obj_certifi_count9"> 매</td>
+												<td><input type="text" size="30" name="obj_certifi_content9"></td>
+											</tr>
+											<tr>
+												<td><input type="submit" value="신청" class="btn btn-success"/></td>
 											</tr>
 										</tbody>
 									</table>
+									</form>
 								</div>
 							</div>
 						</div>

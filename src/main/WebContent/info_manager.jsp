@@ -71,7 +71,7 @@
 							<div class="collapse" id="collapseLayouts"
 								aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="manager_attendanceObjection.jsp">출결정정신청내역</a>
+									<a class="nav-link" href="ObjectionListCon.do?type=1">출결정정신청내역</a>
 								</nav>
 							</div>
 
@@ -88,7 +88,7 @@
 							<div class="collapse" id="collapseLayouts2"
 								aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="manager_updateCollege.jsp">학적변동신청내역</a> <a
+									<a class="nav-link" href="ObjectionListCon.do?type=2">학적변동신청내역</a> <a
 										class="nav-link" href="manager_certificate.jsp">학생증명서발급신청내역</a> <a
 										class="nav-link" href="401.jsp">전공변경신청내역</a>
 								</nav>
@@ -108,7 +108,7 @@
 								aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="GradeManagement.jsp">성적 등록</a> <a
-										class="nav-link" href="manager_gradeObjection.jsp">성적정정신청내역</a>
+										class="nav-link" href="ObjectionListCon.do?type=3">성적정정신청내역</a>
 								</nav>
 							</div>
 
