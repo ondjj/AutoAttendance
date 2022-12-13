@@ -45,13 +45,13 @@
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
-        <h4 class="mb-3">학생 등록</h4>
-        <form class="validation-form" action="MemberJoinController.do" method="post">
+        <h4 class="mb-3">학생 인적사항 수정</h4>
+        <form class="validation-form" action="MemberUpdateCon.do" method="post">
           <div>
 	          <div class="row">
 		            <div class="col-md-6 mb-3">
 		              <label>한글 이름</label>
-		              <input type="text" class="form-control" name="kr_name" placeholder="전창준" required>
+		              <input type="text" class="form-control" name="kr_name" placeholder="전창준" value="${mdto.getKr_name()}" required>
 		              <div class="invalid-feedback">
 		                한글이름을 입력해주세요.
 		              </div>
@@ -59,7 +59,7 @@
 		            </div>
 		            <div class="col-md-6 mb-3">
 		              <label>영문 이름</label>
-		              <input type="text" class="form-control" name="en_name" placeholder="ChangJunJeon" required>
+		              <input type="text" class="form-control" name="en_name" placeholder="ChangJunJeon" value="${mdto.getEn_name()}" required>
 		              <div class="invalid-feedback">
 		                영문이름을 입력해주세요.
 		              </div>
@@ -69,7 +69,7 @@
 	          
 				  <div class="mb-3">
 		            <label>학번(ID)</label>
-		            <input type="text" class="form-control" name="id" placeholder="2023021453" required>
+		            <input type="text" class="form-control" name="id" placeholder="2023021453" value="${mdto.getId()}" required>
 		            <div class="invalid-feedback">
 		              학번을 입력해주세요.
 		            </div>
@@ -79,7 +79,7 @@
 	          <div class="row">
 		          	<div class="col-md-6 mb-3">
 			            <label>비밀번호</label>
-			            <input type="password" class="form-control" name="password1" required>
+			            <input type="password" class="form-control" name="password1" value="${mdto.getPassword()}" required>
 			            <div class="invalid-feedback">
 			              비밀번호를 입력해주세요.
 			            </div>
@@ -87,7 +87,7 @@
 		
 		          <div class="col-md-6 mb-3">
 		            <label>비밀번호 확인</label>
-		            <input type="password" class="form-control" name="password2" required> 
+		            <input type="password" class="form-control" name="password2" value="${mdto.getPassword()}" required> 
 		          </div>
 	         </div>
 	          
@@ -115,13 +115,13 @@
 		          
 		          <div class="col-md-2 mb-3">
 		              <label>나이</label>
-						<input type="text" class="form-control" name="age" required>
+						<input type="text" class="form-control" name="age" value="${mdto.getAge()}" required>
 		          </div>
 	          </div>
 	          
 		          <div class="mb-3">
 		            <label>입학년도</label>
-		            <input type="text" class="form-control" name="col_reg_date" placeholder="2022-0213" required>
+		            <input type="text" class="form-control" name="col_reg_date" placeholder="2022-0213" value="${mdto.getCollege_year()}" required>
 		            <div class="invalid-feedback">
 		              입학년도를 입력해주세요.
 		            </div>
@@ -129,7 +129,7 @@
 	          
 		          <div class="mb-3">
 		            <label>주민등록번호</label>
-		            <input type="text" class="form-control" name="private_num" placeholder="123456-1234556" required>
+		            <input type="text" class="form-control" name="private_num" placeholder="123456-1234556" value="${mdto.getPrivate_num()}" required>
 		            <div class="invalid-feedback">
 		              주민등록번호를 입력해주세요.
 		            </div>
@@ -137,7 +137,7 @@
 	          
 		           <div class="mb-3">
 		            <label>핸드폰 번호</label>
-		            <input type="text" class="form-control" name="phone_num" placeholder="123456-1234556" required>
+		            <input type="text" class="form-control" name="phone_num" placeholder="123456-1234556" value="${mdto.getPhone_num()}" required>
 		            <div class="invalid-feedback">
 		              주민등록번호를 입력해주세요.
 		            </div>
@@ -145,7 +145,7 @@
 	
 		          <div class="mb-3">
 		            <label>이메일</label>
-		            <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
+		            <input type="email" class="form-control" name="email" placeholder="you@example.com" value="${mdto.getEmail()}"required>
 		            <div class="invalid-feedback">
 		              이메일을 입력해주세요.
 		            </div>
@@ -153,7 +153,7 @@
 		
 		          <div class="mb-3">
 		            <label>주소</label>
-		            <input type="text" class="form-control" name="address" placeholder="서울특별시 강남구" required>
+		            <input type="text" class="form-control" name="address" placeholder="서울특별시 강남구" value="${mdto.getAddress()}" required>
 		            <div class="invalid-feedback">
 		              주소를 입력해주세요.
 		            </div>
@@ -162,13 +162,13 @@
 	          	  <hr class="mb-4">
 		          <div class="mb-6">
 		            <label for="id_picture">증명사진</label><br>
-						<form action="" method="post" entype="multipart/form-data">
-	          				<input type="file" name="id_picture">
+						<form action="" method="post" enctype="multipart/form-data">
+	          				<input type="file" name="id_picture" value="${mdto.getId_picture()}">
 	          			</form><br><br>
 		          </div>
 	
 	          		<div class="mb-4"></div>
-					<input class="btn btn-primary btn-lg btn-block" type="submit" value="등록 완료">
+					<input class="btn btn-primary btn-lg btn-block" type="submit" value="수정 완료">
 	        </div>
 	     	
         </form>
