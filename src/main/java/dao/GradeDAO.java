@@ -94,6 +94,7 @@ public class GradeDAO extends DBConnPool{
 				dto.setScore3(rs.getInt(8));
 				dto.setGrade(grade_result(rs.getInt(6), rs.getInt(7), rs.getInt(8)));
 				board.add(dto);
+				con.close();
 			}
 		}catch(Exception e) {
 			System.out.println("Exception in DAO");

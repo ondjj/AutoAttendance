@@ -60,8 +60,6 @@ public class DashBoardController extends HttpServlet {
 			request.setAttribute("total_grade", grade_footer.get(1));
 			request.getRequestDispatcher("/admin.jsp").forward(request, response);
 		}
-		
-		
 	}
 	
 }
