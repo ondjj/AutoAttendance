@@ -33,51 +33,78 @@
 							</div>
 							<div class="card-body">
 								<table id="datatablesSimple" style="text-align: center; margin: auto;">
+									
 									<tr>
-										<th rowspan="4" width="17%" style="border: 1px solid black;">사진</th>
 										
-										<th rowspan="4" width="17%" style="border: 1px solid black;">
-									<!--	<script>
-												$.ajax({
-													type:"POST",
-													url:"http://127.0.0.1:5000"
-												})
-												.done(function (msg)){
-													alert("Data : " + msg.result)
-												});
-											</script> -->
-											<input type="text" value='${param.data}' disabled> <br><br>
+										<c:choose>
+											
+											<c:when test="${face == null}">
+											<th rowspan="4" width="17%" style="border: 2px solid black;">
+												<img alt="pepe" src="./uploads/pepe.jpg" width="300" height="200">
+											</th>
+											
+											<th rowspan="4" width="17%" style="border: 2px solid black;">
+											<input type="text" value="${face}" disabled> <br><br>
 											<form action="http://127.0.0.1:5000" method="post">
-												<button class="btn btn-outline-dark">얼굴인증</button>
+												<button class="btn btn-outline-dark" onclick="javascript:btn();">얼굴인증</button>
 											</form>
-										</th>
-										<th>아이디</th>
-										<th><input type="text" value=""  disabled></th>
-										<th>이름</th>
-										<th><input type="text" value="" disabled></th>
-										<th>학번</th>
-										<th><input type="text" value="" disabled></th>
+											</th>
+											</c:when>
+											
+											<c:when test="${face eq mdto.getEn_name()}">
+											<th rowspan="5" width="17%" style="border: 2px solid green;">
+												<img alt="pepe" src="./uploads/${img}" width="300" height="200">
+											<tr>
+											<th rowspan="4" width="17%" style="border: 2px solid green;">
+											<input type="text" value="${face}" disabled> <br><br>
+											<form action="http://127.0.0.1:5000" method="post">
+												<button class="btn btn-outline-dark" onclick="javascript:btn();">인증완료</button>
+											</form>
+											</th>
+											
+											</c:when>
+											<c:when test="${face ne mdto.getEn_name()}">
+											<th rowspan="4" width="17%" style="border: 2px solid red;">
+												<img alt="pepe" src="./uploads/sadpepe.jpg" width="300" height="200">
+											</th>
+											<th rowspan="4" width="17%" style="border: 2px solid red;">
+											<input type="text" value="${face}" disabled> <br><br>
+											<form action="http://127.0.0.1:5000" method="post">
+												<button class="btn btn-outline-dark" onclick="javascript:btn();">재시도</button>
+											</form>
+											</th>
+											</c:when>
+											
+										</c:choose>
+							
+										<th>학번(ID)</th>
+										<th><input type="text" value="${mdto.getId()}" disabled></th>
+										<th>이름(kr)</th>
+										<th><input type="text" value="${mdto.getKr_name()}" disabled></th>
+										<th>이름(en)</th>
+										<th><input type="text" value="${mdto.getEn_name()}" disabled></th>
 									</tr>
 									<tr>
 										<th>이메일</th>
-										<th><input type="text" value=""  readonly disabled></th>
+										<th><input type="text" value="${mdto.getEmail()}"  readonly disabled></th>
 										<th>나이</th>
-										<th><input type="text" value="" disabled></th>
+										<th><input type="text" value="${mdto.getAge()}" disabled></th>
 										<th>학년</th>
 										<th><input type="text" value="" disabled></th>
 									</tr>
 									<tr>
 										<th>전화번호</th>
-										<th><input type="text" value="" disabled></th>
+										<th><input type="text" value="${mdto.getPhone_num()}" disabled></th>
 										<th>성별</th>
-										<th><input type="text" value="" disabled></th>
+										<th><input type="text" value="${mdto.getGender()}" disabled></th>
 										<th>전공</th>
 										<th><input type="text" value="" disabled></th>
 									</tr>
 									<tr>
 										<th>주소</th>
-										<th colspan="5"><input type="text" value="" size="90"  value="" disabled></th>
+										<th colspan="5"><input type="text" value="${mdto.getAddress()}" size="90"  value="" disabled></th>
 									</tr>
+									
 								</table>
 							</div>
 						</div>
@@ -87,8 +114,7 @@
 					<div class="col-xl-3 col-md-6">
 						<div class="card bg-primary text-white mb-4">
 							<div class="card-body">총 출석 일수</div>
-							<div
-								class="card-footer d-flex align-items-center justify-content-between">
+							<div class="card-footer d-flex align-items-center justify-content-between">
 								<a class="small text-white stretched-link" href="#">더보기</a>
 								<div class="small text-white">
 									<i class="fas fa-angle-right"></i>
@@ -206,17 +232,17 @@
 		</main>
 		<%@ include file="footerAdmin.jsp"%>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
+	<script>
+		function btn(){
+		    alert('얼굴 인식을 시작합니다. ');
+		}
+	</script>
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 	<script src="assets/demo/chart-area-demo.js"></script>
 	<script src="assets/demo/chart-bar-demo.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"	crossorigin="anonymous"></script>
 	<script src="js/datatables-simple-demo.js"></script>
 </body>
 </html>

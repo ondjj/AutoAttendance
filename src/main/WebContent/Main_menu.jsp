@@ -11,10 +11,10 @@
  				<li><a href="Main_Anouncement.jsp">공지사항</a></li>
 				<c:choose>
 					<c:when test="${admin_key == '0' }">
-						<li><a href="Manager_page.jsp">관리자 페이지</a></li>
+						<li><a href="manager_page.jsp">관리자 페이지</a></li>
 					</c:when>
 					<c:when test="${admin_key == '1' }">
-						<li><a href="admin.jsp">마이페이지</a></li> 
+						<li><a href="AdminDashBoard.do">마이페이지</a></li> 
 					</c:when>
 				</c:choose>
  				<c:choose>

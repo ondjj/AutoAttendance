@@ -53,7 +53,8 @@
                                             <th>PHONE_NUM</th>
                                             <th>EMAIL</th>
                                             <th>ADDRESS</th>
-                                            <th>REGISTE DATE</th>
+                                            <th>AGE</th>
+                                            <th>REGISTER DATE</th>
                                             <th>GENDER</th>
                                         </tr>
                                     </thead>

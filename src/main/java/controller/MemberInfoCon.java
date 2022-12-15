@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.MemberDAO;
 import dto.memberDTO;
@@ -27,11 +28,11 @@ public class MemberInfoCon extends HttpServlet {
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("utf-8");
-		
+		MemberDAO mdao = new MemberDAO();
 		
 		String id = request.getParameter("id");
 		
-		MemberDAO mdao = new MemberDAO();
+		System.out.println(id);
 		memberDTO mdto = mdao.getMember(id);
 		
 		String kr_name = mdto.getKr_name();

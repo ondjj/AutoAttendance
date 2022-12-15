@@ -13,8 +13,8 @@ public class MemberDAO extends DBConnPool{
 
 	public void insertMember(memberDTO mdto) {
 		
-		String sql = "insert into member (id, password, private_num, kr_name, en_name, id_picture, phone_num, email, address, admin_key, age, college_year,gender)"
-				+  "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into member (id, password, private_num, kr_name, en_name, id_picture, phone_num, email, address, admin_key, age, college_year,gender,id_savePicture)"
+				+  "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1,mdto.getId());
@@ -30,6 +30,7 @@ public class MemberDAO extends DBConnPool{
 			psmt.setInt(11, mdto.getAge());
 			psmt.setInt(12, mdto.getCollege_year());
 			psmt.setString(13, mdto.getGender());
+			psmt.setString(14, mdto.getId_savePicture());
 			System.out.println("member 등록 완료");
 			psmt.executeUpdate();
 			

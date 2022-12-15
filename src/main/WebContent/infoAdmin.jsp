@@ -39,7 +39,7 @@
 			<div class="sb-sidenav-menu">
 				<div class="nav">
 					<div class="sb-sidenav-menu-heading">전체정보</div>
-					<a class="nav-link" href="dashboard.do?id=20150069">
+					<a class="nav-link" href="dashboard.do?id=${id}">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-tachometer-alt"></i>
 						</div> DashBoard
@@ -107,11 +107,11 @@
 								
 								
                             <div class="sb-sidenav-menu-heading">기타</div>
-                            <a class="nav-link" href="/data_lib_list.do">
+                            <a class="nav-link" href="data_lib_list.do">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                자료실
+                               	자료실
                             </a>
-                            <a class="nav-link" href="/UserDetail.do">
+                            <a class="nav-link" href="MemberUpdateForm.do?id=${id}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 개인정보수정
                             </a>

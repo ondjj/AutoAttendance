@@ -15,6 +15,7 @@ public class memberDTO {
 	private int age; // 나이
 	private int college_year; // 입학년도
 	private String gender; // 성별
+	private String id_savePicture;
 
 	
 	public String getId() {
@@ -119,6 +120,14 @@ public class memberDTO {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public String getId_savePicture() {
+		return id_savePicture;
+	}
+
+	public void setId_savePicture(String id_savePicture) {
+		this.id_savePicture = id_savePicture;
 	}
 
 }
