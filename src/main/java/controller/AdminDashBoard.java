@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 
+import dao.ColDAO;
 import dao.MemberDAO;
+import dto.ColMemberDTO;
 import dto.memberDTO;
 
 @WebServlet("/AdminDashBoard.do")
@@ -34,10 +36,13 @@ public class AdminDashBoard extends HttpServlet {
 		String id = (String)request.getSession().getAttribute("id");
 		String face = request.getParameter("data");
 		MemberDAO mdao = new MemberDAO();
+		ColDAO cdao = new ColDAO();
+		ColMemberDTO cdto = cdao.getCol(id);
 		memberDTO mdto = mdao.getMember(id);
 		
 		
 		System.out.println(mdto.getId_picture() + "이름");
+		request.setAttribute("cdto", cdto);
 		request.setAttribute("mdto", mdto);
 		request.setAttribute("face", face);
 		request.setAttribute("img", mdto.getId_picture());

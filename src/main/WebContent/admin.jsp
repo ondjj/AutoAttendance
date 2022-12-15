@@ -89,8 +89,8 @@
 										<th><input type="text" value="${mdto.getEmail()}"  readonly disabled></th>
 										<th>나이</th>
 										<th><input type="text" value="${mdto.getAge()}" disabled></th>
-										<th>학년</th>
-										<th><input type="text" value="" disabled></th>
+										<th>이수학기</th>
+										<th><input type="text" value="${cdto.getCol_complete()}" disabled></th>
 									</tr>
 									<tr>
 										<th>전화번호</th>
@@ -98,7 +98,7 @@
 										<th>성별</th>
 										<th><input type="text" value="${mdto.getGender()}" disabled></th>
 										<th>전공</th>
-										<th><input type="text" value="" disabled></th>
+										<th><input type="text" value="${cdto.getCol_major()}" disabled></th>
 									</tr>
 									<tr>
 										<th>주소</th>
