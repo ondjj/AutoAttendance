@@ -1,6 +1,6 @@
 package dto;
 
-public class col_manageDTO {
+public class ColMemberDTO {
 
 	private String col_status; // 학적상태(휴학,재학)
 	private String col_faculty; // 학부
@@ -9,20 +9,6 @@ public class col_manageDTO {
 	private String col_second_faculty; // 복수전공
 	private String col_complete; // 이수학기
 	private String member_id; // 학번(FK)
-	
-	public col_manageDTO(String col_status, String col_faculty, String col_major, String col_type, String col_second_faculty, String col_complete, String member_id) {
-		
-		this.col_status = col_status;
-		this.col_faculty = col_faculty;
-		this.col_major = col_major;
-		this.col_type = col_type;
-		this.col_second_faculty = col_second_faculty;
-		this.col_complete = col_complete;
-		this.member_id = member_id;
-		
-	}
-	
-	
 	
 	public String getCol_status() {
 		return col_status;

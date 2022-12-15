@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.MemberDAO;
 import dao.ObjectionDAO;
 import dto.ObjectionDTO;
-import dto.col_manageDTO;
+import dto.ColMemberDTO;
 import dto.memberDTO;
 
 @WebServlet("/objection.do")

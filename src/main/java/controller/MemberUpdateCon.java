@@ -52,7 +52,7 @@ public class MemberUpdateCon extends HttpServlet {
 		memberDTO mdto = new memberDTO();
 		
 		mdto.setId(multi.getParameter("id"));
-		String id = mdto.getId();
+		
 		String pass1 = multi.getParameter("password1");
 		mdto.setPassword(pass1);
 		mdto.setPrivate_num(multi.getParameter("private_num"));
@@ -73,6 +73,7 @@ public class MemberUpdateCon extends HttpServlet {
 		
 		mdao.updateMemer(mdto);
 		
+		
 		request.setAttribute("kr_name", multi.getParameter("kr_name"));
 		request.setAttribute("en_name", multi.getParameter("en_name"));
 		request.setAttribute("code_id", multi.getParameter("id"));
@@ -88,12 +89,12 @@ public class MemberUpdateCon extends HttpServlet {
 		request.setAttribute("face", multi.getFilesystemName("id_picture"));
 		request.setAttribute("face_real", multi.getOriginalFileName("id_picture"));
 		
-		
+		String id = (String) request.getAttribute("code_id");
 		if(!(session.getAttribute("id").equals("admin"))) {
 			RequestDispatcher dis = request.getRequestDispatcher("AdminDashBoard.do");
 			dis.forward(request, response);
 		}else if(session.getAttribute("id").equals("admin")) {
-			RequestDispatcher dis = request.getRequestDispatcher("manager_memberInfo.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("MemberListCon.do");
 			dis.forward(request, response);
 		}else {
 			RequestDispatcher dis = request.getRequestDispatcher("MainPage.jsp");

@@ -12,9 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ColDAO;
 import dao.MemberDAO;
 
-@WebServlet("/MemberDelCon.do")
-public class MemberDelCon extends HttpServlet {
+
+//임시 저장 memberdelcon으로 작동 되면 삭제 가능
+@WebServlet("/ColDelCon.do")
+public class ColDelCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqPro(request, response);

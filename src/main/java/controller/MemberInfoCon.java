@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ColDAO;
 import dao.MemberDAO;
+import dto.ColMemberDTO;
 import dto.memberDTO;
 
 @WebServlet("/MemberInfoCon.do")
@@ -29,11 +31,13 @@ public class MemberInfoCon extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("utf-8");
 		MemberDAO mdao = new MemberDAO();
+		ColDAO cdao = new ColDAO();
 		
 		String id = request.getParameter("id");
 		
 		System.out.println(id);
 		memberDTO mdto = mdao.getMember(id);
+		
 		
 		String kr_name = mdto.getKr_name();
 		String en_name = mdto.getEn_name();
@@ -62,6 +66,9 @@ public class MemberInfoCon extends HttpServlet {
 		request.setAttribute("email", email);
 		request.setAttribute("address", address);
 		request.setAttribute("face", face);
+		
+		ColMemberDTO cdto = cdao.getCol(code_id);
+		request.setAttribute("cdto", cdto);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("manager_memberInfo.jsp");
 		dis.forward(request, response);

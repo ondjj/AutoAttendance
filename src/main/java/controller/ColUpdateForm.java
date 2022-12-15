@@ -10,29 +10,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ColDAO;
-import dao.MemberDAO;
+import dto.ColMemberDTO;
 
-@WebServlet("/MemberDelCon.do")
-public class MemberDelCon extends HttpServlet {
+@WebServlet("/ColUpdateForm.do")
+public class ColUpdateForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqPro(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqPro(request, response);
 	}
-	
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		ColDAO cdao = new ColDAO();
-		MemberDAO mdao = new MemberDAO();
-		cdao.delCol(id);
-		mdao.delMember(id);
+		ColMemberDTO cdto = cdao.getCol(id);
 		
-		RequestDispatcher dis = request.getRequestDispatcher("MemberListCon.do");
+		request.setAttribute("code_id", id);
+		request.setAttribute("cdto", cdto);
+		
+		RequestDispatcher dis = request.getRequestDispatcher("manager_colUpdate.jsp");
 		dis.forward(request, response);
 		
 	}

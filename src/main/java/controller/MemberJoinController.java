@@ -78,7 +78,9 @@ public class MemberJoinController extends HttpServlet {
 				MemberDAO mdao = new MemberDAO();
 				mdao.insertMember(mdto);
 				
-				RequestDispatcher dis = request.getRequestDispatcher("MemberListCon.do");
+				request.setAttribute("id", mdto.getId());
+//				RequestDispatcher dis = request.getRequestDispatcher("MemberListCon.do");
+				RequestDispatcher dis = request.getRequestDispatcher("manager_stuColRegister.jsp");
 				dis.forward(request, response);
 			}
 			else {

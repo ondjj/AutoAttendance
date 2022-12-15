@@ -46,7 +46,7 @@ body {
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3">학생 등록</h4>
+				<h4 class="mb-3">학생 인적사항 등록</h4>
 				<div align="center">
 					<form class="validation-form" action="MemberJoinController.do" enctype="multipart/form-data" method="post">
 						<table>
@@ -151,7 +151,7 @@ body {
 
 							<tr class="mb-4">
 								<td>
-									<input class="btn btn-primary btn-lg btn-block"	type="submit" value="등록 완료">
+									<input class="btn btn-primary btn-lg btn-block"	type="submit" value="인적사항 등록 완료">
 								</td>
 							</tr>
 						</table>

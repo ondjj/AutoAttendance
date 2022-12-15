@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.filters.RemoteIpFilter.XForwardedRequest;
 
-import dao.Col_manageRegisterDAO;
+import dao.ColDAO;
 import dao.MemberDAO;
-import dto.col_manageDTO;
+import dto.ColMemberDTO;
 import dto.memberDTO;
 
 @WebServlet("/Register.do")
@@ -40,7 +40,7 @@ public class RegisterController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		MemberDAO mdao = new MemberDAO();
-		Col_manageRegisterDAO cdao = new Col_manageRegisterDAO();
+		ColDAO cdao = new ColDAO();
 		
 		if (command.equals("/Register.do")) {
 			
@@ -68,8 +68,8 @@ public class RegisterController extends HttpServlet {
 			String col_second_faculty = request.getParameter("col_second_faculty");
 			String col_complete = request.getParameter("col_complete");
 			
-			col_manageDTO cdto = new col_manageDTO(col_status, col_faculty, col_major, col_type, col_second_faculty, col_complete,id);
-			cdao.Col_manageRegister(cdto);
+//			ColMemberDTO cdto = new ColMemberDTO(col_status, col_faculty, col_major, col_type, col_second_faculty, col_complete,id);
+//			cdao.Col_manageRegister(cdto);
 
 		}else if(command.equals("/Memberlist.do")) {
 			

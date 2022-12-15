@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ColDAO;
-import dao.MemberDAO;
+import dto.ColMemberDTO;
 
-@WebServlet("/MemberDelCon.do")
-public class MemberDelCon extends HttpServlet {
+@WebServlet("/ColJoinCon.do")
+public class ColJoinCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqPro(request, response);
@@ -25,16 +26,22 @@ public class MemberDelCon extends HttpServlet {
 	}
 	
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		ColMemberDTO cdto = new ColMemberDTO();
+		
+		cdto.setMember_id(request.getParameter("id"));
+		cdto.setCol_status(request.getParameter("col_status"));
+		cdto.setCol_faculty(request.getParameter("col_faculty"));
+		cdto.setCol_major(request.getParameter("col_major"));
+		cdto.setCol_second_faculty(request.getParameter("col_second_faculty"));
+		cdto.setCol_type(request.getParameter("col_type"));
+		cdto.setCol_complete(request.getParameter("col_complete"));
 	
-		String id = request.getParameter("id");
 		ColDAO cdao = new ColDAO();
-		MemberDAO mdao = new MemberDAO();
-		cdao.delCol(id);
-		mdao.delMember(id);
+		cdao.Col_manageRegister(cdto);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("MemberListCon.do");
 		dis.forward(request, response);
-		
 	}
 
 }

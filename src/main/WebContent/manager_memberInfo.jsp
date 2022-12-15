@@ -100,18 +100,78 @@
 						<input type="text" class="form-control" name="address" value="${address}" disabled>
 					</div>
 
-					<hr class="mb-3">
+					
 					<div class="mb-6">
 						<label for="id_picture">증명사진</label><br>
 						
 							<input type="file" name="id_picture" value="${face}" disabled>
 						
-						<br>
+						<br><br>
 						<div class="mb-6">
 							<button type="button" class="btn btn-outline-info" onclick="location.href='MemberListCon.do'">목록</button>
-							<button type="button" class="btn btn-outline-primary" onclick="location.href='MemberUpdateForm.do?id=${code_id}'">수정</button>
+							<button type="button" class="btn btn-outline-primary" onclick="location.href='MemberUpdateForm.do?id=${code_id}'">개인정보 수정</button>
 					    	<button type="button" class="btn btn-outline-danger" onclick="button_event();">삭제</button>
 						</div>	
+						<br>
+						
+						<hr class="mb-3">
+						<h1 class="mt-4">학적 정보 상세</h1>
+						
+						<table>
+
+							<tr class="row">
+								<td class="col-md-6 mb-3"><label>학번(ID)</label> 
+								<input type="text" class="form-control" name="id" value="${code_id}" disabled>
+								</td>
+							</tr>
+
+
+							<tr class="mb-6">
+								<td><label>학적상태</label> 
+								<input type="text" class="form-control" name="col_status" value="${cdto.getCol_status()}" disabled>
+								</td>
+							</tr>
+
+
+							<tr class="row">
+								<td class="col-md-6 mb-3"><label>학부</label> 
+								<input type="text" class="form-control" name="col_faculty" value="${cdto.getCol_faculty()}" disabled>
+								</td>
+
+								<td class="col-md-6 mb-10"><label>전공</label> 
+								<input type="text" class="form-control" name="col_major" value="${cdto.getCol_major()}" disabled>
+								</td>
+							</tr>
+							
+							<tr class="mb-6">
+								<td><label>복수전공</label> 
+								<input type="text" class="form-control" name="col_second_faculty" value="${cdto.getCol_second_faculty()}" disabled>
+								</td>
+							</tr>
+							
+							<tr class="row">
+								<td class="col-md-3 mb-3"><label>입학구분</label>
+								<input type="text"class="form-control" name="col_type" value="${cdto.getCol_type()}" disabled>
+								</td>
+							</tr>
+
+							<tr class="mb-3">
+								<td>
+								<label>이수학기</label> <input type="text" class="form-control" name="col_complete" value="${cdto.getCol_complete()}" disabled>
+								</td>
+							</tr>
+
+							<tr class="mb-4">
+							
+								<br>
+							<td>
+								<div class="mb-6">
+									<button type="button" class="btn btn-outline-info" onclick="location.href='MemberListCon.do'">목록</button>
+									<button type="button" class="btn btn-outline-primary" onclick="location.href='ColUpdateForm.do?id=${code_id}'">학적 수정</button>
+								</div>	
+							</td>
+							</tr>
+						</table>
 						<br>
 						<br>
 					</div>

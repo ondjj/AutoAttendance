@@ -39,40 +39,40 @@
 										<c:choose>
 											
 											<c:when test="${face == null}">
-											<th rowspan="4" width="17%" style="border: 2px solid black;">
-												<img alt="pepe" src="./uploads/pepe.jpg" width="300" height="200">
-											</th>
-											
-											<th rowspan="4" width="17%" style="border: 2px solid black;">
-											<input type="text" value="${face}" disabled> <br><br>
-											<form action="http://127.0.0.1:5000" method="post">
-												<button class="btn btn-outline-dark" onclick="javascript:btn();">얼굴인증</button>
-											</form>
-											</th>
+												<th rowspan="4" width="17%" style="border: 2px solid black;">
+													<img alt="pepe" src="./uploads/pepe.jpg" width="300" height="200">
+												</th>
+												
+												<th rowspan="4" width="17%" style="border: 2px solid black;">
+												<input type="text" value="${face}" disabled> <br><br>
+												<form action="http://127.0.0.1:5000" method="post">
+													<button class="btn btn-outline-dark" onclick="javascript:btn();">얼굴인증</button>
+												</form>
+												</th>
 											</c:when>
 											
 											<c:when test="${face eq mdto.getEn_name()}">
-											<th rowspan="5" width="17%" style="border: 2px solid green;">
-												<img alt="pepe" src="./uploads/${img}" width="300" height="200">
-											<tr>
-											<th rowspan="4" width="17%" style="border: 2px solid green;">
-											<input type="text" value="${face}" disabled> <br><br>
-											<form action="http://127.0.0.1:5000" method="post">
-												<button class="btn btn-outline-dark" onclick="javascript:btn();">인증완료</button>
-											</form>
-											</th>
-											
+												<th rowspan="5" width="17%" style="border: 2px solid green;">
+													<img alt="pepe" src="./uploads/${img}" width="300" height="200">
+												<tr>
+												<th rowspan="4" width="17%" style="border: 2px solid green;">
+												<input type="text" value="${face}" disabled> <br><br>
+												<form action="http://127.0.0.1:5000" method="post">
+													<button class="btn btn-outline-dark" onclick="javascript:btn();">인증완료</button>
+												</form>
+												</th>
 											</c:when>
+
 											<c:when test="${face ne mdto.getEn_name()}">
-											<th rowspan="4" width="17%" style="border: 2px solid red;">
-												<img alt="pepe" src="./uploads/sadpepe.jpg" width="300" height="200">
-											</th>
-											<th rowspan="4" width="17%" style="border: 2px solid red;">
-											<input type="text" value="${face}" disabled> <br><br>
-											<form action="http://127.0.0.1:5000" method="post">
-												<button class="btn btn-outline-dark" onclick="javascript:btn();">재시도</button>
-											</form>
-											</th>
+												<th rowspan="4" width="17%" style="border: 2px solid red;">
+													<img alt="pepe" src="./uploads/sadpepe.jpg" width="300" height="200">
+												</th>
+												<th rowspan="4" width="17%" style="border: 2px solid red;">
+												<input type="text" value="${face}" disabled> <br><br>
+												<form action="http://127.0.0.1:5000" method="post">
+													<button class="btn btn-outline-dark" onclick="javascript:btn();">재시도</button>
+												</form>
+												</th>
 											</c:when>
 											
 										</c:choose>
@@ -102,7 +102,7 @@
 									</tr>
 									<tr>
 										<th>주소</th>
-										<th colspan="5"><input type="text" value="${mdto.getAddress()}" size="90"  value="" disabled></th>
+										<th colspan="5"><input type="text" value="${mdto.getAddress()}" size="90" disabled></th>
 									</tr>
 									
 								</table>
@@ -219,11 +219,11 @@
 								<i class="fas fa-chart-bar me-1"></i> 출석 기록
 							</div>
 							<div class="card-body">
-								<!-- <label>[퇴실] 2022. 12. 01. 17:52</label><br>
+								<label>[퇴실] 2022. 12. 01. 17:52</label><br>
 								<label>[출석] 2022. 12. 01. 08:55</label><br>
 								<label>[조퇴] 2022. 11. 30. 13:00</label><br>
 								<label>[퇴실] 2022. 11. 29. 17:55</label><br>
-								<label>[지각] 2022. 11. 29. 10:30</label><br> -->
+								<label>[지각] 2022. 11. 29. 10:30</label><br>
 							</div>
 						</div>
 					</div>

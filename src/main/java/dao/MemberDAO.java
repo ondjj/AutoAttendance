@@ -116,10 +116,13 @@ public class MemberDAO extends DBConnPool{
 	public void delMember(String id) {
 		
 		try {
+			
 			String sql = "delete from member where id=?";
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, id);
 			psmt.executeUpdate();
+			
+
 			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
