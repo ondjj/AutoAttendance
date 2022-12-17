@@ -87,8 +87,9 @@ head {
 				<div class="col">
 					<div class="card h-100">
 						<div id="anchorboard" class="card-body">
-							<a href="./Anouncement_List2.do"><h2
-									class="card-title text-center">공지사항</h2></a>
+							<a href="./Anouncement_List2.do">
+							<h2	class="card-title text-center">
+									공지사항</h2></a>
 							<hr class="card-divider">
 							<table class="table" id="datatablesSimple">
 								<!-- 이쪽 부분에 대해 DB에서 파일 제목을 최신순으로 5개 받아오면서 해당 링크로도 같이 받아올 수 있도록 생성 -->

@@ -15,6 +15,8 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="./resources/css/admin.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body class="sb-nav-fixed">
 	<%@ include file="infoAdmin.jsp"%>
@@ -37,7 +39,6 @@
 									<tr>
 										
 										<c:choose>
-											
 											<c:when test="${face == null}">
 												<th rowspan="4" width="17%" style="border: 2px solid black;">
 													<img alt="pepe" src="./uploads/pepe.jpg" width="300" height="200">
@@ -45,9 +46,7 @@
 												
 												<th rowspan="4" width="17%" style="border: 2px solid black;">
 												<input type="text" value="${face}" disabled> <br><br>
-												<form action="http://127.0.0.1:5000" method="post">
-													<button class="btn btn-outline-dark" onclick="javascript:btn();">얼굴인증</button>
-												</form>
+													<button type="button" class="btn btn-outline-dark" onclick="javascript:btn();">얼굴인증</button>
 												</th>
 											</c:when>
 											
@@ -57,10 +56,9 @@
 												<tr>
 												<th rowspan="4" width="17%" style="border: 2px solid green;">
 												<input type="text" value="${face}" disabled> <br><br>
-												<form action="http://127.0.0.1:5000" method="post">
-													<button class="btn btn-outline-dark" onclick="javascript:btn();">인증완료</button>
-												</form>
+													<button type="button" class="btn btn-outline-dark" onclick="javascript:btn();">인증완료</button>
 												</th>
+												
 											</c:when>
 
 											<c:when test="${face ne mdto.getEn_name()}">
@@ -69,9 +67,7 @@
 												</th>
 												<th rowspan="4" width="17%" style="border: 2px solid red;">
 												<input type="text" value="${face}" disabled> <br><br>
-												<form action="http://127.0.0.1:5000" method="post">
-													<button class="btn btn-outline-dark" onclick="javascript:btn();">재시도</button>
-												</form>
+													<button type="button" class="btn btn-outline-dark" onclick="javascript:btn();">재시도</button>
 												</th>
 											</c:when>
 											
@@ -219,11 +215,16 @@
 								<i class="fas fa-chart-bar me-1"></i> 출석 기록
 							</div>
 							<div class="card-body">
-								<label>[퇴실] 2022. 12. 01. 17:52</label><br>
-								<label>[출석] 2022. 12. 01. 08:55</label><br>
-								<label>[조퇴] 2022. 11. 30. 13:00</label><br>
-								<label>[퇴실] 2022. 11. 29. 17:55</label><br>
-								<label>[지각] 2022. 11. 29. 10:30</label><br>
+								<c:choose>
+									<c:when test="${face eq mdto.getEn_name()}">
+										<label>[출석] ${rd}</label>
+									</c:when>									
+									<c:when test="${face ne mdto.getEn_name()}">
+										<label>[인증 실패] ${rd}</label>
+									</c:when>
+								</c:choose>
+								
+								
 							</div>
 						</div>
 					</div>
@@ -232,11 +233,28 @@
 		</main>
 		<%@ include file="footerAdmin.jsp"%>
 	</div>
+	
 	<script>
 		function btn(){
 		    alert('얼굴 인식을 시작합니다. ');
+		    $.ajax({
+		    	type : 'POST',
+		    	async : true,
+		    	url : 'http://127.0.0.1:5000',
+		    	data : "",
+		    	dataType : "text",
+		    	success : function(data){
+					alert("얼굴 인식을 완료했습니다. ");
+					location.href=data;
+									
+				},
+				error  : function() {
+					alert("전송오류!!");
+				}
+		    })
 		}
 	</script>
+	
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

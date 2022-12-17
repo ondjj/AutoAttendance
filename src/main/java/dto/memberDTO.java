@@ -16,7 +16,6 @@ public class memberDTO {
 	private int college_year; // 입학년도
 	private String gender; // 성별
 	private String id_savePicture;
-
 	
 	public String getId() {
 		return id;

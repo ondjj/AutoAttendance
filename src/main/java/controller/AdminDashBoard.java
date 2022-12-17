@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,8 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.oreilly.servlet.MultipartRequest;
 
 import dao.ColDAO;
 import dao.MemberDAO;
@@ -31,22 +31,30 @@ public class AdminDashBoard extends HttpServlet {
 	
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		
-		
+		Date nowTime = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy. MM. dd a hh:mm:ss");
+		String rd = sf.format(nowTime);
+
 		String id = (String)request.getSession().getAttribute("id");
 		String face = request.getParameter("data");
+		
+		System.out.println(face +  "플라스크");
+		
 		MemberDAO mdao = new MemberDAO();
 		ColDAO cdao = new ColDAO();
 		ColMemberDTO cdto = cdao.getCol(id);
 		memberDTO mdto = mdao.getMember(id);
 		
 		
-		System.out.println(mdto.getId_picture() + "이름");
+		System.out.println(mdto.getId_picture() + "jsp");
 		request.setAttribute("cdto", cdto);
 		request.setAttribute("mdto", mdto);
 		request.setAttribute("face", face);
 		request.setAttribute("img", mdto.getId_picture());
-//		System.out.println(face + " Python");
+		request.setAttribute("rd", rd);
 		RequestDispatcher dis = request.getRequestDispatcher("admin.jsp");
 		dis.forward(request, response);
 	}
