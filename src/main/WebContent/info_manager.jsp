@@ -114,7 +114,7 @@
 
 
 							<div class="sb-sidenav-menu-heading">기타</div>
-							<a class="nav-link" href="tables.jsp">
+							<a class="nav-link" href="/data_lib_list.do">
 								<div class="sb-nav-link-icon">
 									<i class="fas fa-columns"></i>
 								</div> 자료실
@@ -124,6 +124,16 @@
 									<i class="fas fa-columns"></i>
 								</div> 관리자정보수정
 							</a>
+							<a class="nav-link" href="./Anouncement_List.do">
+								<div class="sb-nav-link-icon">
+									<i class="fas fa-columns"></i>
+								</div> 공지사항
+							</a>
+							<a class="nav-link" href="/FAQ_Write.jsp">
+								<div class="sb-nav-link-icon">
+									<i class="fas fa-columns"></i>
+								</div> FAQ 등록
+							</a> 
 
 
 						</div>

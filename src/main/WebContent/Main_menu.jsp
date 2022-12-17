@@ -8,13 +8,14 @@
  		 	<ul>
  				<li><a href="Main_IntroUniv.jsp">대학 소개</a></li>
  				<li><a href="Main_Calendar.jsp">학사 일정</a></li>
- 				<li><a href="Main_Anouncement.jsp">공지사항</a></li>
 				<c:choose>
 					<c:when test="${admin_key == '0' }">
-						<li><a href="manager_page.jsp">관리자 페이지</a></li>
+		 				<li><a href="./Anouncement_List.do">공지사항등록</a></li>
+						<li><a href="Manager_page.jsp">관리자 페이지</a></li>
 					</c:when>
 					<c:when test="${admin_key == '1' }">
-						<li><a href="AdminDashBoard.do">마이페이지</a></li> 
+						<li><a href="./Anouncement_List.do">공지사항</a></li>
+						<li><a href="admin.jsp">마이페이지</a></li>
 					</c:when>
 				</c:choose>
  				<c:choose>
@@ -25,7 +26,6 @@
 						<li><a href="LogoutCon.do">로그아웃</a></li>
 					</c:otherwise>
 				</c:choose>
-				
  			</ul>
 	 </div>
 </header>
@@ -35,6 +35,8 @@ header{
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 	border-bottom: 0px;
+	
+	
 }
 #nav_menu ul{
 	list-style-type:none;
@@ -43,7 +45,7 @@ header{
 	background-color:white;
 	position: relative;
 	left: 1000px;
-	bottom: 60px;
+	bottom: 60px; 
 }
 
 #nav_menu ul li{
@@ -95,9 +97,10 @@ header{
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 			 	<li class="nav-item"><a class="nav-link active" aria-current="page" href="educational_aim.jsp">교육 목표</a></li>
 				<li class="nav-item"><a class="nav-link active" href="college.jsp">단과 대학 소개</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">대학입학</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">대학 일자리센터</a></li> 
-				<li class="nav-item"><a class="nav-link active" href="location.jsp">오시는 길</a></li> 
+				<li class="nav-item"><a class="nav-link active" href="college_admission.jsp">입학 안내</a></li>
+				<li class="nav-item"><a class="nav-link active" href="JobCenter.jsp">대학 일자리센터</a></li> 
+				<li class="nav-item"><a class="nav-link active" href="location.jsp">오시는 길</a></li>
+				<li class="nav-item"><a class="nav-link active" href="/faq_list.do">FAQ</a></li>
 			</ul>
 		</div>
 	</div>
