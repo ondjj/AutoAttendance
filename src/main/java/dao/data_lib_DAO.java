@@ -49,21 +49,25 @@ public class data_lib_DAO extends DBConnPool {
 		// 검색한 단어가 있으면 전체 게시물 중 개수 제한 없이 출력
 		String query = "select * from data_library ";
 			if (map.get("searchWord") != null) {
-			query += " where " + map.get("searchField") + " like '%" + map.get("searchWord") + "%' ";
+			query += " where " + map.get("searchField") + " like '%" + map.get("searchWord") + "%' "
+					+ " order by data_num desc limit ?, ? ";
 			}
-			query += " order by data_num desc ";
 	
 		try {
 			// 검색할 단어가 없으면 sql, 있으면 query로 입력
 			if (map.get("searchWord") != null ) {
 				psmt = con.prepareStatement(query);
+				psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+				psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
 				rs = psmt.executeQuery();
+				System.out.println("query, 검색했음");
 			}
 			else {
 			psmt = con.prepareStatement(sql);
 			psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
 			psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
 			rs = psmt.executeQuery();
+				System.out.println("sql, 검색안함");
 			}
 			while (rs.next()) {
 				data_lib_DTO dto = new data_lib_DTO();
@@ -149,6 +153,7 @@ public class data_lib_DAO extends DBConnPool {
 		}
 	}
 	
+	
 	// 파일 다운로드 횟수 중가
 	public void downCountPlus(int data_num) {
 		String sql = "update data_library set data_down = data_down + 1 where data_num=?";
@@ -165,7 +170,6 @@ public class data_lib_DAO extends DBConnPool {
 	// 게시물 삭제
 	public int deletePost(String data_num) {
 		int result = 0;
-		
 		try {
 		String sql = "delete from data_library where data_num=?";
 		psmt = con.prepareStatement(sql);

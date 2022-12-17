@@ -10,6 +10,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+<link rel='stylesheet' type='text/css'
+	href='http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css' />
 <title>International College</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
@@ -31,71 +33,120 @@
 		<div class="container-fluid px-4">
 			<div class="card mb-4">
 				<div class="card-header">
-					<i class="fas fa-table me-1"></i> FAQ 목록 (페이지당 10개 까지만 출력될 수 있도록)<br>
+					<form>
+						<select name="category">
+								<option value="0">카테고리 선택</option>
+								<option value="1">출결</option>
+								<option value="2">성적</option>
+								<option value="3">등록금</option>
+								<option value="4">정보변경</option>
+						</select>
+						<button class="btn btn-primary btn btn-primary btn-sm" type="submit">검색</button>
+					</form>
 				</div>
 				<div class="card-body">
-					<table class="table" id="datatablesSimple">
-						<thead>
+					<c:choose>
+						<c:when test="${ empty datalist }">
+							<!-- 게시물이 없을 때 -->
 							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>작성일</th>
-								<th>첨부파일</th>
-								<th>조회수</th>
+								<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
 							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>3</td>
-								<td><a href="#">제목 테스트</a></td>
-								<td>관리자</td>
-								<td>2022-11-30</td>
-								<td><a href="#">파일 테스트</a></td>
-								<td>40</td>
-
-							</tr>
-							<tr>
-								<td>2</td>
-								<td><a href="#">제목</a></td>
-								<td>관리자</td>
-								<td>2022-12-01</td>
-								<td><a href="#">test.txt</a></td>
-								<td>1234</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><a href="#">1234ABCDㄱㄴㄷㄹabcd1234</a></td>
-								<td>관리자</td>
-								<td>2023-01-01</td>
-								<td><a href="#">양식.hwp</a></td>
-								<td>0</td>
-							</tr>
-						</tbody>
-					</table>
-					<br>
-					
-					<div class="d-grid gap-2 col-1"></div>
-					<div>
-						<select name="searchField">
-							<option value="title">제목</option>
-							<option value="content">내용</option>
-						</select> 
-						<input type="text" name="searchWord">  
-						<button class="btn btn-primary" type="button" onclick="">검색하기</button>
-						<button class="btn btn-primary" type="button" onclick="">글쓰기</button>
-					</div>
+						</c:when>
+						<c:otherwise>
+							<!-- 게시물이 있을 때 -->
+							<!--  여기부터 수정함  -->
+							<div id="menu">
+							<c:forEach items="${datalist}" var="list" varStatus="loop">
+								<h3>
+									<span name="${ list.faq_num }" class="icon" style="color: #0000FF;">Q</span>&nbsp;&nbsp;
+									<span class="cate">
+										<c:choose>
+											<c:when test="${ list.faq_category == '1' }">
+												출결
+											</c:when>
+											<c:when test="${ list.faq_category == '2' }">
+												성적
+											</c:when>
+											<c:when test="${ list.faq_category == '3' }">
+												등록금
+											</c:when>
+											<c:when test="${ list.faq_category == '4' }">
+												정보변경
+											</c:when>
+											<c:otherwise>
+												<jsp:forward page="/faq_list.do" />
+											</c:otherwise>
+										</c:choose>
+									</span>
+									<span class="sub">
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ list.faq_subject }
+									</span>
+								</h3>
+								<div>
+									<p>
+										<strong>
+											<span class="cont">
+												<span class="icon" style="color: #ED1C24">A</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="sub">└─> ${ list.faq_content }</span>
+											</span>
+										</strong>
+									</p>
+								</div>
+								</c:forEach>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<!--  여기까지 -->
 				</div>
 			</div>
-		</div>
 
+			<br>
+
+			<div class="d-grid gap-2 col-1"></div>
+
+		</div>
 	</div>
 
 	<jsp:include page="Main_footer.jsp"></jsp:include>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
 	<!-- Core theme JS-->
 	<script src="js/scripts.js"></script>
+	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+	<script type='text/javascript'>
+		$(document).ready(function() {
+			$('#menu').accordion();
+		});
+	</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 </body>
+<style>
+.icon {
+	font-size: 1.3em;
+	font-weight: bold;
+	margin: 2px 0;
+	padding: 1px 3px;
+}
+
+.cate {
+	font-size: 1.2em;
+	color: #6BC273;
+}
+
+.sub {
+	font-size: 1.1em;
+}
+.cont {
+	text-align: center;
+}
+</style>
 </html>

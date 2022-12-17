@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,16 +13,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import dao.data_lib_DAO;
-import dto.data_lib_DTO;
+import com.mysql.cj.Session;
+
+import dao.AnouncementDAO;
+import dao.MemberDAO;
+import dto.AnouncementDTO;
 import utils.BoardPage;
 
-@WebServlet("/data_lib_list.do")
-public class data_lib_ListCon extends HttpServlet {
+@WebServlet("/Anouncement_List2.do")
+public class Anouncement_ListCon2 extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		data_lib_DAO dao = new data_lib_DAO(); // DAO 객체 생성
+		AnouncementDAO dao = new AnouncementDAO(); // DAO 객체 생성
 
 		Map<String, Object> map = new HashMap<String, Object>(); // 뷰 파일에 전달할 매개변수 저장용 맵 생성
 
@@ -56,21 +61,21 @@ public class data_lib_ListCon extends HttpServlet {
 		map.put("end", end);
 		
 		// 게시물 목록 받기
-		List<data_lib_DTO> datalist = dao.selectListPage(map);
+		List<AnouncementDTO> am_list = dao.selectListPage(map);
 		dao.close();
-
+		
 		// 뷰에 전달할 매개변수 추가
-		String pagingImg = BoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, "./data_lib_list.do");
-
+		String pagingImg = BoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, "./Anouncement_List2.do");
+		
 		map.put("pagingImg", pagingImg);
 		map.put("totalCount", totalCount);
 		map.put("pageSize", pageSize);
 		map.put("pageNum", pageNum);
 		
-		request.setAttribute("datalist", datalist);
+		request.setAttribute("am_list", am_list);
 		request.setAttribute("map", map);
 		request.setAttribute("searchWord", map.get("searchWord"));
-		request.getRequestDispatcher("/Data_lib_List.jsp").forward(request, response);
+		request.getRequestDispatcher("/Main_Anouncement.jsp").forward(request, response);
 		
 	}
 

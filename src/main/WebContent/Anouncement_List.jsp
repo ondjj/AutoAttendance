@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<c:set var="ad" value="${session.ad}" scope="session"/>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -11,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>자료실</title>
+<title>공지사항</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
 	rel="stylesheet" />
@@ -21,43 +20,23 @@
 </head>
 <body class="sb-nav-fixed">
 	<div>
-	<c:choose>
-	<c:when test="${admin_key == '1' }">
-		<%@ include file="infoAdmin.jsp" %>
-	</c:when>
-	<c:when test="${ admin_key == '0' }">
-		<%@ include file="info_manager.jsp" %>
-	</c:when>
-	</c:choose>
-
+		<%@ include file="info_manager.jsp"%>
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<c:choose>
-				<c:when test="${admin_key == '1' }">
-					<h1 class="mt-4">자료실</h1>
+					<h1 class="mt-4">공지사항</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="admin.jsp">마이페이지</a></li>
+						<li class="breadcrumb-item active"><a href="Manager_page.jsp">관리자 페이지</a></li>
 						<li class="breadcrumb-item active">기타</li>
 						<li class="breadcrumb-item active">자료실</li>
 					</ol>
-				</c:when>
-				<c:when test="${ admin_key == '0' }">
-					<h1 class="mt-4">자료실(관리자)</h1>
-					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="Manager_page.jsp">관리자 페이지</a></li>
-						<li class="breadcrumb-item active">기타</li>
-						<li class="breadcrumb-item active">자료실</li>
-					</ol>
-				</c:when>
-				</c:choose>
 					<div class="card mb-4">
 						<div class="card-header">
-							<i class="fas fa-table me-1"></i> 게시물 목록<br><br>
+							<i class="fas fa-table me-1"></i>공지사항 목록<br><br>
 							<form method="get">
 								<span>
 									<select name="searchField">
-										<option value="data_subject">제목</option>
+										<option value="anounce_subject">제목</option>
 									</select>
 									<input type="text" id="searchWord" name="searchWord" value="${ searchWord }">
 									<button class="btn btn-primary btn-sm" onclick="return filter()" type="submit">검색하기</button>
@@ -78,7 +57,7 @@
 								</thead>
 								<tbody>
 									<c:choose>
-										<c:when test="${ empty datalist }">
+										<c:when test="${ empty am_list }">
 											<!-- 게시물이 없을 때 -->
 											<tr>
 												<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
@@ -86,24 +65,24 @@
 										</c:when>
 										<c:otherwise>
 											<!-- 게시물이 있을 때 -->
-											<c:forEach items="${datalist}" var="list" varStatus="loop">
+											<c:forEach items="${am_list}" var="list" varStatus="loop">
 												<tr>
 													<!-- 번호 ㄱ -->
-													<td>${ list.data_num }</td>
+													<td>${ map.totalCount - (((map.pageNum - 1) * map.pageSize) + loop.index) }</td>
 													<!-- 제목 ㄱ -->
-													<td><a href="./data_lib_view.do?num=${ list.data_num }">${ list.data_subject }</a></td>
+													<td><a href="./Anouncement_View.do?num=${ list.anounce_num }">${ list.anounce_subject }</a></td>
 													<!-- 작성자 ㄱ -->
-													<td>${ list.data_writer }</td>
+													<td>${ list.anounce_writer }</td>
 													<!-- 작성일 ㄱ -->
-													<td>${ list.data_date }</td>
+													<td>${ list.anounce_date }</td>
 													<!-- 첨부 파일 ㄱ -->
 													<td>
-														<c:if test="${ not empty list.data_ofile }">
-															<a href="./data_lib_download.do?ofile=${ list.data_ofile }&sfile=${ list.data_sfile }&num=${ list.data_num }">${ list.data_ofile }</a>
+														<c:if test="${ not empty list.anounce_ofile }">
+															<a href="./Anouncement_Download.do?ofile=${ list.anounce_ofile }&sfile=${ list.anounce_sfile }&num=${ list.anounce_num }">${ list.anounce_ofile}</a>
 														</c:if>
 													</td>
 													<!-- 조회수 ㄱ -->
-													<td>${ list.data_view }</td>
+													<td>${ list.anounce_view }</td>
 												</tr>
 											</c:forEach>
 										</c:otherwise>
@@ -111,19 +90,18 @@
 								</tbody>
 							</table>
 							<br>
-							<%-- <c:if test="${ empty searchWord }"> --%>
+							<c:if test="${ empty searchWord }">
 								<table style="width: 100%;">
 									<tr align="center">
 										<td> ${ map.pagingImg } </td>
 									</tr>
 								</table>
-							<%-- </c:if> --%>
-							<c:if test="${ admin_key == '0' }">
-								<div class="d-grid gap-2 col-1">
-									<button type="button" class="btn btn-primary" 
-										onclick="location.href='./data_lib_write.do';">글쓰기</button>
-								</div>
 							</c:if>
+							<div class="d-grid gap-2 col-1">
+							 <c:if test="${admin_key == '0'}">
+								<button type="button" class="btn btn-primary" onclick="location.href='./Anouncement_Write.do';">글쓰기</button>
+							 </c:if>
+							</div>
 						</div>
 					</div>
 				</div>
