@@ -1,24 +1,36 @@
-# live_streaming.py
-
-from flask import Flask, render_template, Response
+from flask import Flask
+from flask_cors import CORS, cross_origin
+from flask_restful import Api
 import face_recog
 
+
 app = Flask(__name__)
+api = Api(app)
+CORS(app)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    face = face_recog.FaceRecog()
+    frame = face.get_frame()
+    target_name = face.target_name
+    print(target_name)
 
-def gen(fr):
-    while True:
-        jpg_bytes = fr.get_jpg_bytes()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + jpg_bytes + b'\r\n\r\n')
+    return "AdminDashBoard.do?data=" + target_name
 
-@app.route('/video_feed')
-def video_feed():
-    return Response(gen(face_recog.FaceRecog()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+def __del__(self):
+    del self.camera
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    
+    app.run(host='0.0.0.0',port=5000,debug=True)
+            
+
+    
+
+    
+    
+
+    
+    
+    
+    
