@@ -176,8 +176,8 @@ a:hover {
 					<div class="card h-100">
 						<div id="anchorboard" class="card-body">
 							<!-- 헤드라인 -->
-							<div id='headLine'>
-    							<span style='font-size: 1.5em'></span>
+							<div id='headLine' style="text-align: center;">
+    							<span style='font-size: 1.5em;'></span>
 							 </div>
 							 <hr class="card-divider">
 							<!-- 그림 -->
