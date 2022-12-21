@@ -11,7 +11,7 @@
 				<c:choose>
 					<c:when test="${admin_key == '0' }">
 		 				<li><a href="./Anouncement_List.do">공지사항등록</a></li>
-						<li><a href="manager_page.jsp">관리자 페이지</a></li>
+						<li><a href="Manager_page.jsp">관리자 페이지</a></li>
 					</c:when>
 					<c:when test="${admin_key == '1' }">
 						<li><a href="./Anouncement_List.do">공지사항</a></li>
@@ -100,16 +100,19 @@ header{
 				<li class="nav-item"><a class="nav-link active" href="college_admission.jsp">입학 안내</a></li>
 				<li class="nav-item"><a class="nav-link active" href="JobCenter.jsp">대학 일자리센터</a></li> 
 				<li class="nav-item"><a class="nav-link active" href="location.jsp">오시는 길</a></li>
-				<li class="nav-item"><a class="nav-link active" href="faq_list.do">FAQ</a></li>
+				<li class="nav-item"><a class="nav-link active" href="/faq_list.do">FAQ</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
 
 <style>
- .navbar-nav li{
- 	font-size: 1.5em;
- 	column-gap: 100px;
- 	columns: 100px 5;
- }
+.navbar-nav li{
+	max-width: 100%;
+	height: auto;
+	display: block;
+	font-size: 1.5em;
+	column-gap: 100px;
+	columns: 100px 5;
+}
 </style>

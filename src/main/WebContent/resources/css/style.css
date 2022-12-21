@@ -77,6 +77,8 @@
 }
 
 body {
+  width: 1920px;
+  height: 1080px;
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -670,10 +672,49 @@ progress {
 @media (min-width: 1400px) {
   .ccc {
 	max-width: 1920px;
-	margin-right: 25px;
-	margin-left: 25px;
+	max-height: 1080px;
+	margin-right: 50px;
+	margin-left: 50px;
   }
 }
+.icon {
+	font-size: 1.3em;
+	font-weight: bold;
+	text-align: center;
+	margin: 2px 0;
+	padding: 1px 3px;
+}
+.cate {
+	font-size: 1.2em;
+	font-weight: bold; 
+	color: #6BC273;
+}
+.sub {
+	font-size: 1.1em;
+}
+.ans {
+	border: 1px solid black;
+	margin-top: 10px;
+	background-color: #EFE4B0;
+	font-size: small;
+}
+.answait {
+	border: 1px solid black;
+	background-color: #99D9EA;
+}
+.cont {
+	text-align: center;
+}
+.wri {
+	font-size: x-small;
+}
+.col-md-1, .icon {
+	text-align: center;
+}
+.col-md-1, .ansdiv {
+	margin-top: 12px;
+}
+
 .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
