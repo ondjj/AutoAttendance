@@ -32,14 +32,16 @@
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                성적정정신청내역 목록<br><br>
-                                <span>
-	                            	<select>
-										<option value="title">제목</option>
-										<option value="content">내용</option>
+                                <form method="get" action="ObjectionListCon.do?type=3">
+								<span>
+									<select name="searchField">
+										<option value="obj_memberid">학번</option>
 									</select>
-									<input type="text">
-									<button class="btn btn-primary btn-sm" type="button" onclick="">검색하기</button>
+									<input type="text" id="searchWord" name="searchWord" value="${ searchWord }">
+									<input type="hidden" id="type" name="type" value="3"/>
+									<button class="btn btn-primary btn-sm" onclick="return filter()" type="submit">검색하기</button>
 								</span>
+							</form>
                             </div>
                             <div class="card-body">
                                     	<table class="table table-sm" id="datatablesSimple">
@@ -79,8 +81,15 @@
 													</c:otherwise>
 												</c:choose>
 											</tbody>
-											
 										</table>
+										<br>
+										<c:if test="${ empty searchWord }">
+											<table style="width: 100%;">
+												<tr align="center">
+													<td> ${ map.pagingImg } </td>
+												</tr>
+											</table>
+										</c:if>
                                     </div>
                         </div>
                     </div>
@@ -94,4 +103,13 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
     </body>
+    <script>
+	function filter() {
+		var content = document.getElementById("searchWord").value;
+		if (content.trim() === "") {
+			alert("내용을 입력해 주세요.");
+			return false;
+		}
+	}
+</script>
 </html>

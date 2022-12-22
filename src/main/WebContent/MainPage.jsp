@@ -4,9 +4,18 @@
 <%@ page import="dto.*"%>
 <%@ page import="dao.*"%>
 <%@ page import="java.util.*"%>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%
 	AnouncementDAO dao = new AnouncementDAO(); // DAO 객체 생성
 	QnA_DAO qdao = new QnA_DAO(); // QnA_DAO 객체 생성
+	
+	CalendarDAO cal_dao = new CalendarDAO(); // Calendar DAO 객체 생성
+	List<CalendarDTO> cal_list = new ArrayList<>(); // Calendar list 객체 생성
+	LocalDate now = LocalDate.now();
+	String today = now.toString();
+	cal_list = cal_dao.main_cal(today);
+	request.setAttribute("cal_list", cal_list);
 	
 	Map<String, Object> map = new HashMap<String, Object>();
 	String main = "";
@@ -137,35 +146,23 @@ a:hover {
 									class="card-title text-center">학사일정</h2></a>
 							<hr class="card-divider">
 							<a href="Main_Calendar.jsp">
-								<div class="card-body">
-									<table class="table card-title" id="datatablesSimple">
-										<thead>
-											<tr>
-												<th>일자</th>
-												<th>일정</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>12-08~12-15</td>
-												<td>기말고사</td>
-
-											</tr>
-											<tr>
-												<td>12-19</td>
-												<td>개교기념일</td>
-											</tr>
-											<tr>
-												<td>12-30</td>
-												<td>설립기념일</td>
-											</tr>
-											<tr>
-												<td>12-31</td>
-												<td>연말술자리</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
+							<table class="table" id="datatablesSimple">
+								<!-- 이쪽 부분에 대해 DB에서 파일 제목을 최신순으로 5개 받아오면서 해당 링크로도 같이 받아올 수 있도록 생성 -->
+								<tr style="border-top: 1px solid #DEE2E6;">
+									<th style="border-right: 1px solid #DEE2E6;">일자</th>
+									<th style="border-right: 1px solid #DEE2E6;">일정</th>
+								</tr>
+								<c:forEach items="${cal_list}" var="list">
+									<tr style="background-color: #F9F9F8;">
+										<td style="border-right: 1px solid #DEE2E6;">
+											${ list.start } - ${ list.end }
+										</td>
+										<td width="40%" style="text-align: center; border-right: 1px solid #DEE2E6;">
+												${list.title}
+										</td>
+									</tr>
+								</c:forEach>
+							</table>
 							</a>
 						</div>
 					</div>
@@ -324,16 +321,13 @@ a:hover {
 		   const element = document.getElementById('headLine');
 		   element.innerText = '';
 		}
+		
 	</script>
-	
 	<jsp:include page="Main_footer.jsp"></jsp:include>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="js/scripts.js"></script>
-	<script>
-		
-	</script>
 </body>
 </html>

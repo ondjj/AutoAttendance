@@ -81,7 +81,7 @@
 									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
 										<a class="nav-link" href="CollegeRegister.jsp">학생인적사항 등록</a>
-										<a class="nav-link" href="updateCollege.jsp">학적변동신청</a>
+										<a class="nav-link" href="objection.do?obj_type=5">학적변동신청</a>
 										<a class="nav-link" href="certificate.jsp">학생증명서발급신청</a> 
 										<a class="nav-link" href="401.jsp">전공변경신청</a>
 									</nav>

@@ -62,10 +62,10 @@ public class data_lib_DAO extends DBConnPool {
 				rs = psmt.executeQuery();
 			}
 			else {
-			psmt = con.prepareStatement(sql);
-			psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
-			psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
-			rs = psmt.executeQuery();
+				psmt = con.prepareStatement(sql);
+				psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+				psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+				rs = psmt.executeQuery();
 			}
 			while (rs.next()) {
 				data_lib_DTO dto = new data_lib_DTO();

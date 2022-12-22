@@ -94,7 +94,6 @@ public class GradeDAO extends DBConnPool{
 				dto.setScore3(rs.getInt(8));
 				dto.setGrade(grade_result(rs.getInt(6), rs.getInt(7), rs.getInt(8)));
 				board.add(dto);
-				con.close();
 			}
 		}catch(Exception e) {
 			System.out.println("Exception in DAO");
@@ -250,6 +249,28 @@ public class GradeDAO extends DBConnPool{
 		return result;
 	}
 	
+	// manager_gradeObjection - detailView - Update 성적 수정
+		public int update_grade(GradeDTO dto) {
+			
+			// String sql = "insert into grade_manage(member_id, year_term, name, major, subject, score1, score2, score3) values(?,?,?,?,?,?,?,?)";
+			String sql = "update grade_manage set year_term=?, score1=?, score2=?, score3=? where member_id=?"; 
+			int result = 0;
+			try {
+				
+				psmt = con.prepareStatement(sql);
+				psmt.setString(1, dto.getYear_term());
+				psmt.setInt(2, dto.getScore1());
+				psmt.setInt(3, dto.getScore2());
+				psmt.setInt(4, dto.getScore3());
+				psmt.setString(5, dto.getMember_id());
+				result = psmt.executeUpdate();
+				
+			}catch(Exception e) {
+				System.out.println("Grade_Update Error in GradeDAO");
+				e.printStackTrace();
+			}
+			return result;
+		}
 	
 	
 	
