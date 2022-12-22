@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ad" value="${session.ad}" scope="session" />
 <!DOCTYPE html>
-
 <html lang="kr">
 <head>
 <meta charset="utf-8" />
@@ -35,13 +35,13 @@
 				<div class="card-header">
 					<form>
 						<select name="category">
-								<option value="0">카테고리 선택</option>
-								<option value="1">출결</option>
-								<option value="2">성적</option>
-								<option value="3">등록금</option>
-								<option value="4">정보변경</option>
+							<option value="0">전체</option>
+							<option value="1">출결</option>
+							<option value="2">성적</option>
+							<option value="3">등록금</option>
+							<option value="4">정보변경</option>
 						</select>
-						<button class="btn btn-primary btn btn-primary btn-sm" type="submit">검색</button>
+						<button class="btn btn-primary btn-sm" type="submit">검색</button>
 					</form>
 				</div>
 				<div class="card-body">
@@ -55,56 +55,70 @@
 						<c:otherwise>
 							<!-- 게시물이 있을 때 -->
 							<!--  여기부터 수정함  -->
+
+
 							<div id="menu">
-							<c:forEach items="${datalist}" var="list" varStatus="loop">
-								<h3>
-									<span name="${ list.faq_num }" class="icon" style="color: #0000FF;">Q</span>&nbsp;&nbsp;
-									<span class="cate">
-										<c:choose>
-											<c:when test="${ list.faq_category == '1' }">
-												출결
-											</c:when>
-											<c:when test="${ list.faq_category == '2' }">
-												성적
-											</c:when>
-											<c:when test="${ list.faq_category == '3' }">
-												등록금
-											</c:when>
-											<c:when test="${ list.faq_category == '4' }">
-												정보변경
-											</c:when>
-											<c:otherwise>
-												<jsp:forward page="/faq_list.do" />
-											</c:otherwise>
-										</c:choose>
-									</span>
-									<span class="sub">
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ list.faq_subject }
-									</span>
-								</h3>
-								<div>
+								<c:forEach items="${datalist}" var="list" varStatus="loop">
+									<h3>
+										<div class="row">
+											<div class="col-md-2">
+												<span class="icon" style="color: #0000FF;">Q</span>&nbsp;&nbsp;&nbsp;&nbsp; <span
+													class="cate"> <c:choose>
+														<c:when test="${ list.faq_category == '1' }">
+															출결
+														</c:when>
+														<c:when test="${ list.faq_category == '2' }">
+															성적
+														</c:when>
+														<c:when test="${ list.faq_category == '3' }">
+															등록금
+														</c:when>
+														<c:when test="${ list.faq_category == '4' }">
+															정보변경
+														</c:when>
+														<c:otherwise>
+															<jsp:forward page="/Main_FAQ.jsp" />
+														</c:otherwise>
+													</c:choose>
+												</span>
+											</div>
+											<div class="col-md-9">
+												<span class="sub"> ${ list.faq_subject } </span>
+											</div>
+											<div class="col-md-1">
+												<c:if test="${admin_key == '0' }">
+													<button type="button" class="btn btn-danger btn-sm"
+														onclick="location.href='./faq_delete.do?num=${ list.faq_num }';">삭제</button>
+												</c:if>
+											</div>
+										</div>
+									</h3>
 									<p>
 										<strong>
-											<span class="cont">
-												<span class="icon" style="color: #ED1C24">A</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<span class="sub">└─> ${ list.faq_content }</span>
-											</span>
+												<span class="icon" style="color: #ED1C24">A</span>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="sub">└─&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													${ list.faq_content }
+												</span>
 										</strong>
 									</p>
-								</div>
 								</c:forEach>
 							</div>
 						</c:otherwise>
 					</c:choose>
-					<!--  여기까지 -->
 				</div>
+
 			</div>
 
-			<br>
-
-			<div class="d-grid gap-2 col-1"></div>
-
+			<!--  여기까지 -->
 		</div>
+	</div>
+
+	<br>
+
+	<div class="d-grid gap-2 col-1"></div>
+
+	</div>
 	</div>
 
 	<jsp:include page="Main_footer.jsp"></jsp:include>
@@ -117,7 +131,7 @@
 		crossorigin="anonymous"></script>
 	<!-- Core theme JS-->
 	<script src="js/scripts.js"></script>
-	
+
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -127,26 +141,7 @@
 			$('#menu').accordion();
 		});
 	</script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 </body>
-<style>
-.icon {
-	font-size: 1.3em;
-	font-weight: bold;
-	margin: 2px 0;
-	padding: 1px 3px;
-}
-
-.cate {
-	font-size: 1.2em;
-	color: #6BC273;
-}
-
-.sub {
-	font-size: 1.1em;
-}
-.cont {
-	text-align: center;
-}
-</style>
 </html>
