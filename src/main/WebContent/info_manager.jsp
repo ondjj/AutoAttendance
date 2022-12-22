@@ -2,7 +2,7 @@
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 	<!-- Navbar Brand-->
-	<a class="navbar-brand ps-3" href="Manager_page.jsp">관리자 페이지</a>
+	<a class="navbar-brand ps-3" href="ObjectionListCon.do?type=1">관리자 페이지</a>
 	<!-- Sidebar Toggle-->
 	<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"	id="sidebarToggle" href="#!">
 		<i class="fas fa-bars"></i>
@@ -35,8 +35,7 @@
 			<div class="sb-sidenav-menu">
 				<div class="nav">
 					<div class="sb-sidenav-menu-heading">관리</div>
-					
-					<a class="nav-link" href="manager_page.jsp">
+					<a class="nav-link" href="Manager_page.jsp">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-tachometer-alt"></i>
 						</div> 학사 일정 관리
@@ -101,7 +100,7 @@
 								aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="ObjectionListCon.do?type=2">학적변동신청내역</a> <a
-										class="nav-link" href="manager_certificate.jsp">학생증명서발급신청내역</a> <a
+										class="nav-link" href="ObjectionListCon.do?type=4">학생증명서발급신청내역</a> <a
 										class="nav-link" href="401.jsp">전공변경신청내역</a>
 								</nav>
 							</div>
@@ -119,7 +118,7 @@
 							<div class="collapse" id="collapseLayouts3"
 								aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="GradeManagement.jsp">성적 등록</a> <a
+									<a class="nav-link" href="manager_gradeInsert.jsp">성적 등록</a> <a
 										class="nav-link" href="ObjectionListCon.do?type=3">성적정정신청내역</a>
 								</nav>
 							</div>

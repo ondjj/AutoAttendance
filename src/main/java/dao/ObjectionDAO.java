@@ -2,11 +2,34 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import common.DBConnPool;
 import dto.ObjectionDTO;
 
 public class ObjectionDAO extends DBConnPool{
+	
+	public int selectCount (Map<String, Object>map, int type) {
+		int totalCount = 0; // 초기화 세팅
+		
+		String sql = "select count(*) from obj_board where obj_type="+type;
+		// 게시판에서 전체 개수 가져오기
+		
+		if (map.get("searchWord") != null) {
+			sql += " and " + map.get("searchField") + " like '%" + map.get("searchWord") + "%' ";
+		}
+		
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			rs.next();
+			totalCount = rs.getInt(1);
+		} catch (Exception e) {
+			System.out.println("게시판 카운트 생성 에러");
+			e.printStackTrace();
+		}
+		return totalCount;
+	}
 	
 	// 출결 1
 	// 출결 1
@@ -37,14 +60,41 @@ public class ObjectionDAO extends DBConnPool{
 		return result;
 	}
 	// 출결 정정 신청 내역 List 가져오기
-		public List<ObjectionDTO> atten_ObjList(){
+		public List<ObjectionDTO> atten_ObjList(Map<String, Object> map){
 			
 			List<ObjectionDTO> obj_list = new ArrayList<>();
-			String sql = "select obj_num, obj_type, obj_memberid, obj_name, obj_faculty, obj_subject, obj_date, obj_content from obj_board where obj_type=1";
+			
+			// 검색할 단어가 없으면 전체 게시물 중 내림차순으로 10개 출력
+			String sql = "select obj_num, obj_type, obj_memberid, obj_name, obj_faculty, obj_subject, obj_date, obj_content from obj_board where obj_type=1 limit ?,?";
+			
+			
+			// 검색할 단어가 있으면
+			String query = "select obj_num, obj_type, obj_memberid, obj_name, obj_faculty, "
+					+ "obj_subject, obj_date, obj_content from obj_board where obj_type=1";
+					
+			
+			if (map.get("searchWord") != null) {
+				query += " and " + map.get("searchField") + " like '%" + map.get("searchWord") + "%' ";
+			}
+			query += " limit ?,?";
+			
 			
 			try {
-				psmt = con.prepareStatement(sql);
-				rs = psmt.executeQuery();
+				System.out.println(map.get("pageNum"));
+				
+				// 검색할 단어가 없으면 sql, 있으면 query로 입력
+				if (map.get("searchWord") != null ) {
+					psmt = con.prepareStatement(query);
+					psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+					psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+					rs = psmt.executeQuery();
+				}
+				else {
+					psmt = con.prepareStatement(sql);
+					psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+					psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+					rs = psmt.executeQuery();
+				}	
 				
 				while(rs.next()) {
 					ObjectionDTO dto = new ObjectionDTO();
@@ -137,14 +187,39 @@ public class ObjectionDAO extends DBConnPool{
 			return result;
 		}
 		// 학적 변경 신청 내역 List 가져오기
-		public List<ObjectionDTO> colObjList(){
+		public List<ObjectionDTO> colObjList(Map<String, Object> map){
 			
 			List<ObjectionDTO> obj_list = new ArrayList<>();
-			String sql = "select obj_num, obj_type, obj_memberid, obj_name, obj_start_term, obj_col_type, obj_tuition, obj_back_year, obj_back_term, obj_refund_name, obj_refund_bank, obj_refund_num from obj_board where obj_type=2";
+			
+			// 검색할 단어가 없으면 전체 게시물 중 내림차순으로 10개 출력
+			String sql = "select obj_num, obj_type, obj_memberid, obj_name, obj_start_term, obj_col_type, obj_tuition, obj_back_year, obj_back_term, obj_refund_name, obj_refund_bank, obj_refund_num from obj_board where obj_type=2 limit ?,?";
+			
+			
+			// 검색할 단어가 있으면
+			String query = "select obj_num, obj_type, obj_memberid, obj_name, obj_start_term, obj_col_type, obj_tuition, obj_back_year, obj_back_term, obj_refund_name, obj_refund_bank, obj_refund_num "
+					+ "from obj_board where obj_type=2";
+			
+			if (map.get("searchWord") != null) {
+				query += " and " + map.get("searchField") + " like '%" + map.get("searchWord") + "%' ";
+			}
+			query += " limit ?,?";
 			
 			try {
-				psmt = con.prepareStatement(sql);
-				rs = psmt.executeQuery();
+				System.out.println(map.get("pageNum"));
+				
+				// 검색할 단어가 없으면 sql, 있으면 query로 입력
+				if (map.get("searchWord") != null ) {
+					psmt = con.prepareStatement(query);
+					psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+					psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+					rs = psmt.executeQuery();
+				}
+				else {
+					psmt = con.prepareStatement(sql);
+					psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+					psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+					rs = psmt.executeQuery();
+				}	
 				
 				while(rs.next()) {
 					ObjectionDTO dto = new ObjectionDTO();
@@ -277,14 +352,40 @@ public class ObjectionDAO extends DBConnPool{
 		return result;
 	}
 	// 성적 정정 신청 내역 List 가져오기
-	public List<ObjectionDTO> gradeObjList(){
+	public List<ObjectionDTO> gradeObjList(Map<String, Object> map){
 		
 		List<ObjectionDTO> obj_list = new ArrayList<>();
-		String sql = "select obj_num, obj_type, obj_memberid, obj_name, obj_faculty, obj_subject, obj_content from obj_board where obj_type=3";
+		
+		// 검색할 단어가 없으면 전체 게시물 중 내림차순으로 10개 출력
+		String sql = "select obj_num, obj_type, obj_memberid, obj_name, obj_faculty, obj_subject, obj_content from obj_board where obj_type=3 limit ?,?";
+		
+		
+		// 검색할 단어가 있으면
+		String query = "select obj_num, obj_type, obj_memberid, obj_name, obj_faculty, obj_subject, obj_content "
+				+ "from obj_board where obj_type=3";
+		
+		if (map.get("searchWord") != null) {
+			query += " and " + map.get("searchField") + " like '%" + map.get("searchWord") + "%' ";
+		}
+		query += " limit ?,?";
+		
+		System.out.println(map.get("pageNum"));
+		
 		
 		try {
-			psmt = con.prepareStatement(sql);
-			rs = psmt.executeQuery();
+			// 검색할 단어가 없으면 sql, 있으면 query로 입력
+			if (map.get("searchWord") != null ) {
+				psmt = con.prepareStatement(query);
+				psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+				psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+				rs = psmt.executeQuery();
+			}
+			else {
+				psmt = con.prepareStatement(sql);
+				psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+				psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+				rs = psmt.executeQuery();
+			}	
 			
 			while(rs.next()) {
 				ObjectionDTO dto = new ObjectionDTO();
@@ -341,7 +442,146 @@ public class ObjectionDAO extends DBConnPool{
 		return dto;
 	}
 	
-	
+	// 증명서 4
+	// 증명서 4
+	// 증명서 4
+	// 증명서 신청 insert 밑작업하기
+	// 성적 정정 신청 내역 insert
+		public void insert_certifiObj(String member_id, String name, List<Integer> type_list, List<Integer> count_list, List<String> content_list) {
+			
+			String sql = "insert into obj_board(obj_type, obj_memberid, obj_name, obj_certifi_type, obj_certifi_count, obj_certifi_content) values(?,?,?,?,?,?)";
+			
+			try {
+				psmt = con.prepareStatement(sql);
+				
+				for (int i = 0; i < count_list.size(); i++) {
+					
+					System.out.println(type_list.get(i));
+					psmt.setInt(1, 4);
+					psmt.setString(2, member_id);
+					psmt.setString(3, name);
+					psmt.setInt(4, type_list.get(i));
+					psmt.setInt(5, count_list.get(i));
+					System.out.println(count_list.get(i));
+					psmt.setString(6, content_list.get(i));
+					psmt.executeUpdate();
+					psmt.clearParameters();
+					
+				}
+			}catch(Exception e) {
+				System.out.println("Objection Insert Error in ObjectionDAO_Grade");
+				e.printStackTrace();
+			}
+		}
+		// 증명서 신청 내역 List 가져오기
+		public List<ObjectionDTO> certifiObjList(Map<String, Object> map){
+			
+			List<ObjectionDTO> obj_list = new ArrayList<>();
+			
+			// 검색할 단어가 없으면 전체 게시물 중 내림차순으로 10개 출력
+			String sql = "select obj_num, obj_type, obj_memberid, obj_name, obj_certifi_type, obj_certifi_count, obj_certifi_content from obj_board where obj_type=4 limit ?,?";
+			
+			
+			// 검색할 단어가 있으면
+			String query = "select obj_num, obj_type, obj_memberid, obj_name, obj_certifi_type, obj_certifi_count, obj_certifi_content "
+					+ "from obj_board where obj_type=4";
+			
+			if (map.get("searchWord") != null) {
+				query += " and " + map.get("searchField") + " like '%" + map.get("searchWord") + "%' ";
+			}
+			query += " limit ?,?";
+			
+			System.out.println(map.get("pageNum"));
+			
+			
+			try {
+				// 검색할 단어가 없으면 sql, 있으면 query로 입력
+				if (map.get("searchWord") != null ) {
+					psmt = con.prepareStatement(query);
+					psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+					psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+					rs = psmt.executeQuery();
+				}
+				else {
+					psmt = con.prepareStatement(sql);
+					psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+					psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+					rs = psmt.executeQuery();
+				}	
+				
+				while(rs.next()) {
+					ObjectionDTO dto = new ObjectionDTO();
+					
+					dto.setObj_num(rs.getInt(1));
+					dto.setObj_type(rs.getInt(2));
+					dto.setObj_memberid(rs.getString(3));
+					dto.setObj_name(rs.getString(4));
+					dto.setObj_certifi_type(rs.getInt(5));
+					if(rs.getInt(5)==1) {
+						dto.setObj_col_type("교육비 납입 증명서");
+					}else if(rs.getInt(5)==2) {
+						dto.setObj_col_type("성적 증명서");
+					}else if(rs.getInt(5)==3) {
+						dto.setObj_col_type("수강 신청 확인서");
+					}else if(rs.getInt(5)==4) {
+						dto.setObj_col_type("수기 증명서");
+					}else if(rs.getInt(5)==5) {
+						dto.setObj_col_type("수료 증명서");
+					}else if(rs.getInt(5)==6) {
+						dto.setObj_col_type("장학금 수혜 확인서");
+					}else if(rs.getInt(5)==7) {
+						dto.setObj_col_type("졸업 예정 증명서");
+					}else if(rs.getInt(5)==8) {
+						dto.setObj_col_type("휴학 증명서");
+					}else if(rs.getInt(5)==9) {
+						dto.setObj_col_type("학력 인정 증명서");
+					}
+					dto.setObj_certifi_count(rs.getInt(6));
+					dto.setObj_certifi_content(rs.getString(7));
+					System.out.println("dao : " + rs.getString(2));
+					obj_list.add(dto);
+				}
+				
+				con.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return obj_list;
+		}
+		// 성적 정정 신청 내역 View 가져오기
+		public ObjectionDTO certifiObjView(String obj_num){
+			
+			ObjectionDTO dto = new ObjectionDTO();
+			String sql = "select obj_type, obj_memberid, obj_name, obj_certifi_type, obj_certifi_count, obj_certifi_content from obj_board where obj_num=?";
+			
+			try {
+				
+				psmt = con.prepareStatement(sql);
+				psmt.setString(1, obj_num);
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					
+				dto.setObj_num(Integer.parseInt(obj_num));
+				dto.setObj_type(rs.getInt("obj_type"));
+				dto.setObj_memberid(rs.getString("obj_memberid"));
+				dto.setObj_name(rs.getString("obj_name"));
+				dto.setObj_certifi_type(rs.getInt("obj_certifi_type"));
+				dto.setObj_certifi_count(rs.getInt("obj_certifi_count"));
+				dto.setObj_certifi_content(rs.getString("obj_certifi_content"));
+				
+				}
+				
+				con.close();
+			}catch(Exception e) {
+				System.out.println("Objection View Error in ObjectionDAO_certificate");
+				e.printStackTrace();
+			}
+			
+			
+			return dto;
+		}
 	
 	
 	

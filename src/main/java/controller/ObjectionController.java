@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -94,10 +96,67 @@ public class ObjectionController extends HttpServlet {
 			
 		}else if(obj_type.equals("4")){
 			System.out.println("obj_type : 증명서 발급 신청");
+			ObjectionDAO odao = new ObjectionDAO();
 			
+			// 신청 학생 이름 가져오기
+			String id = (String)request.getSession().getAttribute("id");
+			String password = (String)request.getSession().getAttribute("pass");
 			
+			memberDTO mdto = new memberDTO();
+			MemberDAO mdao = new MemberDAO();
+			mdto = mdao.getMember(id);			
 			
+			List<Integer> count_list = new ArrayList<>();
+			List<String> content_list = new ArrayList<>();
+			List<Integer> type_list = new ArrayList<>();
 			
+			if(!request.getParameter("obj_certifi_count1").equals("")) {
+				count_list.add(Integer.parseInt(request.getParameter("obj_certifi_count1")));
+				content_list.add(request.getParameter("obj_certifi_content1"));
+				type_list.add(1);
+			}
+			if(!request.getParameter("obj_certifi_count2").equals("")) {
+				count_list.add(Integer.parseInt(request.getParameter("obj_certifi_count2")));
+				content_list.add(request.getParameter("obj_certifi_content2"));
+				type_list.add(2);
+			}
+			if(!request.getParameter("obj_certifi_count3").equals("")) {
+				count_list.add(Integer.parseInt(request.getParameter("obj_certifi_count3")));
+				content_list.add(request.getParameter("obj_certifi_content3"));
+				type_list.add(3);
+			}
+			if(!request.getParameter("obj_certifi_count4").equals("")) {
+				count_list.add(Integer.parseInt(request.getParameter("obj_certifi_count4")));
+				content_list.add(request.getParameter("obj_certifi_content4"));
+				type_list.add(4);
+			}
+			if(!request.getParameter("obj_certifi_count5").equals("")) {
+				count_list.add(Integer.parseInt(request.getParameter("obj_certifi_count5")));
+				content_list.add(request.getParameter("obj_certifi_content5"));
+				type_list.add(5);
+			}
+			if(!request.getParameter("obj_certifi_count6").equals("")) {
+				count_list.add(Integer.parseInt(request.getParameter("obj_certifi_count6")));
+				content_list.add(request.getParameter("obj_certifi_content6"));
+				type_list.add(6);
+			}if(!request.getParameter("obj_certifi_count7").equals("")) {
+				count_list.add(Integer.parseInt(request.getParameter("obj_certifi_count7")));
+				content_list.add(request.getParameter("obj_certifi_content7"));
+				type_list.add(7);
+			}
+			if(!request.getParameter("obj_certifi_count8").equals("")) {
+				count_list.add(Integer.parseInt(request.getParameter("obj_certifi_count8")));
+				content_list.add(request.getParameter("obj_certifi_content8"));
+				type_list.add(8);
+			}
+			if(!request.getParameter("obj_certifi_count9").equals("")) {
+				count_list.add(Integer.parseInt(request.getParameter("obj_certifi_count9")));
+				content_list.add(request.getParameter("obj_certifi_content9"));
+				type_list.add(9);
+			}
+			odao.insert_certifiObj(id, mdto.getKr_name(), type_list, count_list, content_list);
+			
+			response.sendRedirect("certificate.jsp");
 			
 		}else { // 학적 정정 신청 학생 정보 가져오기
 			

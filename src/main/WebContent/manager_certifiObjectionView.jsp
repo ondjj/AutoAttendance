@@ -23,68 +23,64 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					 <h1 class="mt-4">성적 정정 신청</h1>
+					 <h1 class="mt-4">증명서 신청</h1>
                         <hr>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="manager_page.jsp">관리자 페이지</a></li>
                             <li class="breadcrumb-item active">학적</li>
-                            <li class="breadcrumb-item active">성적정정신청내용</li>
+                            <li class="breadcrumb-item active">증명서 신청내용</li>
                         </ol>
                         <br>
 					<div class="container-fluid px-5 border border-2">
 						<br>
-						<form name="newWrite" class="form-horizontal" method="post" action="ObjectionListCon.do?view_del=${dto.obj_num }&&view_type=${dto.obj_type}">
+						<form name="newWrite" action="ObjectionListCon.do?view_del=${dto.obj_num }&&view_type=${dto.obj_type}"	class="form-horizontal" method="post"
+							>
 
-							<input name="obj_num" id="obj_num" type="hidden" class="form-control"
-								value="${dto.obj_num }" />
-							<input name="obj_type" id="obj_type" type="hidden" class="form-control"
-								value="${dto.obj_type}" />
+							<input name="id" type="hidden" class="form-control"
+								value="" />
 
 							<div class="form-group row">
 								<label class="col-sm-2 control-label"><strong>학번</strong></label>
 								<div class="col-sm-3">
-									<input name="member_id" id="member_id" type="text" class="form-control" value="${dto.obj_memberid }" readonly/>
+									<input name="member_id" type="text" class="form-control" value="${dto.obj_memberid }" readonly/>
 								</div>
 							</div>
 							
 							<div class="form-group row">
 								<label class="col-sm-2 control-label"><strong>이름</strong></label>
 								<div class="col-sm-3">
-									<input name="name" id="name" type="text" class="form-control"
+									<input name="name" type="text" class="form-control"
 										value="${dto.obj_name }" readonly/>
 								</div>
 							</div>
 							
 							<div class="form-group row">
-								<label class="col-sm-2 control-label"><strong>학과</strong></label>
+								<label class="col-sm-2 control-label"><strong>증명서 종류</strong></label>
 								<div class="col-sm-3">
-									<input name="faculty" id="faculty" type="text" class="form-control"
-										value="${dto.obj_faculty }" readonly/>
+									<input name="obj_type_name" type="text" class="form-control"
+										value="${obj_type_name }" readonly/>
 								</div>
 							</div>
 							
 							<div class="form-group row">
-								<label class="col-sm-2 control-label"><strong>과목</strong></label>
+								<label class="col-sm-2 control-label"><strong>매수</strong></label>
 								<div class="col-sm-3">
-									<input name="subject" id="subject" type="text" class="form-control"
-										value="${dto.obj_subject }" readonly/>
+									<input name="obj_certifi_count" type="text" class="form-control"
+										value="${dto.obj_certifi_count }" readonly/>
 								</div>
 							</div>
 
 							<div class="form-group row">
-								<label class="col-sm-2 control-label"><strong>정정 내용</strong></label>
+								<label class="col-sm-2 control-label"><strong>신청 내용</strong></label>
 								<div class="col-sm-5">
-									<textarea name="content" class="form-control" placeholder="내용"
-										rows="10" cols="100" readonly>${dto.obj_content }</textarea>
+									<textarea name="obj_certifi_content" class="form-control" placeholder="내용"
+										rows="10" cols="100" readonly>${dto.obj_certifi_content }</textarea>
 								</div>
 							</div>
 							<br>
 							<div class="form-group row" align="left">
 								<div class="col-sm-offset-2 col-sm-10">
-									<!-- <input type="submit" class="btn btn-danger" value="삭제" /> -->
-									<button type="button" class="btn btn-primary" onclick="send_update()">처리</button>
-									<!-- <button type="button" class="btn btn-primary" onclick="ObjectionListCon.do?view_del=${dto.obj_num }&&view_type=${dto.obj_type}&&view_update=3">처리</button>-->
-									<button type="submit" class="btn btn-success">반려</button>
+									<input type="submit" class="btn btn-danger" value="삭제" />
 								</div>
 							</div>
 						</form>
@@ -97,18 +93,7 @@
          <%@ include file="footerAdmin.jsp" %>
 
 		</div>
-	</div>
-	<script>
-		function send_update(){
-			var obj_num = document.getElementById("obj_num").value;
-			var obj_type = document.getElementById("obj_type").value;
-			var memberid = document.getElementById("member_id").value;
-			var name = document.getElementById("name").value;
-			var faculty = document.getElementById("faculty").value;
-			var subject = document.getElementById("subject").value;
-			location.href = "manager_gradeObjectionUpdate.jsp?obj_num="+obj_num+"&&obj_type="+obj_type+"&&memberid="+memberid+"&&name="+name+"&&faculty="+faculty+"&&subject="+subject;
-		}
-	</script>
+	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>

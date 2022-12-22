@@ -49,7 +49,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr name="obj_certifi_type">
+											<tr>
 												<th scope="row">1</th>
 												<td>교육비납입증명서</td>
 												<td><input type="text" size="3" name="obj_certifi_count1"> 매</td>
