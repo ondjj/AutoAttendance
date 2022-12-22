@@ -43,18 +43,10 @@ public class FAQ_DAO extends DBConnPool {
 		if (map.get("category") != null) {
 			query += " where faq_category = '" + map.get("category") + "'";
 		}
-		
-		// 메인 페이지 FAQ 5개 출력
-		String main = "select * from faq_board where faq_num order by faq_num desc limit 0, 5 ";
 
 		try {
 			// 카테고리 선택X = sql, 카테고리 선택O = query로 입력
-			if (map.get("main") != null) {
-				psmt = con.prepareStatement(main);
-				System.out.println("a");
-				rs = psmt.executeQuery();
-				
-			} else if (map.get("category") == null || Integer.parseInt(map.get("category").toString()) == 0) {
+			if (map.get("category") == null || Integer.parseInt(map.get("category").toString()) == 0) {
 				psmt = con.prepareStatement(sql);
 				System.out.println("sql");
 				rs = psmt.executeQuery();
@@ -94,6 +86,21 @@ public class FAQ_DAO extends DBConnPool {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	// FAQ 삭제
+	public int deletePost(String faq_num) {
+		int result = 0;
+		try {
+		String sql = "delete from faq_board where faq_num=?";
+		psmt = con.prepareStatement(sql);
+		psmt.setString(1, faq_num);
+		result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("게시물 삭제 오류");
+			e.printStackTrace();
+		}
+		return result; // 정상적으로 삭제되었으면 result 결과는 1을 반환함 (true)
 	}
 
 }

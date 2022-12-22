@@ -12,15 +12,18 @@ li{
 
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow{
-  position: relative;
-  left: -16px;
-  max-width: 100%;
+  width: 1920px;
   height: 400px;
+  object-fit: cover;
+  max-width: 100%;
+  display: block;
   margin: 50px 0px;
   overflow: hidden;
-  /*리스트 형식으로 이미지를 일렬로 
+  position: relative;
+  left: -24px;
+  /* 리스트 형식으로 이미지를 일렬로 
   정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
-  hidden으로 숨겨줘야됨*/
+  hidden으로 숨겨줘야됨 */
 }
 
 
@@ -51,6 +54,7 @@ li{
   top: 50%;
   font-size: 1.3em;
   cursor: pointer;
+  visibility: hidden;
 }
 
 /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
@@ -81,7 +85,8 @@ li{
 .img {
 	display: none;
 	max-width: 100%;
-	height: auto;
+	width: 1900px;
+	height: 400px;
 }
 
 .img.on {

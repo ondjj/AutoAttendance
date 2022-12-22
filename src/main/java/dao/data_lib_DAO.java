@@ -46,10 +46,10 @@ public class data_lib_DAO extends DBConnPool {
 		//	검색할 단어가 없으면 전체 게시물 중 내림차순으로 10개 출력
 		String sql = "select * from data_library where data_num between ? and ? order by data_num desc ";
 		
-		// 검색한 단어가 있으면 전체 게시물 중 개수 제한 없이 출력
+		// 검색한 단어가 있으면
 		String query = "select * from data_library ";
 			if (map.get("searchWord") != null) {
-			query += " where " + map.get("searchField") + " like '%" + map.get("searchWord") + "%' "
+			query += " where data_subject like '%" + map.get("searchWord") + "%' "
 					+ " order by data_num desc limit ?, ? ";
 			}
 	
@@ -60,14 +60,12 @@ public class data_lib_DAO extends DBConnPool {
 				psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
 				psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
 				rs = psmt.executeQuery();
-				System.out.println("query, 검색했음");
 			}
 			else {
 			psmt = con.prepareStatement(sql);
 			psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
 			psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
 			rs = psmt.executeQuery();
-				System.out.println("sql, 검색안함");
 			}
 			while (rs.next()) {
 				data_lib_DTO dto = new data_lib_DTO();
