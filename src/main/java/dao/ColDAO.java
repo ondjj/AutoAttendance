@@ -1,7 +1,10 @@
 package dao;
 
+import java.util.ArrayList;
+
 import common.DBConnPool;
 import dto.ColMemberDTO;
+import dto.memberDTO;
 
 public class ColDAO extends DBConnPool{
 	
@@ -27,6 +30,38 @@ public class ColDAO extends DBConnPool{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public ArrayList<ColMemberDTO> getAllCol(){
+		
+		ArrayList<ColMemberDTO> arr = new ArrayList<>();
+		
+		try {
+			String sql = "select * from col_manage";
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ColMemberDTO cdto = new ColMemberDTO();
+				
+				cdto.setCol_status(rs.getString(1));
+				cdto.setCol_faculty(rs.getString(2));
+				cdto.setCol_major(rs.getString(3));
+				cdto.setCol_type(rs.getString(4));
+				cdto.setCol_second_faculty(rs.getString(5));
+				cdto.setCol_complete(rs.getString(6));
+				cdto.setMember_id(rs.getString(7));
+				
+				arr.add(cdto);
+			}
+			
+			con.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return arr;
+	
 	}
 	
 	public ColMemberDTO getCol(String id) {

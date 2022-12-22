@@ -77,6 +77,42 @@ public class MemberDAO extends DBConnPool{
 		return arr;
 	}
 	
+	public ArrayList<memberDTO> getAllAdmin() {
+		ArrayList<memberDTO> arr = new ArrayList<>();
+		
+		try {
+			String sql = "select * from member where admin_key = '0'";
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				memberDTO mdto = new memberDTO();
+				mdto.setId(rs.getString(1));
+				mdto.setPassword(rs.getString(2));
+				mdto.setPrivate_num(rs.getString(3));
+				mdto.setKr_name(rs.getString(4));
+				mdto.setEn_name(rs.getString(5));
+				mdto.setId_picture(rs.getString(6));
+				mdto.setPhone_num(rs.getString(7));
+				mdto.setEmail(rs.getString(8));
+				mdto.setAddress(rs.getString(9));
+				mdto.setAdmin_key(rs.getString(10));
+				mdto.setAge(rs.getInt(11));
+				mdto.setCollege_year(rs.getInt(12));
+				mdto.setGender(rs.getString(13));
+				
+				arr.add(mdto);
+			}
+			
+			con.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return arr;
+	}
+	
 	public memberDTO getMember(String id) {
 		
 		memberDTO mdto = new memberDTO();

@@ -8,10 +8,12 @@
  		 	<ul>
  				<li><a href="Main_IntroUniv.jsp">대학 소개</a></li>
  				<li><a href="Main_Calendar.jsp">학사 일정</a></li>
+ 				<li><a href="ClassListCon.do">강의실</a></li>
 				<c:choose>
 					<c:when test="${admin_key == '0' }">
 		 				<li><a href="./Anouncement_List.do">공지사항등록</a></li>
 						<li><a href="manager_page.jsp">관리자 페이지</a></li>
+						
 					</c:when>
 					<c:when test="${admin_key == '1' }">
 						<li><a href="./Anouncement_List.do">공지사항</a></li>

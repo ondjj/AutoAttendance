@@ -41,18 +41,17 @@ public class LoginCon extends HttpServlet {
 		String Lid = result.getId();
 		String Lpw = result.getPassword();
 		String rige_name = result.getId_picture();
+		String kr_name = result.getKr_name();
 		
 		if((id.equals(Lid) && pw.equals(Lpw))) {
 			HttpSession session = request.getSession();
 
 			session.setAttribute("id", id);
 			System.out.println(id);
-			session.setAttribute("pass", pw);
 			session.setAttribute("admin_key", result.getAdmin_key());
 			session.setAttribute("rige_name", rige_name);
-			System.out.println(rige_name + "널?");
+			session.setAttribute("kr_name", kr_name);
 			System.out.println(result.getAdmin_key());
-
 
 			session.setMaxInactiveInterval(60*60);
 			RequestDispatcher dis = request.getRequestDispatcher("MainPage.jsp");
