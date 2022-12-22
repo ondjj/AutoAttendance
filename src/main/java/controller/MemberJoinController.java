@@ -38,7 +38,7 @@ public class MemberJoinController extends HttpServlet {
 		
 		
 		String realFolder = "";
-		String saveFolder = "/uploads";
+		String saveFolder = "uploads";
 		String encType = "utf-8";
 		int maxSize = 1024 * 1024;
 		ServletContext context = getServletContext();

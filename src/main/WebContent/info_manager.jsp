@@ -34,39 +34,50 @@
 			id="sidenavAccordion">
 			<div class="sb-sidenav-menu">
 				<div class="nav">
+				
 					<div class="sb-sidenav-menu-heading">관리</div>
-					<a class="nav-link" href="Manager_page.jsp">
+					<a class="nav-link" href="manager_page.jsp">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-tachometer-alt"></i>
 						</div> 학사 일정 관리
 					</a>
 					
-					<a class="nav-link" href="manager_classRegister.jsp">
+					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts5" aria-expanded="false" aria-controls="collapseLayouts">
 						<div class="sb-nav-link-icon">
-							<i class="fas fa-tachometer-alt"></i>
-						</div> 강의 등록
+							<i class="fas fa-book-open"></i>
+						</div> 강의 관리
+						<div class="sb-sidenav-collapse-arrow">
+							<i class="fas fa-angle-down"></i>
+						</div>
 					</a>
 					
-					<a class="nav-link" href="ClassListCon.do">
+					<div class="collapse" id="collapseLayouts5"
+								aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+								<nav class="sb-sidenav-menu-nested nav">
+									<a class="nav-link" href="manager_classRegister.jsp">강의 등록	</a>
+									
+									<a class="nav-link" href="ClassListCon.do">	강의 목록</a>
+								</nav>
+					</div>
+					
+					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
 						<div class="sb-nav-link-icon">
-							<i class="fas fa-tachometer-alt"></i>
-						</div> 강의 목록
+							<i class="fas fa-book-open"></i>
+						</div> 멤버 관리
+						<div class="sb-sidenav-collapse-arrow">
+							<i class="fas fa-angle-down"></i>
+						</div>
 					</a>
 					
-					
-					
-					<a class="nav-link" href="manager_stuRegister.jsp">
-						<div class="sb-nav-link-icon">
-							<i class="fas fa-tachometer-alt"></i>
-						</div> 학생 등록
-					</a>
-					
-					<a class="nav-link" href="MemberListCon.do">
-						<div class="sb-nav-link-icon">
-							<i class="fas fa-tachometer-alt"></i>
-						</div> 학생 목록
-					</a>
-
+					<div class="collapse" id="collapseLayouts4"
+								aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+								<nav class="sb-sidenav-menu-nested nav">
+									<a class="nav-link" href="manager_stuRegister.jsp">멤버 등록</a>
+									
+									<a class="nav-link" href="MemberListCon.do">멤버 목록</a>
+								</nav>
+					</div>
+			
 					<div class="sb-sidenav-menu">
 						<div class="nav">
 							<div class="sb-sidenav-menu-heading">학적</div>

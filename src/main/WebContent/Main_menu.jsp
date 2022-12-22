@@ -25,6 +25,7 @@
  					</c:when>
 					<c:otherwise>
 						<li><a href="LogoutCon.do">로그아웃</a></li>
+						<li><a>${kr_name}님 환영합니다.</a></li>
 					</c:otherwise>
 				</c:choose>
  			</ul>
@@ -101,7 +102,7 @@ header{
 				<li class="nav-item"><a class="nav-link active" href="college_admission.jsp">입학 안내</a></li>
 				<li class="nav-item"><a class="nav-link active" href="JobCenter.jsp">대학 일자리센터</a></li> 
 				<li class="nav-item"><a class="nav-link active" href="location.jsp">오시는 길</a></li>
-				<li class="nav-item"><a class="nav-link active" href="/faq_list.do">FAQ</a></li>
+				<li class="nav-item"><a class="nav-link active" href="faq_list.do">FAQ</a></li>
 			</ul>
 		</div>
 	</div>
