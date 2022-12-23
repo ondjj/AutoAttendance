@@ -11,6 +11,7 @@ public class GradeDTO {
 	private int score2;
 	private int score3;
 	private String grade;
+	private int num;
 	
 	public String getMember_id() {
 		return member_id;
@@ -65,6 +66,12 @@ public class GradeDTO {
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
 	}
 	
 	

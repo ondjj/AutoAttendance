@@ -35,10 +35,10 @@
 						<br>
 						<form name="newWrite" class="form-horizontal" method="post" action="ObjectionListCon.do?view_del=${dto.obj_num }&&view_type=${dto.obj_type}">
 
-							<input name="obj_num" id="obj_num" type="hidden" class="form-control"
+							<%-- <input name="obj_num_hidden" id="obj_num_hidden" type="hidden" class="form-control"
 								value="${dto.obj_num }" />
-							<input name="obj_type" id="obj_type" type="hidden" class="form-control"
-								value="${dto.obj_type}" />
+							<input name="obj_type_hidden" id="obj_type_hidden" type="hidden" class="form-control"
+								value="${dto.obj_type}" /> --%>
 
 							<div class="form-group row">
 								<label class="col-sm-2 control-label"><strong>학번</strong></label>
@@ -81,10 +81,10 @@
 							<br>
 							<div class="form-group row" align="left">
 								<div class="col-sm-offset-2 col-sm-10">
-									<!-- <input type="submit" class="btn btn-danger" value="삭제" /> -->
-									<button type="button" class="btn btn-primary" onclick="send_update()">처리</button>
+									<input type="submit" class="btn btn-success" value="처리" />
+									<!-- <button type="submit" class="btn btn-primary" onclick="send_update()">처리</button> -->
 									<!-- <button type="button" class="btn btn-primary" onclick="ObjectionListCon.do?view_del=${dto.obj_num }&&view_type=${dto.obj_type}&&view_update=3">처리</button>-->
-									<button type="submit" class="btn btn-success">반려</button>
+									<button type="submit" class="btn btn-secondary">반려</button>
 								</div>
 							</div>
 						</form>

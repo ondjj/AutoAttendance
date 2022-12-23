@@ -37,7 +37,7 @@
 				<c:when test="${admin_key == '1' }">
 					<h1 class="mt-4">자료실</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="admin.jsp">마이페이지</a></li>
+						<li class="breadcrumb-item"><a href="AdminDashBoard.do">마이페이지</a></li>
 						<li class="breadcrumb-item active">기타</li>
 						<li class="breadcrumb-item active">자료실</li>
 					</ol>
@@ -45,7 +45,7 @@
 				<c:when test="${ admin_key == '0' }">
 					<h1 class="mt-4">자료실(관리자)</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="Manager_page.jsp">관리자 페이지</a></li>
+						<li class="breadcrumb-item"><a href="ObjectionListCon.do?type=1">관리자 페이지</a></li>
 						<li class="breadcrumb-item active">기타</li>
 						<li class="breadcrumb-item active">자료실</li>
 					</ol>

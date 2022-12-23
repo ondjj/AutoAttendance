@@ -45,7 +45,7 @@ function showSlide() {
 		current = 1;
 	}
 	images[current - 1].classList.add('on');
-	setTimeout(showSlide, 2000);
+	setTimeout(showSlide, 3500);
 }
 
 showSlide();

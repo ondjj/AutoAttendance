@@ -41,7 +41,7 @@ public class FAQ_DAO extends DBConnPool {
 		// 카테고리 선택 O 선택된 카테고리에 포함된 전체 게시물 출력
 		String query = "select * from faq_board ";
 		if (map.get("category") != null) {
-			query += " where faq_category = '" + map.get("category") + "'";
+			query += " where faq_category = '" + map.get("category") + "' order by faq_num desc";
 		}
 
 		try {

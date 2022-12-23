@@ -47,7 +47,7 @@
                         <h1 class="mt-4">성적 수정 입력</h1>
                         <hr>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active"><a href="Manager_page.jsp">관리자 페이지</a></li>
+                            <li class="breadcrumb-item active"><a href="ObjectionListCon.do?type=1">관리자 페이지</a></li>
                             <li class="breadcrumb-item active">성적 관리</li>
                             <li class="breadcrumb-item active">성적 수정</li>
                         </ol>
@@ -60,32 +60,34 @@
                                         학생 성적 입력
                                     </div>
                                     
-                                    <form action="grade.do?id=2" method="post" name="grade_insert" onsubmit="return checkForm()">
+                                    <form action="grade.do?type=3" method="post" name="grade_insert" onsubmit="return checkForm()">
 	                                    <div class="card-body">
 	                                    	<table class="table table-hover">
 	                                    	  <tr>
 	                                    	  	<td rowspan="5">
 	                                    	  	</td>
 	                                    	  </tr>
+											  	<input type="hidden" name="grade_num" value="${grade_dto.num }"/>
+											  	<input type="hidden" name="obj_num" value="${obj_dto.obj_num }"/>
 											  <tr>
 											    <th class="table-active">학번</th>
-											    	<td><input type="text" name="member_id" value="<%=request.getParameter("memberid") %>" readonly/></td>
+											    	<td><input type="text" name="member_id" value="${obj_dto.obj_memberid }" readonly/></td>
 											    <th class="table-active">이수 학기</th>
-											    	<td><input type="text" name="year_term" /></td>
+											    	<td><input type="text" name="year_term" value="${grade_dto.year_term }" readonly /></td>
 											    <th class="table-active">이름</th>
-											    	<td><input type="text" name="name" value="<%=request.getParameter("name") %>" readonly/></td>
+											    	<td><input type="text" name="name" value="${obj_dto.obj_name }" readonly/></td>
 											    <th class="table-active">전공</th>
-											    	<td><input type="text" name="major" value="<%=request.getParameter("faculty") %>" readonly/></td>
+											    	<td><input type="text" name="major" value="${obj_dto.obj_faculty }" readonly/></td>
 											  </tr>
 											  <tr>
 											    <th class="table-active">과목</th>
-											    	<td><input type="text" name="subject" value="<%=request.getParameter("subject") %>" readonly/></td>
+											    	<td><input type="text" name="subject" value="${obj_dto.obj_subject }" readonly/></td>
 											    <th class="table-active">중간고사 성적</th>
-											    	<td><input type="text" name="score1" /></td>
+											    	<td><input type="text" name="score1" value="${grade_dto.score1 }"/></td>
 											    <th class="table-active">기말고사 성적</th>
-											    	<td><input type="text" name="score2" /></td>
+											    	<td><input type="text" name="score2" value="${grade_dto.score2 }"/></td>
 											    <th class="table-active">기타 성적</th>
-											    	<td><input type="text" name="score3" /></td>
+											    	<td><input type="text" name="score3" value="${grade_dto.score3 }"/></td>
 											  </tr>
 											</table>
 											<button type="submit" class="btn btn-primary">수정</button>

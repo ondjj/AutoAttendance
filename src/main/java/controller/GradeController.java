@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.GradeDAO;
+import dao.ObjectionDAO;
 import dto.GradeDTO;
 
 @WebServlet("/grade.do")
@@ -35,10 +36,11 @@ public class GradeController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String type = (String)request.getSession().getAttribute("id");
-		if(type.equals("1")) {
+		String type = request.getParameter("type");
+		
+		if(type.equals("2")) {
 			System.out.println("insertcon진입");
-			
+		
 			GradeDTO insert_dto = new GradeDTO();
 			insert_dto.setMember_id(request.getParameter("member_id"));
 			insert_dto.setYear_term(request.getParameter("year_term"));
@@ -51,12 +53,12 @@ public class GradeController extends HttpServlet {
 			
 			GradeDAO dao = new GradeDAO();
 			int result = dao.insert_grade(insert_dto);
-			
+			dao.close();
 			response.sendRedirect("manager_gradeInsert.jsp");
-		}else {
+		}else { // 성적 열람 페이지 진입 시 현재 학기 성적과 직전 학기 성적 출력해주는 기능
 			GradeDAO dao = new GradeDAO();
 
-			if(request.getParameter("id").equals("1")) {
+			if(type.equals("1")) {
 				
 				String tempid = (String)request.getSession().getAttribute("id");
 				LocalDate now = LocalDate.now();
@@ -82,11 +84,11 @@ public class GradeController extends HttpServlet {
 				past_gradeList = dao.call_pastgradeList(tempid, this_semester);
 				
 				
-				
+				dao.close();
 				request.setAttribute("gradeList", gradeList);
 				request.setAttribute("past_gradeList", past_gradeList);
 				request.getRequestDispatcher("/GradeManagement.jsp").forward(request, response);
-			}else if(request.getParameter("id").equals("2")) {
+			}else if(type.equals("3")) {
 				
 				GradeDTO update_dto = new GradeDTO();
 				update_dto.setMember_id(request.getParameter("member_id"));
@@ -97,8 +99,15 @@ public class GradeController extends HttpServlet {
 				update_dto.setScore1(Integer.parseInt(request.getParameter("score1")));
 				update_dto.setScore2(Integer.parseInt(request.getParameter("score2")));
 				update_dto.setScore3(Integer.parseInt(request.getParameter("score3")));
+				update_dto.setNum(Integer.parseInt(request.getParameter("grade_num")));
 				
 				int result = dao.update_grade(update_dto);
+				
+				ObjectionDAO obj_dao = new ObjectionDAO();
+				obj_dao.objDelete(request.getParameter("obj_num"));
+				
+				
+				dao.close();
 				
 				response.sendRedirect("ObjectionListCon.do?type=3");
 				

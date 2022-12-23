@@ -19,7 +19,7 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">학적 변경</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="admin.jsp">마이페이지</a></li>
+                            <li class="breadcrumb-item"><a href="AdminDashBoard.do">마이페이지</a></li>
                             <li class="breadcrumb-item active">학적 관련 신청</li>
                             <li class="breadcrumb-item active">학적 변경 신청</li>
                         </ol>
@@ -62,19 +62,19 @@
 										  <tr>
 										  <%-- 학적 관련 DTO다시 확인 후 입력할 것 --%>
 										    <th class="table-active">학부</th>
-										    	<td><input type="text" name="*" readonly/></td>
+										    	<td><input type="text" name="col_faculty" value="${col_dto.col_faculty }" readonly/></td>
 										    <th class="table-active">전공</th>
-										    	<td><input type="text" name="*" readonly/></td>
+										    	<td><input type="text" name="col_manager" value="${col_dto.col_major }" readonly/></td>
 										    <th class="table-active">이수학기</th>
-										    	<td><input type="text" name="*" readonly/></td>
+										    	<td><input type="text" name="col_complete" value="${col_dto.col_complete }" readonly/></td>
 										  </tr>
 										 <tr>
 										    <th class="table-active">입학구분</th>
-										    	<td><input type="text" name="*" readonly/></td>
+										    	<td><input type="text" name="col_type" value="${col_dto.col_type }" readonly/></td>
 										    <th class="table-active">학적상태</th>
-										    	<td><input type="text" name="*" readonly/></td>
+										    	<td><input type="text" name="col_status" value="${col_dto.col_status }" readonly/></td>
 										    <th class="table-active">복수전공</th>
-										    	<td><input type="text" name="*" readonly/></td>
+										    	<td><input type="text" name="col_second_faculty" value="${col_dto.col_second_faculty }" readonly/></td>
 										  </tr>
 										<!-- </table> -->
 										<tr><td><b>변경 정보</b></td></tr>

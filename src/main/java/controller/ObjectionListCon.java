@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.GradeDAO;
 import dao.ObjectionDAO;
+import dto.GradeDTO;
 import dto.ObjectionDTO;
 import utils.ObjectionBoardPage;
 
@@ -104,6 +106,7 @@ public class ObjectionListCon extends HttpServlet {
 				request.setAttribute("objList", atten_objList);
 				request.setAttribute("map", map);
 				
+				dao.close();
 				RequestDispatcher dis = request.getRequestDispatcher("manager_attendanceObjection.jsp");
 				dis.forward(request, response);
 				
@@ -131,6 +134,7 @@ public class ObjectionListCon extends HttpServlet {
 				request.setAttribute("objList", col_objList);
 				request.setAttribute("map", map);
 				
+				dao.close();
 				RequestDispatcher dis = request.getRequestDispatcher("manager_updateCollege.jsp");
 				dis.forward(request, response);
 			}else if(obj_type.equals("3")) { // 성적
@@ -157,6 +161,7 @@ public class ObjectionListCon extends HttpServlet {
 				request.setAttribute("objList", grade_objList);
 				request.setAttribute("map", map);
 				
+				dao.close();
 				RequestDispatcher dis = request.getRequestDispatcher("manager_gradeObjection.jsp");
 				dis.forward(request, response);
 				
@@ -186,6 +191,7 @@ public class ObjectionListCon extends HttpServlet {
 				request.setAttribute("objList", certifi_objList);
 				request.setAttribute("map", map);
 				
+				dao.close();
 				RequestDispatcher dis = request.getRequestDispatcher("manager_certificate.jsp");
 				dis.forward(request, response);
 			}
@@ -202,7 +208,7 @@ public class ObjectionListCon extends HttpServlet {
 				
 				dto = dao.attenObjView(obj_num);
 				
-				
+				dao.close();
 				request.setAttribute("dto", dto);
 				RequestDispatcher dis = request.getRequestDispatcher("manager_attendanceObjectionView.jsp");
 				dis.forward(request, response);
@@ -214,7 +220,7 @@ public class ObjectionListCon extends HttpServlet {
 				
 				dto = dao.colObjView(obj_num);
 				
-				
+				dao.close();
 				request.setAttribute("dto", dto);
 				RequestDispatcher dis = request.getRequestDispatcher("manager_colObjectionView.jsp");
 				dis.forward(request, response);
@@ -226,7 +232,7 @@ public class ObjectionListCon extends HttpServlet {
 				
 				dto = dao.gradeObjView(obj_num);
 				
-				
+				dao.close();
 				request.setAttribute("dto", dto);
 				RequestDispatcher dis = request.getRequestDispatcher("manager_gradeObjectionView.jsp");
 				dis.forward(request, response);
@@ -239,6 +245,7 @@ public class ObjectionListCon extends HttpServlet {
 				dto = dao.certifiObjView(obj_num);
 				request.setAttribute("obj_type_name", request.getParameter("type_name"));
 				request.setAttribute("dto", dto);
+				dao.close();
 				RequestDispatcher dis = request.getRequestDispatcher("manager_certifiObjectionView.jsp");
 				dis.forward(request, response);
 			}
@@ -250,17 +257,9 @@ public class ObjectionListCon extends HttpServlet {
 			String obj_num = request.getParameter("view_del");
 			String view_type = request.getParameter("view_type");
 			
-			// 수정 버튼으로 작업한 후에 삭제할것인가?
-			if(request.getParameter("view_update")!=null) {
-				
-				
-			}
-			
-			
-			
-			dao.objDelete(obj_num);
-			
 			if(view_type.equals("1")){ // 출결 리스트로 되돌리기
+				
+				dao.objDelete(obj_num);
 				
 				int totalCount = dao.selectCount(map, 1); // 게시물의 개수 저장
 				// 출결정정 type 1전달
@@ -283,10 +282,13 @@ public class ObjectionListCon extends HttpServlet {
 				request.setAttribute("objList", atten_objList);
 				request.setAttribute("map", map);
 				
+				dao.close();
 				RequestDispatcher dis = request.getRequestDispatcher("manager_attendanceObjection.jsp");
 				dis.forward(request, response);
 				
 			}else if(view_type.equals("2")) { // 학적 리스트로 되돌리기
+				
+				dao.objDelete(obj_num);
 				
 				int totalCount = dao.selectCount(map, 2); // 게시물의 개수 저장
 				// 학적정정 type 2전달
@@ -309,40 +311,34 @@ public class ObjectionListCon extends HttpServlet {
 				request.setAttribute("objList", col_objList);
 				request.setAttribute("map", map);
 				
+				dao.close();
 				RequestDispatcher dis = request.getRequestDispatcher("manager_updateCollege.jsp");
 				dis.forward(request, response);
 				
 				
-			}else if(view_type.equals("3")) { // 성적 리스트로 되돌리기
+			}else if(view_type.equals("3")) { // 성적 수정으로 보내기
 				
-				int totalCount = dao.selectCount(map, 3); // 게시물의 개수 저장
-				// 성적 정정 type 3 전달
-				System.out.println("totalCount : " + totalCount);
+				ObjectionDTO obj_dto = new ObjectionDTO();
+				obj_dto = dao.gradeObjView(obj_num);
 				
-				map.put("start", start);
-				map.put("end", end);
+				GradeDAO grade_dao = new GradeDAO();
+				GradeDTO grade_dto = new GradeDTO();
+				grade_dto = grade_dao.get_target_grade(obj_dto.getObj_memberid(), obj_dto.getObj_faculty(), obj_dto.getObj_subject());
 				
-				List<ObjectionDTO> grade_objList = new ArrayList<>();
-				grade_objList = dao.gradeObjList(map);
 				
-				// 뷰에 전달할 매개변수 추가
-				String pagingImg = ObjectionBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, "./ObjectionListCon.do?type=3");
-				
-				map.put("pagingImg", pagingImg);
-				map.put("totalCount", totalCount);
-				map.put("pageSize", pageSize);
-				map.put("pageNum", pageNum);
-				
-				request.setAttribute("objList", grade_objList);
-				request.setAttribute("map", map);
-				
-				RequestDispatcher dis = request.getRequestDispatcher("manager_gradeObjection.jsp");
+				request.setAttribute("obj_dto", obj_dto);
+				request.setAttribute("grade_dto", grade_dto);
+				dao.close();
+				RequestDispatcher dis = request.getRequestDispatcher("manager_gradeObjectionUpdate.jsp");
 				dis.forward(request, response);
+				
 				
 			}else { // 증명서 리스트로 되돌리기
 				
+				dao.objDelete(obj_num);
+				
 				int totalCount = dao.selectCount(map, 4); // 게시물의 개수 저장
-				// 성적 정정 type 3 전달
+				// 증명서 정정 신청 type 4 전달
 				System.out.println("totalCount : " + totalCount);
 				
 				map.put("start", start);
@@ -362,6 +358,7 @@ public class ObjectionListCon extends HttpServlet {
 				request.setAttribute("objList", certifi_objList);
 				request.setAttribute("map", map);
 				
+				dao.close();
 				RequestDispatcher dis = request.getRequestDispatcher("manager_certificate.jsp");
 				dis.forward(request, response);
 			}
