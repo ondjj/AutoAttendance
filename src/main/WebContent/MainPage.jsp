@@ -16,6 +16,7 @@
 	String today = now.toString();
 	cal_list = cal_dao.main_cal(today);
 	request.setAttribute("cal_list", cal_list);
+	cal_dao.close();
 	
 	Map<String, Object> map = new HashMap<String, Object>();
 	String main = "";
@@ -93,7 +94,13 @@ a:hover {
 		<ul class="slides" id="testid">
 			<li><img src="./resources/img/main_image01.jpg"
 				class="img img-responsive" alt="Responsive image"></li>
-			<li><img src="./resources/img/1900x400_1.jpg"
+			<li><img src="./resources/img/main_slide1.jpg"
+				class="img img-responsive" alt="Responsive image"></li>
+			<li><img src="./resources/img/main_slide2.jpg"
+				class="img img-responsive" alt="Responsive image"></li>
+			<li><img src="./resources/img/main_slide3.png"
+				class="img img-responsive" alt="Responsive image"></li>
+			<li><img src="./resources/img/main_slide4.jpg"
 				class="img img-responsive" alt="Responsive image"></li>
 		</ul>
 		<p class="controller">
@@ -106,11 +113,11 @@ a:hover {
 	
 	<div class="ccc">
 			<div id="anchorboard"
-				class="card text-white bg-secondary my-5 py-4 text-center"></div>
+				class="card text-white bg-secondary my-5 py-3 text-center"></div>
 			<!-- Content Row-->
 			<div class="row" style="margin-bottom: 50px;">
 				<div class="col">
-					<div class="card h-100">
+					<div class="card h-100" style="border: solid 3px #F27C02; border-radius: 10px;">
 						<div id="anchorboard" class="card-body">
 							<a href="./Anouncement_List2.do">
 							<h2	class="card-title text-center">
@@ -140,7 +147,7 @@ a:hover {
 					</div>
 				</div>
 				<div class="col">
-					<div class="card h-100">
+					<div class="card h-100" style="border: solid 3px #F27C02; border-radius: 10px;">
 						<div id="anchorboard" class="card-body">
 							<a href="Main_Calendar.jsp"><h2
 									class="card-title text-center">학사일정</h2></a>
@@ -170,7 +177,7 @@ a:hover {
 			</div>
 			<div class="row" style="margin-bottom: 50px;">
 				<div class="col">
-					<div class="card h-100">
+					<div class="card h-100" style="border: solid 3px #F27C02; border-radius: 10px;">
 						<div id="anchorboard" class="card-body">
 							<!-- 헤드라인 -->
 							<div id='headLine' style="text-align: center;">
@@ -182,7 +189,7 @@ a:hover {
 								<a href="" id="news_num">
 									<img id="news_image_slide" src="" class="news_img" 
 										style="width: 900px;
-										height: 200px;
+										height: 250px;
 									  	object-fit: fill;
 									  	max-width: 100%;
 									  	display: block;">
@@ -193,9 +200,9 @@ a:hover {
 				</div>
 
 				<div class="col">
-					<div class="card h-100">
+					<div class="card h-100" style="border: solid 3px #F27C02; border-radius: 10px;">
 						<div id="anchorboard" class="card-body">
-							<a href="/qna_list.do"><h2 class="card-title text-center">Q&A</h2></a>
+							<a href="qna_list.do"><h2 class="card-title text-center">Q&A</h2></a>
 							<hr class="card-divider">
 								<table class="table" id="datatablesSimple">
 									<!-- 이쪽 부분에 대해 DB에서 파일 제목을 최신순으로 5개 받아오면서 해당 링크로도 같이 받아올 수 있도록 생성 -->
@@ -228,7 +235,7 @@ a:hover {
 				</div>
 			</div>
 			<div id="anchorboard"
-				class="card text-white bg-secondary my-5 py-4 text-center"></div>
+				class="card text-white bg-secondary my-5 py-3 text-center"></div>
 	</div>
 	
 	<script type="text/javaScript" src="./resources/js/slide.js"></script>

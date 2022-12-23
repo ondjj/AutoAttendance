@@ -48,7 +48,7 @@ public class CalendarCon extends HttpServlet {
 		if(num.equals("0")) { // Load All Calendar Data    (R)
 			
 			String jsonArr = dao.load_calendar();
-			
+			dao.close();
 			//jsonArr = (JSONArray) dao.load_calendar();
 			// jsonArr = dao.load_calendar();
 			
@@ -59,6 +59,7 @@ public class CalendarCon extends HttpServlet {
 			log(jsonArr);
 			pw.print(jsonArr);
 			pw.flush();
+			pw.close();
 			
 		}else if(num.equals("1")){ // Resize Calendar   (U)
 			System.out.println("getParameter"+request.getParameter("id"));

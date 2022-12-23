@@ -55,7 +55,7 @@
 					<h1 class="mt-4">성적 정정 신청</h1>
 					<hr>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item active"><a href="admin.jsp">마이페이지</a></li>
+						<li class="breadcrumb-item active"><a href="AdminDashBoard.do">마이페이지</a></li>
 						<li class="breadcrumb-item active">성적 관리</li>
 						<li class="breadcrumb-item active">성적 정정 신청</li>
 					</ol>

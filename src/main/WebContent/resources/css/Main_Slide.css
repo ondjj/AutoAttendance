@@ -13,11 +13,11 @@ li{
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow{
   width: 1920px;
-  height: 400px;
+  height: 500px;
   object-fit: cover;
   max-width: 100%;
   display: block;
-  margin: 50px 0px;
+  margin: 0px 0px 50px;
   overflow: hidden;
   position: relative;
   left: -24px;
@@ -86,7 +86,7 @@ li{
 	display: none;
 	max-width: 100%;
 	width: 1900px;
-	height: 400px;
+	height: 500px;
 }
 
 .img.on {

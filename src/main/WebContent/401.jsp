@@ -23,7 +23,7 @@
                                     <h1 class="display-1">401</h1>
                                     <p class="lead">Unauthorized</p>
                                     <p>현재 학적 상태로는 불가능한 접근입니다.</p>
-                                    <a href="admin.jsp">
+                                    <a href="AdminDashBoard.do">
                                         <i class="fas fa-arrow-left me-1"></i>
                                         학생관리페이지로 이동
                                     </a>

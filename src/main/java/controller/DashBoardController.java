@@ -37,10 +37,8 @@ public class DashBoardController extends HttpServlet {
 		System.out.println("Dash_Controller");
 		String id = (String)request.getSession().getAttribute("id");
 		System.out.println("load_dash_session_id : " + id);
+		
 		GradeDAO dao = new GradeDAO();
-		
-		
-		
 		
 		// 성적 개요 출력
 		List<String> year_term_list = new ArrayList();

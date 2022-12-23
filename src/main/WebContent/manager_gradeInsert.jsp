@@ -47,7 +47,7 @@
                         <h1 class="mt-4">성적 입력</h1>
                         <hr>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active"><a href="Manager_page.jsp">관리자 페이지</a></li>
+                            <li class="breadcrumb-item active"><a href="ObjectionListCon.do?type=1">관리자 페이지</a></li>
                             <li class="breadcrumb-item active">성적 관리</li>
                             <li class="breadcrumb-item active">성적 입력</li>
                         </ol>
@@ -60,7 +60,7 @@
                                         학생 성적 입력
                                     </div>
                                     
-                                    <form action="grade.do?id=1" method="post" name="grade_insert" onsubmit="return checkForm()">
+                                    <form action="grade.do?type=2" method="post" name="grade_insert" onsubmit="return checkForm()">
 	                                    <div class="card-body">
 	                                    	<table class="table table-hover">
 	                                    	  <tr>

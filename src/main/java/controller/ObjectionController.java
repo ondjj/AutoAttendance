@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ColDAO;
 import dao.MemberDAO;
 import dao.ObjectionDAO;
 import dto.ObjectionDTO;
@@ -49,6 +50,7 @@ public class ObjectionController extends HttpServlet {
 			
 			ObjectionDAO dao = new ObjectionDAO();
 			dao.insert_attenObj(dto);
+			dao.close();
 			
 			response.sendRedirect("AttendanceManagement.jsp");
 			
@@ -74,6 +76,7 @@ public class ObjectionController extends HttpServlet {
 			
 			ObjectionDAO dao = new ObjectionDAO();
 			dao.insert_colObj(dto);
+			dao.close();
 			
 			response.sendRedirect("objection.do?obj_type=5");
 			
@@ -91,8 +94,9 @@ public class ObjectionController extends HttpServlet {
 			
 			ObjectionDAO dao = new ObjectionDAO();
 			dao.insert_gradeObj(dto);
+			dao.close();
 			
-			response.sendRedirect("GradeManagement.jsp");
+			response.sendRedirect("grade.do?type=1");
 			
 		}else if(obj_type.equals("4")){
 			System.out.println("obj_type : 증명서 발급 신청");
@@ -105,6 +109,7 @@ public class ObjectionController extends HttpServlet {
 			memberDTO mdto = new memberDTO();
 			MemberDAO mdao = new MemberDAO();
 			mdto = mdao.getMember(id);			
+			mdao.close();
 			
 			List<Integer> count_list = new ArrayList<>();
 			List<String> content_list = new ArrayList<>();
@@ -155,6 +160,7 @@ public class ObjectionController extends HttpServlet {
 				type_list.add(9);
 			}
 			odao.insert_certifiObj(id, mdto.getKr_name(), type_list, count_list, content_list);
+			odao.close();
 			
 			response.sendRedirect("certificate.jsp");
 			
@@ -162,12 +168,18 @@ public class ObjectionController extends HttpServlet {
 			
 			String member_id = (String)request.getSession().getAttribute("id");
 			
-			MemberDAO dao = new MemberDAO();
+			MemberDAO member_dao = new MemberDAO();
 			memberDTO member_dto = new memberDTO();
+			member_dto = member_dao.getMemberCol(member_id);
+			member_dao.close();
 			
-			member_dto = dao.getMemberCol(member_id);
+			ColDAO col_dao = new ColDAO();
+			ColMemberDTO col_dto = new ColMemberDTO();
+			col_dto = col_dao.getCol(member_id);
+			col_dao.close();
 			
 			request.setAttribute("member_dto", member_dto);
+			request.setAttribute("col_dto", col_dto);
 			RequestDispatcher dis = request.getRequestDispatcher("updateCollege.jsp");
 			dis.forward(request, response);
 		}

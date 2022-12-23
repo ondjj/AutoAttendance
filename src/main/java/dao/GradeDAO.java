@@ -34,7 +34,7 @@ public class GradeDAO extends DBConnPool{
 				board.add(dto);
 			}
 		}catch(Exception e) {
-			System.out.println("Exception in DAO");
+			System.out.println("Exception in GradeDAO");
 			e.printStackTrace();
 		}
 		return board;
@@ -96,7 +96,7 @@ public class GradeDAO extends DBConnPool{
 				board.add(dto);
 			}
 		}catch(Exception e) {
-			System.out.println("Exception in DAO");
+			System.out.println("Exception in GradeDAO");
 			e.printStackTrace();
 		}
 		return board;
@@ -253,7 +253,7 @@ public class GradeDAO extends DBConnPool{
 		public int update_grade(GradeDTO dto) {
 			
 			// String sql = "insert into grade_manage(member_id, year_term, name, major, subject, score1, score2, score3) values(?,?,?,?,?,?,?,?)";
-			String sql = "update grade_manage set year_term=?, score1=?, score2=?, score3=? where member_id=?"; 
+			String sql = "update grade_manage set year_term=?, score1=?, score2=?, score3=? where num=?"; 
 			int result = 0;
 			try {
 				
@@ -262,7 +262,7 @@ public class GradeDAO extends DBConnPool{
 				psmt.setInt(2, dto.getScore1());
 				psmt.setInt(3, dto.getScore2());
 				psmt.setInt(4, dto.getScore3());
-				psmt.setString(5, dto.getMember_id());
+				psmt.setInt(5, dto.getNum());
 				result = psmt.executeUpdate();
 				
 			}catch(Exception e) {
@@ -272,7 +272,37 @@ public class GradeDAO extends DBConnPool{
 			return result;
 		}
 	
-	
+		public GradeDTO get_target_grade(String memberid, String major, String subject) {
+			
+			String sql = "select * from grade_manage where member_id=? and major=? and subject=?";
+			
+			GradeDTO grade_dto = new GradeDTO();
+			try {
+				
+				psmt = con.prepareStatement(sql);
+				psmt.setString(1, memberid);
+				psmt.setString(2, major);
+				psmt.setString(3, subject);
+				rs = psmt.executeQuery();
+				
+				while (rs.next()) {
+					
+					grade_dto.setMember_id(rs.getString(1));
+					grade_dto.setYear_term(rs.getString(2));
+					grade_dto.setName(rs.getString(3));
+					grade_dto.setMajor(rs.getString(4));
+					grade_dto.setSubject(rs.getString(5));
+					grade_dto.setScore1(rs.getInt(6));
+					grade_dto.setScore2(rs.getInt(7));
+					grade_dto.setScore3(rs.getInt(8));
+					grade_dto.setNum(rs.getInt("num"));
+				}
+			}catch(Exception e) {
+				System.out.println("Exception in GradeDAO");
+				e.printStackTrace();
+			}
+			return grade_dto;
+		}
 	
 	
 	

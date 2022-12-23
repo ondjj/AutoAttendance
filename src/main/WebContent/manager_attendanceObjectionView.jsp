@@ -26,7 +26,7 @@
 					 <h1 class="mt-4">출결 정정 신청</h1>
                         <hr>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="manager_page.jsp">관리자 페이지</a></li>
+                            <li class="breadcrumb-item"><a href="ObjectionListCon.do?type=1">관리자 페이지</a></li>
                             <li class="breadcrumb-item active">출결</li>
                             <li class="breadcrumb-item active">출결정정신청내용</li>
                         </ol>

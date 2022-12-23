@@ -2,7 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ColDAO;
+import dao.GradeDAO;
 import dao.MemberDAO;
 import dto.ColMemberDTO;
 import dto.memberDTO;
@@ -50,13 +54,35 @@ public class AdminDashBoard extends HttpServlet {
 		
 		
 		System.out.println(mdto.getId_picture() + "jsp");
+		
 		request.setAttribute("cdto", cdto);
 		request.setAttribute("mdto", mdto);
 		request.setAttribute("face", face);
 		request.setAttribute("img", mdto.getId_picture());
 		request.setAttribute("rd", rd);
-		RequestDispatcher dis = request.getRequestDispatcher("admin.jsp");
-		dis.forward(request, response);
+		
+		GradeDAO dao = new GradeDAO();
+		
+		// 성적 개요 출력
+		List<String> year_term_list = new ArrayList();
+		year_term_list = dao.year_term_list(id);
+		
+		List<Map<String, Object>> dashList = new ArrayList<>();
+		dashList = dao.call_dashGrade(year_term_list, id);
+
+		if(dashList.size()==0) {
+			request.setAttribute("dashList", dashList);
+			request.getRequestDispatcher("/admin.jsp").forward(request, response);
+		}else {
+			List<Object> grade_footer = new ArrayList();
+			grade_footer = dao.dash_grade_footer(dashList);
+			request.setAttribute("dashList", dashList);
+			request.setAttribute("total_lecture", grade_footer.get(0));
+			request.setAttribute("total_grade", grade_footer.get(1));
+			request.getRequestDispatcher("/admin.jsp").forward(request, response);
+		}
+		//RequestDispatcher dis = request.getRequestDispatcher("admin.jsp");
+		//dis.forward(request, response);
 	}
 
 }

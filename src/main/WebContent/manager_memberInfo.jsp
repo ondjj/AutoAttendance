@@ -23,7 +23,7 @@
 			<div class="container-fluid px-4">
 				<h1 class="mt-4">학생 정보 상세</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="manager_page.jsp">관리자
+					<li class="breadcrumb-item"><a href="ObjectionListCon.do?type=1">관리자
 							페이지</a></li>
 					<li class="breadcrumb-item active">학적</li>
 					<li class="breadcrumb-item active">학생</li>
