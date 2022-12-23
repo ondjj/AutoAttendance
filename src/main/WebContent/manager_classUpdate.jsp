@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>강의 등록</title>
+<title>강의 수정</title>
 
 <!-- <!-- Bootstrap CSS -->
 <link rel="stylesheet"
@@ -46,71 +46,33 @@ body {
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3">강의 등록</h4>
+				<h4 class="mb-3">강의 수정</h4>
 				<div align="center">
-					<form class="validation-form" action="ClassJoinCon.do" enctype="multipart/form-data" method="post">
+					<form class="validation-form" action="ClassUpdate.do"  method="post">
+						<input type="hidden" name="postNum" value="${cdto.postNum}">
+						<input type="hidden" name="subject" value="${cdto.subject}">
 						<table>
-
-							<tr class="mb-3">
-								<td><label>강의명</label> <input type="text"
-									class="form-control" name="subject" placeholder="자료구조 / 알고리즘"
-									required>
-									<div class="invalid-feedback">강의 제목을 입력해주세요.</div>
-									<br>	
-								</td>
-									
-							</tr>
-							
 							<tr class="mb-3">
 								<td><label>담당 교수</label> <input type="text"
-									class="form-control" name="professor" value="${kr_name}" required>
-									<div class="invalid-feedback">담당 교수를 입력해주세요.</div>
-									<br>	
+									class="form-control" name="professor" value="${cdto.professor}" required>
+									<div class="invalid-feedback"></div>
+									<br>
 								</td>
 									
-							</tr>
-							
-							<tr class="row">
-								<td class="col-md-4 mb-3"><label>신설 여부</label> <select
-									class="custom-select d-block w-100" name="check">
-										<option>--</option>
-										<option value="1">신설</option>
-										<option value="0">기존</option>
-								</select>
-								</td>
 							</tr>
 
 							<tr class="mb-3">
 								<td><label>커리큘럼</label> <input type="text"
-									class="form-control" name="lecture_name" placeholder="Stack overFlow"
+									class="form-control" name="lecture_name" value="${cdto.lecture_name}"
 									required>
-									<div class="invalid-feedback">커리큘럼을 입력해주세요.</div>
+									<div class="invalid-feedback"></div>
 									<br>
 								</td>
 							</tr>
-							
-							<tr class="mb-3">
-								<td><label>개설 일자</label> <input type="date"
-									class="form-control" name="class_date" value="2022-12-20" min="2022-12-21" max="2023-12-31" 
-									required>
-									<div class="invalid-feedback">개설 일을 입력하세요.</div>
-									<br>
-								</td>
-							</tr>
-							
 
-							<tr class="mb-3">
-								<td>
-									<label>대표이미지</label>
-									<br>
-										<input type="file" name="subject_img">
-										<br><br>
-								</td>
-							</tr>
-							
 							<tr class="mb-4">
 								<td>
-									<input class="btn btn-primary btn-lg btn-block"	type="submit" value="강의 등록 완료">
+									<input class="btn btn-primary btn-lg btn-block"	type="submit" value="강의 수정 완료">
 								</td>
 							</tr>
 						</table>

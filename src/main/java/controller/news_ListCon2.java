@@ -22,8 +22,8 @@ import dao.news_DAO;
 import dto.News_DTO;
 import utils.BoardPage;
 
-@WebServlet("/news_List.do")
-public class news_ListCon extends HttpServlet {
+@WebServlet("/news_List2.do")
+public class news_ListCon2 extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		news_DAO dao = new news_DAO(); // DAO 객체 생성
@@ -76,8 +76,9 @@ public class news_ListCon extends HttpServlet {
 		request.setAttribute("map", map);
 		request.setAttribute("searchWord", map.get("searchWord"));
 		
-		request.getRequestDispatcher("/news_List.jsp").forward(request, response);
-			
+		
+		request.getRequestDispatcher("/Main_news_List.jsp").forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -50,13 +50,7 @@
                         	<a>교수명</a> <a>${arr[status.index].getProfessor()}</a><br>
                         	<a>소속</a> <a>${cdto[status.index].getCol_major()}</a><br>
                         	<a>강좌 개설일</a> <a>${arr[status.index].getClass_date()}</a><br>
-                        	<a class="btn btn-primary btn-sm" href="#!">상세 정보</a>
-                        	<%-- <c:choose> --> 상세 페이지에서 추가하는걸로 변경
-	                        	<c:when test="${admin_key == '0' }">
-	                        	  <a class="btn btn-info btn-sm" href="#!">정보 수정</a>
-	                        	  <button type="button" class="btn btn-danger btn-sm" onclick="button_event();">삭제</button>
-	                        	</c:when>
-                        	</c:choose> --%>
+                        	<a class="btn btn-primary btn-sm" href="./ClassView.do?subject=${arr[status.index].getSubject()}">상세 정보</a>
                         </div>
                     </div>
                 </div>
@@ -70,15 +64,6 @@
 	<jsp:include page="Main_footer.jsp"></jsp:include>
 
 
-	<script>
-	function button_event(){
-		  if (confirm("정말 삭제하시겠습니까?") == true){    //확인
-		      document.removeCla.submit();
-		  }else{   //취소
-		      return;
-		  }
-		}
-	</script>
 	<script src="js/scripts.js"></script>
 </body>
 </html>
