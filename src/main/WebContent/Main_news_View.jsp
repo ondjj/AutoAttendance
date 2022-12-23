@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>International College</title>
+<title>뉴스</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
 	href="./resources/assets/favicon.ico" />
@@ -69,9 +69,9 @@
 							</table>
 							<br>
 							<div>
+								<button type="button" class="btn btn-primary btn-lg" onclick="location.href='./news_List2.do';">목록</button>
 								<c:choose>
 									<c:when test="${admin_key == '0' }">
-										<button type="button" class="btn btn-primary btn-lg" onclick="location.href='./news_List.do';">목록</button>
 										<button type="button" class="btn btn-success btn-lg" onclick="location.href='./news_Update.do?num=${ dto.news_num }';">수정하기</button>
 										<button type="button" class="btn btn-danger btn-lg" onclick="location.href='./news_Delete.do?num=${ dto.news_num }';">삭제하기</button>
 									</c:when>

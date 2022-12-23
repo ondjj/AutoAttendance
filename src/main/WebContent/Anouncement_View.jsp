@@ -38,11 +38,11 @@
 							<table class="table table-bordered" id="datatablesSimple">
 								<thead style="border-top: 3px solid #336699;">
 									<tr>
-										<th style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">작성자</th>
-										<th style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">작성일</th>
-										<th style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">조회수</th>
-										<th style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">첨부 파일</th>
-										<td style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">
+										<th width="10%" style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">작성자</th>
+										<th width="20%" style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">작성일</th>
+										<th width="20%" style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">조회수</th>
+										<th width="20%" style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">첨부 파일</th>
+										<td width="30%" style="border-right: 3px solid #336699; border-bottom: 1px solid #336699">
 											<a href="./Anouncement_Download.do?ofile=${ dto.anounce_ofile }&sfile=${ dto.anounce_sfile }&num=${ dto.anounce_num }">
 												${ dto.anounce_ofile }
 											</a>
