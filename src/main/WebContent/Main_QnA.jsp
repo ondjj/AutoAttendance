@@ -47,7 +47,7 @@
 							<c:if test="${ admin_key == '1' }">
 								<!-- 학생만 질문 등록 가능 -->
 								<button type="button" class="btn btn-success btn-sm"
-									onclick="location.href='/QnA_Write.jsp';">질문하기</button>
+									onclick="location.href='QnA_Write.jsp';">질문하기</button>
 							</c:if>
 						</div>
 					</div>

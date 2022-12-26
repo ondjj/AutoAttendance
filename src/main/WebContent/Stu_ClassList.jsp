@@ -39,21 +39,25 @@
  
             <div class="row gx-8 gx-lg-12">
             <c:forEach var="mem" items="${mem}" varStatus="status">
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img class="card-img-top" alt="" src="./uploads/${arr[status.index].getSubject_img()}" height="300">
-                            <br><br>
-                            <p class="card-text">${arr[status.index].getSubject()}</p>
-                        </div>
-                        <div class="card-footer">
-                        	<a>교수명</a> <a>${arr[status.index].getProfessor()}</a><br>
-                        	<a>소속</a> <a>${cdto[status.index].getCol_major()}</a><br>
-                        	<a>강좌 개설일</a> <a>${arr[status.index].getClass_date()}</a><br>
-                        	<a class="btn btn-primary btn-sm" href="./ClassView.do?subject=${arr[status.index].getSubject()}">상세 정보</a>
-                        </div>
-                    </div>
-                </div>
+            	 <c:if test="${arr[status.index].getProfessor() ne null}">
+	                <div class="col-md-4 mb-5">
+	                    <div class="card h-100">
+	                        <div class="card-body">
+	                            <img class="card-img-top" alt="" src="./uploads/${arr[status.index].getSubject_img()}" height="300">
+	                            <br><br>
+	                            <p class="card-text">${arr[status.index].getSubject()}</p>
+	                        </div>
+	                       
+	                        <div class="card-footer">
+	                        	<a>교수명</a> <a>${arr[status.index].getProfessor()}</a><br>
+	                        	<a>소속</a> <a>${cdto[status.index].getCol_major()}</a><br>
+	                        	<a>강좌 개설일</a> <a>${arr[status.index].getClass_date()}</a><br>
+	                        	<a class="btn btn-primary btn-sm" href="ClassView.do?subject=${arr[status.index].getSubject()}">상세 정보</a>
+	                        </div>
+	                       
+	                    </div>
+	                </div>
+                 </c:if>
                  </c:forEach>
         	</div>
         	

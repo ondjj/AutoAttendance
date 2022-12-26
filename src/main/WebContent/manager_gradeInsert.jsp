@@ -40,7 +40,7 @@
     </head>
     <body class="sb-nav-fixed">
     	<div>
-             <%@ include file="infoAdmin.jsp" %>
+             <%@ include file="info_manager.jsp" %>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">

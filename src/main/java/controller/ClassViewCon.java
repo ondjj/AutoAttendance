@@ -40,19 +40,8 @@ public class ClassViewCon extends HttpServlet {
 		dao.close();
 		
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/Stu_ClassView.jsp").forward(request, response);
-		
-		
-		
-		
-		
-		
-		
-		
+		request.getRequestDispatcher("Stu_ClassView.jsp").forward(request, response);
 		
 	}
-	
-	
-	
 
 }
