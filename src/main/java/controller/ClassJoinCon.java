@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -62,9 +63,9 @@ public class ClassJoinCon extends HttpServlet {
 			
 			ClassDAO cdao = new ClassDAO();
 			cdao.insertClass(cdto);
-			RequestDispatcher dis = request.getRequestDispatcher("manager_page.jsp");
-			dis.forward(request, response);
-			
+			String subject = URLEncoder.encode(multi.getParameter("subject"), "UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+			response.sendRedirect("ClassView.do?subject=" + subject );
 		
 		}catch(Exception e) {
 			e.printStackTrace();
